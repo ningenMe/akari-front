@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: "net-front"
         LoadBalancerInfo:
           ContainerName: "net-front"
           ContainerPort: 3000
