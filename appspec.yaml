@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: "<TASK_DEFINITION>"
         LoadBalancerInfo:
-          ContainerName: "net-front"
+          ContainerName: "net-front-lb"
           ContainerPort: 3000
