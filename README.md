@@ -1,4 +1,7 @@
 # net-front
+[![ci-test](https://github.com/ningenMe/net-front/actions/workflows/ci-test.yml/badge.svg)](https://github.com/ningenMe/net-front/actions/workflows/ci-test.yml)
+[![cd-resource-push](https://github.com/ningenMe/net-front/actions/workflows/cd-resource-push.yml/badge.svg)](https://github.com/ningenMe/net-front/actions/workflows/cd-resource-push.yml)
+[![cd-code-deploy](https://github.com/ningenMe/net-front/actions/workflows/cd-code-deploy.yml/badge.svg)](https://github.com/ningenMe/net-front/actions/workflows/cd-code-deploy.yml)
 
 趣味開発のフロントエンド。
 
