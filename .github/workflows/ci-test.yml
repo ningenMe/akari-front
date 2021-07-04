@@ -5,7 +5,7 @@ name: ci-test
 
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   check:
