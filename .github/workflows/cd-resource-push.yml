@@ -5,7 +5,7 @@ name: cd-resource-push
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
