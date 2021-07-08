@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Nav,Navbar,NavDropdown } from 'react-bootstrap';
+import NavGithub from 'molecules/NavGithub'
+import NavCompro from 'molecules/NavCompro'
+import NavBlog from 'molecules/NavBlog'
 
-export const Header: React.FC = () => {
-    const [navbarToggleOpen, setNavbarToggleOpen] = useState(false);
-    const toggleNavbar = () => setNavbarToggleOpen(!navbarToggleOpen);
-
+export const Header = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="/home" >ningenme.net</Navbar.Brand>
-            {/*<Navbar.Toggle onClick={toggleNavbar} />*/}
-            {/*<Navbar.Collapse isOpen={navbarToggleOpen}>*/}
-            {/*    <Nav className="mr-auto" navbar>*/}
-            {/*        <NavItem>*/}
-            {/*            <NavLink href="localhost:3000">hoge</NavLink>*/}
-            {/*        </NavItem>*/}
-            {/*    </Nav>*/}
-            {/*    <Nav className="ml-auto" navbar>*/}
-            {/*        <NavItem>*/}
-            {/*            <NavLink href="https://twitter.com/ningenMe">ningenMe</NavLink>*/}
-            {/*        </NavItem>*/}
-            {/*    </Nav>*/}
-            {/*</Navbar.Collapse>*/}
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <NavGithub/>
+                <NavCompro/>
+                <NavBlog/>
+            </Navbar.Collapse>
         </Navbar>
     );
 }
