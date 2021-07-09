@@ -1,17 +1,17 @@
-import { Nav,Navbar,NavDropdown } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import NavGithub from 'molecules/NavGithub'
-import NavCompro from 'molecules/NavCompro'
-import NavBlog from 'molecules/NavBlog'
+import Dropdown from 'molecules/Dropdown'
+import Links from 'constants/Links'
 
 export const Header = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href="/home" >ningenme.net</Navbar.Brand>
+            <Navbar.Brand href={Links.betaNingenMeNet.url} >{Links.betaNingenMeNet.name}</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <NavGithub/>
-                <NavCompro/>
-                <NavBlog/>
+                <Dropdown title = "compro" links={Links.compros} />
+                <Dropdown title = "blog"   links={Links.blogs} />
             </Navbar.Collapse>
         </Navbar>
     );

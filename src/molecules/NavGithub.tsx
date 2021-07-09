@@ -1,10 +1,11 @@
-import { Nav,NavDropdown } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+import Links from 'constants/Links'
 
-export const NavBlog = () => {
+export const NavGithub = () => {
     return (
         <Nav>
-            <Nav.Link href="https://github.com/ningenMe">GitHub</Nav.Link>
+            <Nav.Link href={Links.github.url}>{Links.github.name}</Nav.Link>
         </Nav>
     );
 }
-export default NavBlog
+export default NavGithub
