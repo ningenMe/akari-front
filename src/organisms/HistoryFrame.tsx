@@ -3,8 +3,9 @@ import {Grid,Typography,Card,CardContent} from '@material-ui/core'
 import FrameTitle from 'atoms/FrameTitle'
 import History from 'interfaces/History'
 import HistoryContent from 'interfaces/HistoryContent'
+import CardStyle from 'styles/CardStyle'
 
-export const HistoryFrame = () => {
+export const HistoryFrame = () => {    
     const histories : ReadonlyArray<History> = [
         new History(2019,2021,"Yahoo! Japan Software Engineer",[]),
         new History(2017,2019,"大阪大学大学院　基礎工学研究科",[]),
@@ -25,7 +26,7 @@ export const HistoryFrame = () => {
             </Grid>
             <Grid item xs={12}>
                 <Card variant="outlined">
-                    <CardContent>
+                    <CardContent style={CardStyle}>
                         {contents}
                     </CardContent>
                 </Card>

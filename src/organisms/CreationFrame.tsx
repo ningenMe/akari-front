@@ -12,17 +12,17 @@ export const CreationFrame = () => {
         {
             href : Paths.PROBLEMS, 
             title: "problems", 
-            body : "競技プログラミングの作問リスト"
+            body : "競技プログラミングの作問リスト。"
         },
         {
             href : Paths.COMPRO_CATEGORY, 
             title: "compro-category", 
-            body : "競技プログラミングの問題カテゴライズ"
+            body : "競技プログラミングの問題カテゴライズ。"
         },
         {
             href : Urls.COMPRO_LIBRARY, 
             title: "compro-library", 
-            body : "競技プログラミングのライブラリ"
+            body : "競技プログラミングのライブラリ。"
         },
         {
             href : Urls.WORKS, 

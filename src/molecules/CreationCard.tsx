@@ -1,10 +1,11 @@
 import React from 'react';
 import {Card,CardActionArea,CardContent,Typography} from '@material-ui/core';
 import Creation from 'interfaces/Creation'
+import CardStyle from 'styles/CardStyle'
 
 export const CreationCard = ({creation}: {creation:Creation}) => {
     return (
-        <Card variant="outlined">
+        <Card variant="outlined" style={CardStyle}>
             <CardActionArea href={creation.href}>
                 <CardContent>
                     <Typography variant="h6">
