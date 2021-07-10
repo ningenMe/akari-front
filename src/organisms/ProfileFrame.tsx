@@ -1,14 +1,13 @@
 import React from 'react';
-import {Grid,Typography} from '@material-ui/core'
+import {Grid} from '@material-ui/core'
 import ProfileCard from 'molecules/ProfileCard'
+import FrameTitle from 'atoms/FrameTitle'
 
 export const ProfileFrame = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Typography variant="h5" component="h2">
-                    Profile
-                </Typography>
+                <FrameTitle body="Profile" />
             </Grid>
             <Grid item xs={12}>
                 <ProfileCard/>
