@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid,Typography} from '@material-ui/core'
 import ProfileCard from 'molecules/ProfileCard'
 
-export const Profile = () => {
+export const ProfileFrame = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -16,4 +16,4 @@ export const Profile = () => {
         </Grid>
     );
 }
-export default Profile
+export default ProfileFrame
