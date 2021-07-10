@@ -4,7 +4,7 @@ import Links from 'constants/Links'
 export const NavGithub = () => {
     return (
         <Nav>
-            <Nav.Link href={Links.github.url}>{Links.github.name}</Nav.Link>
+            <Nav.Link href={Links.GITHUB.href}>{Links.GITHUB.name}</Nav.Link>
         </Nav>
     );
 }

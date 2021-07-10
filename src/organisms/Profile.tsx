@@ -1,14 +1,19 @@
 import React from 'react';
-import {Paper,Typography} from '@material-ui/core';
+import {Grid,Typography} from '@material-ui/core'
+import ProfileCard from 'molecules/ProfileCard'
 
 export const Profile = () => {
     return (
-        <Paper elevation={3}>
-            <Typography variant="h6" align="left" style={{ backgroundColor: '#222222', color: '#FFFFFF'}}>
-                Profile
-            </Typography>
-            hoge
-        </Paper>
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <Typography variant="h5" component="h2">
+                    Profile
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <ProfileCard/>
+            </Grid>
+        </Grid>
     );
 }
 export default Profile
