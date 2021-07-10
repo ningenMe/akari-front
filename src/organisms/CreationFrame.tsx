@@ -1,9 +1,10 @@
 import React from 'react';
-import {Grid,Typography} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import CreationCard from 'molecules/CreationCard'
 import Creation from 'interfaces/Creation'
 import Urls from 'constants/Urls'
 import Paths from 'constants/Paths'
+import FrameTitle from 'atoms/FrameTitle'
 
 export const CreationFrame = () => {
 
@@ -50,9 +51,7 @@ export const CreationFrame = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Typography variant="h5" component="h2">
-                    Creation
-                </Typography>
+                <FrameTitle body="Creation" />
             </Grid>
             {cards}
         </Grid>

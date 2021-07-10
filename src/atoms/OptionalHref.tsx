@@ -4,9 +4,9 @@ import {Link} from '@material-ui/core';
 export const OptionalLink = ({body,href} : {body:string,href:string|null} ) => {
     if(href === null) {
         return (
-            <a>
+            <>
                 {body}
-            </a>
+            </>
         );
     }
     else {

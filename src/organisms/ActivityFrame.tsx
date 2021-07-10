@@ -1,7 +1,8 @@
 import React from 'react';
-import {Grid,Typography,Card,CardContent,Link} from '@material-ui/core';
+import {Grid,Typography,Card,CardContent} from '@material-ui/core';
 import Activity from 'interfaces/Activity'
 import OptionalHref from 'atoms/OptionalHref'
+import FrameTitle from 'atoms/FrameTitle'
 
 export const ActivityFrame = () => {
 
@@ -62,9 +63,7 @@ export const ActivityFrame = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Typography variant="h5" component="h2">
-                    Activitiy
-                </Typography>
+                <FrameTitle body="Activitiy" />
             </Grid>
             <Grid item xs={12}>
                 <Card variant="outlined">
