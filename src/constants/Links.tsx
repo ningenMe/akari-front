@@ -1,5 +1,6 @@
-import Link from 'interfaces/Link'
-import Urls from 'constants/Urls'
+import Link  from 'interfaces/Link'
+import Urls  from 'constants/Urls'
+import Paths from 'constants/Paths'
 
 export default class Links {
     static readonly NINGENME_NET      : Link = {href:Urls.NINGENME_NET     , name:"ningenMe.net"}
@@ -15,4 +16,10 @@ export default class Links {
     static readonly QIITA             : Link = {href:Urls.QIITA            , name:"Qiita"}    
     static readonly COMPROS           : ReadonlyArray<Link> = [Links.ATCODER,Links.CODEFORCES,Links.YUKICODER,Links.CSACADEMY]
     static readonly BLOGS             : ReadonlyArray<Link> = [Links.HATENA,Links.AMEBA,Links.QIITA]
+    static readonly PATHS             : ReadonlyArray<Link> = [
+        {href:Paths.PROBLEMS,        name:Paths.PROBLEMS},
+        {href:Paths.COMPRO_CATEGORY, name:Paths.COMPRO_CATEGORY},
+        {href:Paths.ARTICLES,        name:Paths.ARTICLES},
+        {href:Paths.BLOGS,           name:Paths.BLOGS},
+    ]
 }

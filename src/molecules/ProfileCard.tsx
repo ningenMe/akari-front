@@ -1,9 +1,10 @@
 import React from 'react';
 import {Card,CardContent,Typography} from '@material-ui/core';
+import CardStyle from 'styles/CardStyle'
 
 export const ProfileCard = () => {
     return (
-        <Card variant="outlined">
+        <Card variant="outlined" style={CardStyle}>
             <CardContent>
                 <Typography variant="h5" component="h2">
                     Furuta Taishi

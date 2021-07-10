@@ -3,6 +3,7 @@ import {Grid,Typography,Card,CardContent} from '@material-ui/core';
 import Activity from 'interfaces/Activity'
 import OptionalHref from 'atoms/OptionalHref'
 import FrameTitle from 'atoms/FrameTitle'
+import CardStyle from 'styles/CardStyle'
 
 export const ActivityFrame = () => {
 
@@ -66,7 +67,7 @@ export const ActivityFrame = () => {
                 <FrameTitle body="Activitiy" />
             </Grid>
             <Grid item xs={12}>
-                <Card variant="outlined">
+                <Card variant="outlined" style={CardStyle}>
                     <CardContent>
                         {contents}
                     </CardContent>

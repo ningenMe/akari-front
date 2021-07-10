@@ -12,6 +12,7 @@ export const Header = () => {
                 <NavGithub/>
                 <Dropdown title = "compro" links={Links.COMPROS} />
                 <Dropdown title = "blog"   links={Links.BLOGS} />
+                <Dropdown title = "paths"  links={Links.PATHS} />
             </Navbar.Collapse>
         </Navbar>
     );
