@@ -6,7 +6,7 @@ export const Index: NextPage = () => {
     const router = useRouter()
 
     useEffect(() => {
-        router.replace('/home') // ここでリダイレクト
+        router.replace('/home') 
     }, [])
 
     return null

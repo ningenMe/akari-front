@@ -1,9 +1,9 @@
 import { Nav,NavDropdown } from 'react-bootstrap';
 import Link from 'interfaces/Link'
 
-export const Dropdown = ({title,links} : {title:string, links:Link[]}) => {
+export const Dropdown = ({title,links} : {title:string, links:ReadonlyArray<Link>}) => {
     const dropdowns = links.map((link) =>
-        <NavDropdown.Item target="_blank" href={link.url} key={link.name}>{link.name}</NavDropdown.Item>
+        <NavDropdown.Item target="_blank" href={link.href} key={link.name}>{link.name}</NavDropdown.Item>
     );
     return (
         <Nav>
