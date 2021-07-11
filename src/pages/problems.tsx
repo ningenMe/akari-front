@@ -1,10 +1,10 @@
-import React from 'react';
 import {Container} from '@material-ui/core';
+import {ProblemFrame} from 'organisms/ProblemFrame'
 
 export const Problems = () => {
     return (
         <Container>
-            problems. todo 中身を作る
+            <ProblemFrame/>
         </Container>
     );
 }
