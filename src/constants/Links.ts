@@ -1,8 +1,8 @@
-import Link  from 'interfaces/Link'
-import Urls  from 'constants/Urls'
-import Paths from 'constants/Paths'
+import {Link}  from 'interfaces/Link'
+import {Urls}  from 'constants/Urls'
+import {Paths} from 'constants/Paths'
 
-export default class Links {
+export class Links {
     static readonly NINGENME_NET      : Link = {href:Urls.NINGENME_NET     , name:"ningenMe.net"}
     static readonly BETA_NINGENME_NET : Link = {href:Urls.BETA_NINGENME_NET, name:"ningenMe.net"}
     static readonly GITHUB            : Link = {href:Urls.GITHUB           , name:"GitHub"}

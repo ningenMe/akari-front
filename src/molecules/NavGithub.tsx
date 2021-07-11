@@ -1,5 +1,5 @@
 import { Nav } from 'react-bootstrap';
-import Links from 'constants/Links'
+import {Links} from 'constants/Links'
 
 export const NavGithub = () => {
     return (
@@ -8,4 +8,3 @@ export const NavGithub = () => {
         </Nav>
     );
 }
-export default NavGithub

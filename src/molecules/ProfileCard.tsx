@@ -1,6 +1,5 @@
-import React from 'react';
 import {Card,CardContent,Typography} from '@material-ui/core';
-import CardStyle from 'styles/CardStyle'
+import {CardStyle} from 'styles/CardStyle'
 
 export const ProfileCard = () => {
     return (
@@ -18,4 +17,3 @@ export const ProfileCard = () => {
         </Card>
     );
 }
-export default ProfileCard

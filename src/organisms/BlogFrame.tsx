@@ -1,8 +1,7 @@
-import React from 'react';
-import {Grid,Typography,Card,CardContent} from '@material-ui/core';
-import Blog from 'interfaces/Blog'
+import {Grid} from '@material-ui/core';
+import {Blog} from 'interfaces/Blog'
 import {BlogCard} from 'molecules/BlogCard'
-import FrameTitle from 'atoms/FrameTitle'
+import {FrameTitle} from 'atoms/FrameTitle'
 
 export const BlogFrame = ({blogs,title} : {blogs:Blog[],title:string}) => {
 

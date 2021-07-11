@@ -1,4 +1,4 @@
-export default class Urls {
+export class Urls {
     static readonly NINGENME_NET      : string = "https://ningenme.net"
     static readonly BETA_NINGENME_NET : string = "https://beta.ningenme.net"
     static readonly API_NINGENME_NET  : string = "https://api.ningenme.net"
@@ -13,5 +13,7 @@ export default class Urls {
     static readonly QIITA             : string = "https://qiita.com/ningenMe"             
     static readonly COMPRO_LIBRARY    : string = "https://ningenme.github.io/compro-library"
     static readonly WORKS             : string = "https://indies.mangabox.me/amp/author/10633/"
+    static readonly OUPC_2020         : string = "https://onlinejudge.u-aizu.ac.jp/beta/room.html#OUPC2020/info"
+    static readonly YUKICODER_NINGENME: string = "https://yukicoder.me/contests/241"
 }
 
