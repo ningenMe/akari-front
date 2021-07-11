@@ -7,7 +7,7 @@
 
 ## domain
 
-[beta.ningenme.net](https://beta.ningenme.net)
+[ningenme.net](https://ningenme.net)
 
 ## document
 
