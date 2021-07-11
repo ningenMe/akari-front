@@ -1,0 +1,1 @@
+export type BlogType = "HATENA" | "QIITA" | "AMEBA"

@@ -15,7 +15,6 @@ export async function getStaticProps() {
         props: {body}
     };
 }
-
   
 export const Diaries = ({body}:{body:string}) => {
     return (

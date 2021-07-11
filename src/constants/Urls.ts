@@ -1,6 +1,7 @@
 export default class Urls {
     static readonly NINGENME_NET      : string = "https://ningenme.net"
     static readonly BETA_NINGENME_NET : string = "https://beta.ningenme.net"
+    static readonly API_NINGENME_NET  : string = "https://api.ningenme.net"
     static readonly GITHUB            : string = "https://github.com/ningenMe"    
     static readonly TWITTER           : string = "https://twitter.com/ningenMe"
     static readonly ATCODER           : string = "https://atcoder.jp/users/ningenMe"    
