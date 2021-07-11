@@ -6,7 +6,7 @@ import {Links} from 'constants/Links'
 export const Header = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href={Links.BETA_NINGENME_NET.href} >{Links.BETA_NINGENME_NET.name}</Navbar.Brand>
+            <Navbar.Brand href={Links.NINGENME_NET.href} >{Links.NINGENME_NET.name}</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <NavGithub/>
