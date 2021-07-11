@@ -1,8 +1,7 @@
 import 'styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from 'organisms/Header'
-import Footer from 'organisms/Footer'
-import React from 'react'
+import {Header} from 'organisms/Header'
+import {Footer} from 'organisms/Footer'
 
 function MyApp ({ Component, pageProps }) {
   return (

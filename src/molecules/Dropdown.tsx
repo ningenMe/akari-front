@@ -1,5 +1,5 @@
 import { Nav,NavDropdown } from 'react-bootstrap';
-import Link from 'interfaces/Link'
+import {Link} from 'interfaces/Link'
 
 export const Dropdown = ({title,links} : {title:string, links:ReadonlyArray<Link>}) => {
     const dropdowns = links.map((link) =>
@@ -13,4 +13,3 @@ export const Dropdown = ({title,links} : {title:string, links:ReadonlyArray<Link
         </Nav>
     );
 }
-export default Dropdown

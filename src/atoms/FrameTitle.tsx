@@ -1,4 +1,3 @@
-import React from 'react'
 import {Typography} from '@material-ui/core'
 
 export const FrameTitle = ({body}:{body:string}) => {
@@ -8,4 +7,3 @@ export const FrameTitle = ({body}:{body:string}) => {
         </Typography>
     )
 }
-export default FrameTitle

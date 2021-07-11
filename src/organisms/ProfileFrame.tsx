@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid} from '@material-ui/core'
-import ProfileCard from 'molecules/ProfileCard'
-import FrameTitle from 'atoms/FrameTitle'
+import {ProfileCard} from 'molecules/ProfileCard'
+import {FrameTitle} from 'atoms/FrameTitle'
 
 export const ProfileFrame = () => {
     return (
@@ -15,4 +15,3 @@ export const ProfileFrame = () => {
         </Grid>
     );
 }
-export default ProfileFrame

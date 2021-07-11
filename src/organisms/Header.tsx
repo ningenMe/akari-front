@@ -1,7 +1,7 @@
 import { Navbar } from 'react-bootstrap';
-import NavGithub from 'molecules/NavGithub'
-import Dropdown from 'molecules/Dropdown'
-import Links from 'constants/Links'
+import {NavGithub} from 'molecules/NavGithub'
+import {Dropdown} from 'molecules/Dropdown'
+import {Links} from 'constants/Links'
 
 export const Header = () => {
     return (
@@ -17,4 +17,3 @@ export const Header = () => {
         </Navbar>
     );
 }
-export default Header

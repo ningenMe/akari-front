@@ -1,7 +1,6 @@
-import React from 'react';
 import {Link} from '@material-ui/core';
 
-export const OptionalLink = ({body,href} : {body:string,href:string|null} ) => {
+export const OptionalHref = ({body,href} : {body:string,href:string|null} ) => {
     if(href === null) {
         return (
             <>
@@ -17,4 +16,3 @@ export const OptionalLink = ({body,href} : {body:string,href:string|null} ) => {
         )
     }
 }
-export default OptionalLink

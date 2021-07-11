@@ -1,6 +1,6 @@
 import {BlogType} from 'interfaces/BlogType'
 
-export default interface Blog{
+export interface Blog{
     readonly url   :  string,
     readonly type  :  BlogType,
     readonly date  :  string,

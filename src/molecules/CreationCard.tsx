@@ -1,7 +1,6 @@
-import React from 'react';
 import {Card,CardActionArea,CardContent,Typography} from '@material-ui/core';
-import Creation from 'interfaces/Creation'
-import CardStyle from 'styles/CardStyle'
+import {Creation} from 'interfaces/Creation'
+import {CardStyle} from 'styles/CardStyle'
 
 export const CreationCard = ({creation}: {creation:Creation}) => {
     return (
@@ -19,4 +18,3 @@ export const CreationCard = ({creation}: {creation:Creation}) => {
         </Card>
     );
 }
-export default CreationCard

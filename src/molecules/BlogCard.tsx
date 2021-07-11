@@ -1,7 +1,6 @@
-import React from 'react';
 import {Card,CardActionArea,CardContent,Typography,Grid,Box} from '@material-ui/core';
-import Blog from 'interfaces/Blog'
-import CardStyle from 'styles/CardStyle'
+import {Blog} from 'interfaces/Blog'
+import {CardStyle} from 'styles/CardStyle'
 import {blogIconPath} from 'atoms/BlogIconPath'
 
 export const BlogCard = ({blog}: {blog:Blog}) => {

@@ -1,4 +1,4 @@
-export default interface HistoryContent{
+export interface HistoryContent{
     readonly body :  string,
     readonly href :  string|null
 }

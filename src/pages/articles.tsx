@@ -1,7 +1,6 @@
-import React, {useState,useEffect} from 'react';
 import {Container} from '@material-ui/core';
 import {BlogType} from 'interfaces/BlogType'
-import Blog from 'interfaces/Blog'
+import {Blog} from 'interfaces/Blog'
 import {BlogFrame} from 'organisms/BlogFrame'
 import {getBlog} from 'repository/BlogRepository'
 
