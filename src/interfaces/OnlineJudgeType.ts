@@ -1,0 +1,1 @@
+export type OnlineJudgeType = "YUKICODER" | "AOJ" | "HACKER_RANK"
