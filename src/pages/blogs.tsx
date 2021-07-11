@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import {Container} from '@material-ui/core';
+import {BlogType} from 'interfaces/BlogType'
+import Blog from 'interfaces/Blog'
+import {BlogFrame} from 'organisms/BlogFrame'
+import {getBlog} from 'repository/BlogRepository'
 
-export const Blogs = () => {
+export const getStaticProps = async () => {
+
+    const blogTypes : BlogType[] = ["AMEBA"];
+    const blogs : Blog[] = await getBlog(blogTypes);
+
+    return {
+        props: {blogs}
+    };
+}
+
+export const Blogs = ({blogs}:{blogs:Blog[]}) => {
+
     return (
         <Container>
-            blog. todo 中身を作る
+            <BlogFrame blogs = {blogs} title="Blogs"/>
         </Container>
     );
 }
+
 export default Blogs
