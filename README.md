@@ -14,6 +14,8 @@
 TODO
 
 ## architecture
+[system diagrms](https://ningenme.net/systems)
+
 
 |             |                                 |
 | ----------- | ------------------------------- |
