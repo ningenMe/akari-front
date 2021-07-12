@@ -21,5 +21,6 @@ export class Links {
         {href:Paths.COMPRO_CATEGORY, name:Paths.COMPRO_CATEGORY},
         {href:Paths.ARTICLES,        name:Paths.ARTICLES},
         {href:Paths.BLOGS,           name:Paths.BLOGS},
+        {href:Paths.SYSTEMS,         name:Paths.SYSTEMS},
     ]
 }
