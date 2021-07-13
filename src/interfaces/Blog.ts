@@ -7,3 +7,9 @@ export interface Blog{
     readonly title :  string,
     readonly liked :  number
 }
+
+export interface DiaryWithAround{
+    readonly prev : Blog|null,
+    readonly curr : Blog|null,
+    readonly next : Blog|null,
+}
