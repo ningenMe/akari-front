@@ -1,18 +1,13 @@
-import { useRouter } from 'next/router';
-import ReactMarkdown from 'react-markdown';
-import {Container} from '@material-ui/core';
+import {Container,Grid} from '@material-ui/core';
 import fs from 'fs';
+import {DiaryBodyFrame} from 'organisms/DiaryBodyFrame'
+import {DiaryTitleFrame} from 'organisms/DiaryTitleFrame'
 
+export async function getServerSideProps({params}:{params:{date:string}}) {
+    const date:string = params.date
+    const filePath:string = "public/markdown/" + date + ".md"
 
-export async function getStaticPaths() {
-    const paths : string[] = []
-    return { paths , fallback: true }
-}
-
-export async function getStaticProps( {params} : {params:{date:string}} ) {
-    const filePath = "public/markdown/" + params.date + ".md"
-
-    let body = "# no contents";
+    let body:string = "# no contents";
     try {
         body = fs.readFileSync(filePath,{encoding: "utf8"});
     }
@@ -20,16 +15,25 @@ export async function getStaticProps( {params} : {params:{date:string}} ) {
         
     }
     return {
-        props: {body}
+        props: {body,date}
     };
 }
   
-export const Diaries = ({body}:{body:string}) => {
+export const Diaries = ({body,date}:{body:string,date:string}) => {
     return (
         <Container>
-            <ReactMarkdown>
-                {body}
-            </ReactMarkdown>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                </Grid>
+                <Grid item xs={12}>
+                    <DiaryTitleFrame date={date}/>
+                </Grid>
+                <Grid item xs={12}>
+                    <DiaryBodyFrame body={body}/>
+                </Grid>
+                <Grid item xs={12}>
+                </Grid>
+            </Grid>
         </Container>
     )
 }
