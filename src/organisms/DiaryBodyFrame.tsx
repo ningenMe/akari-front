@@ -1,6 +1,5 @@
-import ReactMarkdown from 'react-markdown';
 import {Card,CardContent} from '@material-ui/core';
-import {otomanopeeOneFont,yomogiFont,mPlusFont} from 'styles/FontStyles'
+import {mPlusFont} from 'styles/FontStyles'
 import {MarkdownList} from 'molecules/MarkdownList'
 
 
