@@ -6,7 +6,7 @@ import {blogIconPath} from 'atoms/BlogIconPath'
 export const BlogCard = ({blog}: {blog:Blog}) => {
     return (
         <Card variant="outlined" style={CardStyle}>
-            <CardActionArea href={blog.url}>
+            <CardActionArea href={blog.url} target="_blank">
                 <CardContent>
                     <Grid container>
                         <Grid xs={3}>

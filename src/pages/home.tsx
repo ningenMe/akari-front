@@ -7,7 +7,7 @@ import {ApplicationMeta} from 'interfaces/ApplicationMeta'
 import {getApplicationMeta} from 'repository/ApplicationMetaRepository'
 import {LastUpdate} from 'molecules/LastUpdate'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
     const applicationMeta : ApplicationMeta = await getApplicationMeta("net-front");
 

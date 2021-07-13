@@ -17,6 +17,7 @@ export class Links {
     static readonly COMPROS           : ReadonlyArray<Link> = [Links.ATCODER,Links.CODEFORCES,Links.YUKICODER,Links.CSACADEMY]
     static readonly BLOGS             : ReadonlyArray<Link> = [Links.HATENA,Links.AMEBA,Links.QIITA]
     static readonly PATHS             : ReadonlyArray<Link> = [
+        {href:Paths.HOME,            name:Paths.HOME},
         {href:Paths.PROBLEMS,        name:Paths.PROBLEMS},
         {href:Paths.COMPRO_CATEGORY, name:Paths.COMPRO_CATEGORY},
         {href:Paths.ARTICLES,        name:Paths.ARTICLES},
