@@ -4,5 +4,6 @@ export interface Blog{
     readonly url   :  string,
     readonly type  :  BlogType,
     readonly date  :  string,
-    readonly title :  string
+    readonly title :  string,
+    readonly liked :  number
 }
