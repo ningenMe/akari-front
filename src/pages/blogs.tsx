@@ -4,7 +4,7 @@ import {Blog} from 'interfaces/Blog'
 import {BlogFrame} from 'organisms/BlogFrame'
 import {getBlog} from 'repository/BlogRepository'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
     const blogTypes : BlogType[] = ["AMEBA"];
     const blogs : Blog[] = await getBlog(blogTypes);
