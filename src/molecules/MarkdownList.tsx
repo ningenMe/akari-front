@@ -5,14 +5,14 @@ export const MarkdownList = ({body}:{body:string}) => {
 
     return (
         <>
-            {splitBodyList.map((splitBody)=>{
+            {splitBodyList.map((splitBody,index)=>{
                 return (
-                    <>
+                    <div key={index}>
                         <ReactMarkdown>
                             {splitBody}
                         </ReactMarkdown>            
                         <br/>
-                    </>
+                    </div>
                 );
             })}
         </>

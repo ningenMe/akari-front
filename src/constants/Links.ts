@@ -14,12 +14,14 @@ export class Links {
     static readonly HATENA            : Link = {href:Urls.HATENA           , name:"Hatena"}
     static readonly AMEBA             : Link = {href:Urls.AMEBA            , name:"Ameba"}
     static readonly QIITA             : Link = {href:Urls.QIITA            , name:"Qiita"}    
+    static readonly DIARIES           : Link = {href:Paths.DIARIES         , name:"今日のITドカタ"}    
     static readonly COMPROS           : ReadonlyArray<Link> = [Links.ATCODER,Links.CODEFORCES,Links.YUKICODER,Links.CSACADEMY]
-    static readonly BLOGS             : ReadonlyArray<Link> = [Links.HATENA,Links.AMEBA,Links.QIITA]
+    static readonly BLOGS             : ReadonlyArray<Link> = [Links.HATENA,Links.AMEBA,Links.QIITA,Links.DIARIES]
     static readonly PATHS             : ReadonlyArray<Link> = [
         {href:Paths.HOME,            name:Paths.HOME},
         {href:Paths.PROBLEMS,        name:Paths.PROBLEMS},
         {href:Paths.COMPRO_CATEGORY, name:Paths.COMPRO_CATEGORY},
+        {href:Paths.DIARIES,         name:Paths.DIARIES},
         {href:Paths.ARTICLES,        name:Paths.ARTICLES},
         {href:Paths.BLOGS,           name:Paths.BLOGS},
         {href:Paths.SYSTEMS,         name:Paths.SYSTEMS},

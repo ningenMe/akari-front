@@ -24,17 +24,24 @@ export const getBlog = async (blogTypes : BlogType[]): Promise<Blog[]> => {
 }
 
 export const getDiary = async (date : string): Promise<DiaryWithAround> => {
-    let diary : DiaryWithAround = {prev:null,curr:null,next:null}
-
     const url = Urls.API_NINGENME_NET + "/v1/diaries/" + date;
 
-    await axios
+    return await axios
         .get(url)
         .then((results) => {
-            diary = results.data
+            return results.data
         })
         .catch((error) => {
             console.log(error.status);
         }); 
-    return diary;
+}
+
+export const putDiaryLiked = async (date : string) => {
+    const url = Urls.API_NINGENME_NET + "/v1/diaries/" + date + "/liked";
+    
+    return await axios
+        .put(url)
+        .catch((error) => {
+            console.log(error.status);
+        }); 
 }

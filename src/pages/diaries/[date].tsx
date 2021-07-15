@@ -3,6 +3,7 @@ import fs from 'fs';
 import {DiaryBodyFrame} from 'organisms/DiaryBodyFrame'
 import {DiaryTitleFrame} from 'organisms/DiaryTitleFrame'
 import {DiaryPagingFrame} from 'organisms/DiaryPagingFrame'
+import {DiaryFooterFrame} from 'organisms/DiaryFooterFrame'
 import {getDiary} from 'repository/BlogRepository'
 import {DiaryWithAround} from 'interfaces/Blog'
 
@@ -46,13 +47,19 @@ export const Diaries = ({body,date,diary}:{body:string,date:string,diary:DiaryWi
                 <Grid item xs={12}>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryTitleFrame/>
+                    <DiaryTitleFrame date={date}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryPagingFrame date={date} diary={diary}/>
+                    <DiaryPagingFrame diary={diary}/>
                 </Grid>
                 <Grid item xs={12}>
                     <DiaryBodyFrame body={body}/>
+                </Grid>
+                <Grid item xs={12}>
+                    <DiaryFooterFrame diary={diary}/>
+                </Grid>
+                <Grid item xs={12}>
+                    <DiaryPagingFrame diary={diary}/>
                 </Grid>
                 <Grid item xs={12}>
                 </Grid>

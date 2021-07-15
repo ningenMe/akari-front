@@ -10,6 +10,6 @@ export interface Blog{
 
 export interface DiaryWithAround{
     readonly prev : Blog|null,
-    readonly curr : Blog|null,
+    readonly curr : Blog,
     readonly next : Blog|null,
 }

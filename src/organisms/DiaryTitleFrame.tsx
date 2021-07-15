@@ -1,7 +1,7 @@
 import {Card,Grid,Typography} from '@material-ui/core';
 import {otomanopeeOneFont,yomogiFont} from 'styles/FontStyles'
 
-export const DiaryTitleFrame = () => {
+export const DiaryTitleFrame = ({date}:{date:string}) => {
 
     return (
         <Grid container>
@@ -15,6 +15,11 @@ export const DiaryTitleFrame = () => {
                 </Card>
             </Grid>
             <Grid item xs={3}>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="h6" align="center" style={yomogiFont}>
+                    {date}
+                </Typography>
             </Grid>
         </Grid>
     )

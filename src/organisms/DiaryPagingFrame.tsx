@@ -1,28 +1,31 @@
-import {Card,Grid,Typography} from '@material-ui/core';
+import {Card,Grid,Typography,Button} from '@material-ui/core';
 import {otomanopeeOneFont,yomogiFont} from 'styles/FontStyles'
-import {DiaryWithAround} from 'interfaces/Blog'
-import StarSharpIcon from '@material-ui/icons/StarSharp';
+import {Blog,DiaryWithAround} from 'interfaces/Blog'
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import IconButton from '@material-ui/core/IconButton';
+import {Paths} from 'constants/Paths'
 
-export const DiaryPagingFrame = ({date,diary}:{date:string,diary:DiaryWithAround}) => {
+export const DiaryPagingFrame = ({diary}:{diary:DiaryWithAround}) => {
+
+    const getUrl = (blog:Blog|null) => {
+        if(blog == null) return "/";
+        return blog.url;
+    }
 
     return (
-        <Grid container>
-            <Grid item xs={12}>
-                <Typography variant="h6" align="center" style={yomogiFont}>
-                    {date}
-                </Typography>
-            </Grid>
-            <Grid item xs={6}>
-            </Grid>
-            <Grid item xs={2}>
-                <IconButton color="secondary">
-                    <StarSharpIcon/>
-                    {diary.curr?.liked}
-                </IconButton>
-            </Grid>
-            <Grid item xs={4}>
-            </Grid>
+        <Grid container alignItems="center" justifyContent="center">
+            <IconButton color="primary" href={getUrl(diary.prev)} disabled={diary.prev == null}>
+                prev
+                <ArrowLeftIcon fontSize="large"/>
+            </IconButton>
+            <Button variant="outlined" color="primary" size="large" href={Paths.DIARIES} >
+                一覧
+            </Button>
+            <IconButton color="primary" href={getUrl(diary.next)} disabled={diary.next == null}>
+                <ArrowRightIcon fontSize="large"/>
+                next
+            </IconButton>
         </Grid>
     )
 }
