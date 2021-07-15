@@ -1,29 +1,38 @@
-import ReactMarkdown from 'react-markdown';
-import {Container} from '@material-ui/core';
-import fs from 'fs';
+import {Container,Grid} from '@material-ui/core';
+import {BlogType} from 'interfaces/BlogType'
+import {Blog} from 'interfaces/Blog'
+import {BlogFrame} from 'organisms/BlogFrame'
+import {getBlog} from 'repository/BlogRepository'
+import {DiaryTitleFrame} from 'organisms/DiaryTitleFrame'
 
-export async function getStaticProps() {
-    const filePath = "public/markdown/2021-03-37.md"
-    let body = "# no contents";
-    try {
-        body = fs.readFileSync(filePath,{encoding: "utf8"});
-    }
-    catch {
-        
-    }
+export const getServerSideProps = async () => {
+
+    const blogTypes : BlogType[] = ["DIARY"];
+    const blogs : Blog[] = await getBlog(blogTypes);
+
     return {
-        props: {body}
+        props: {blogs}
     };
 }
 
-  
-export const Diaries = ({body}:{body:string}) => {
+export const Diaries = ({blogs}:{blogs:Blog[]}) => {
+
     return (
         <Container>
-            <ReactMarkdown>
-                {body}
-            </ReactMarkdown>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                </Grid>
+                <Grid item xs={12}>
+                    <DiaryTitleFrame date=""/>
+                </Grid>
+                <Grid item xs={12}>
+                    <BlogFrame blogs = {blogs} title=""/>
+                </Grid>
+                <Grid item xs={12}>
+                </Grid>
+            </Grid>
         </Container>
-    )
+    );
 }
-export default Diaries;
+
+export default Diaries

@@ -13,11 +13,13 @@ export const DiaryTitleFrame = ({date}:{date:string}) => {
                         今日のITドカタ
                     </Typography>
                 </Card>
+            </Grid>
+            <Grid item xs={3}>
+            </Grid>
+            <Grid item xs={12}>
                 <Typography variant="h6" align="center" style={yomogiFont}>
                     {date}
                 </Typography>
-            </Grid>
-            <Grid item xs={3}>
             </Grid>
         </Grid>
     )
