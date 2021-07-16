@@ -10,7 +10,7 @@ export const HtmlHead = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="twitter:card" content="summary" />
         <meta property="og:url" content={Urls.NINGENME_NET + router.asPath} />
-        <meta property="og:image" content="public/dokata.png" />
+        <meta property="og:image" content="https://static.ningenme.net/net-front/dokata.png" />
     </Head>
   )
 }
