@@ -7,7 +7,7 @@ import {HtmlHead} from 'organisms/HtmlHead'
 function MyApp ({ Component, pageProps }) {
   return (
     <div>
-      <HtmlHead />
+      <HtmlHead/>
       <Header/>
       <Component {...pageProps} />
       <Footer/>
