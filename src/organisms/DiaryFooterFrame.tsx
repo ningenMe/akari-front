@@ -18,16 +18,16 @@ export const DiaryFooterFrame = ({diary}:{diary:DiaryWithAround}) => {
       
     return (
         <Grid container>
-            <Grid item xs={1}>
+            <Grid item>
                 <IconButton color="secondary" onClick={() => { incrementLiked() }}>
                     <StarSharpIcon/>
                     {liked}
                 </IconButton>
             </Grid>
-            <Grid item xs={1}>
+            {/* <Grid item xs={10}>
+            </Grid> */}
+            <Grid item>
                 <TweetButton url={diary.curr.url} text={diary.curr.title + " - " + Links.DIARIES.name}/>
-            </Grid>
-            <Grid item xs={10}>
             </Grid>
         </Grid>
     )
