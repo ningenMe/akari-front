@@ -9,9 +9,13 @@
 
 [ningenme.net](https://ningenme.net)
 
-## document
+## command
 
-TODO
+ローカルで動かすとき
+```sh
+yarn install
+yarn next dev
+```
 
 ## architecture
 [system diagrms](https://ningenme.net/systems)
