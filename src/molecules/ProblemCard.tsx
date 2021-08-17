@@ -1,7 +1,7 @@
 import {Card,CardActionArea,CardContent,Typography,Grid,Box} from '@material-ui/core';
 import {Problem} from 'interfaces/Problem'
 import {CardStyle} from 'styles/CardStyle'
-import {onlineJudgeIconPath} from 'atoms/OnlineJudgeIconPath'
+import {onlineJudgeIconPath} from 'atoms/onlineJudgeIconPath'
 
 export const ProblemCard = ({problem}: {problem:Problem}) => {
     return (

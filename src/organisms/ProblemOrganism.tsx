@@ -3,7 +3,7 @@ import {FrameTitle} from 'atoms/FrameTitle'
 import {ProblemCard} from 'molecules/ProblemCard'
 import {problems} from 'constants/Problems'
 
-export const ProblemFrame = () => {
+export const ProblemOrganism = () => {
 
     const contents = problems.map((problem) => 
         <Grid item xs={12}>
