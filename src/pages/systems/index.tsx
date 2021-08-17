@@ -1,4 +1,4 @@
-import { SystemCard } from "components/systems/organisms/SystemOrganism";
+import { SystemCard } from "organisms/SystemOrganism";
 
 export const Systems = () => {
     return (
