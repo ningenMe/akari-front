@@ -1,6 +1,6 @@
 import {Problem} from 'interfaces/Problem'
 
-export const problems : ReadonlyArray<Problem> = [
+export const problemList : ReadonlyArray<Problem> = [
     {
         title : "Construction Set",
         type  : "AOJ",

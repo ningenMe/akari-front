@@ -1,10 +1,10 @@
 import {Container} from '@material-ui/core';
-import {ProblemOrganism} from 'organisms/ProblemOrganism'
+import {ProblemCardList} from 'organisms/ProblemOrganism'
 
 export const Problems = () => {
     return (
         <Container>
-            <ProblemOrganism/>
+            <ProblemCardList/>
         </Container>
     );
 }
