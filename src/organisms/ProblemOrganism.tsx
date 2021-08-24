@@ -1,11 +1,10 @@
 import {Grid,Typography} from '@material-ui/core';
-import {FrameTitle} from 'atoms/FrameTitle'
-import {ProblemCard} from 'molecules/ProblemCard'
-import {problems} from 'constants/Problems'
+import {ProblemCard,FrameTitle} from 'molecules/ProblemMolecule'
+import {problemList} from 'constants/problemList'
 
-export const ProblemOrganism = () => {
+export const ProblemCardList = () => {
 
-    const contents = problems.map((problem) => 
+    const cardList = problemList.map((problem) => 
         <Grid item xs={12}>
             <ProblemCard problem = {problem} />
         </Grid>
@@ -21,7 +20,7 @@ export const ProblemOrganism = () => {
             </Grid>
             <Grid item xs={10}>
                 <Grid container spacing={2}>
-                    {contents}
+                    {cardList}
                 </Grid>
             </Grid>
             <Grid item xs={1}>
