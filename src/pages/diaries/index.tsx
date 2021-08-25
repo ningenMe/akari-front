@@ -3,7 +3,7 @@ import {BlogType} from 'interfaces/BlogType'
 import {Blog} from 'interfaces/Blog'
 import {BlogFrame} from 'organisms/BlogFrame'
 import {getBlog} from 'repository/BlogRepository'
-import {DiaryTitleFrame} from 'organisms/DiaryTitleFrame'
+import {DiaryTitleFrame} from 'organisms/DiaryOrganism'
 
 export const getServerSideProps = async () => {
 

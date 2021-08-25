@@ -1,9 +1,6 @@
 import {Container,Grid} from '@material-ui/core';
 import fs from 'fs';
-import {DiaryBodyFrame} from 'organisms/DiaryBodyFrame'
-import {DiaryTitleFrame} from 'organisms/DiaryTitleFrame'
-import {DiaryPagingFrame} from 'organisms/DiaryPagingFrame'
-import {DiaryFooterFrame} from 'organisms/DiaryFooterFrame'
+import {DiaryTitleFrame,DiaryPagingFrame,DiaryBodyFrame,DiaryFooterFrame} from 'organisms/DiaryOrganism'
 import {getDiary} from 'repository/BlogRepository'
 import {DiaryWithAround} from 'interfaces/Blog'
 
@@ -40,7 +37,7 @@ export const getServerSideProps = async ({params}:{params:{date:string}}) => {
     };
 }
   
-export const Diaries = ({body,date,diary}:{body:string,date:string,diary:DiaryWithAround}) => {
+export const DiariesDate = ({body,date,diary}:{body:string,date:string,diary:DiaryWithAround}) => {
     return (
         <Container>
             <Grid container spacing={3}>
@@ -67,4 +64,4 @@ export const Diaries = ({body,date,diary}:{body:string,date:string,diary:DiaryWi
         </Container>
     )
 }
-export default Diaries;
+export default DiariesDate;
