@@ -3,7 +3,7 @@ import {BlogType} from 'interfaces/BlogType'
 import {Blog} from 'interfaces/Blog'
 import {BlogFrame} from 'organisms/BlogFrame'
 import {getBlog} from 'repository/BlogRepository'
-import {DiaryTitleFrame} from 'organisms/DiaryTitleFrame'
+import {Title} from 'organisms/DiaryOrganism'
 
 export const getServerSideProps = async () => {
 
@@ -16,14 +16,13 @@ export const getServerSideProps = async () => {
 }
 
 export const Diaries = ({blogs}:{blogs:Blog[]}) => {
-
     return (
         <Container>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryTitleFrame date=""/>
+                    <Title date=""/>
                 </Grid>
                 <Grid item xs={12}>
                     <BlogFrame blogs = {blogs} title=""/>
