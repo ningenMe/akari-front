@@ -1,6 +1,6 @@
 import {Container,Grid} from '@material-ui/core';
 import fs from 'fs';
-import {DiaryTitleFrame,DiaryPagingFrame,DiaryBodyFrame,DiaryFooterFrame} from 'organisms/DiaryOrganism'
+import {Title,Pagination,Body,Footer} from 'organisms/DiaryOrganism'
 import {getDiary} from 'repository/BlogRepository'
 import {DiaryWithAround} from 'interfaces/Blog'
 
@@ -44,19 +44,19 @@ export const DiariesDate = ({body,date,diary}:{body:string,date:string,diary:Dia
                 <Grid item xs={12}>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryTitleFrame date={date}/>
+                    <Title date={date}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryPagingFrame diary={diary}/>
+                    <Pagination diary={diary}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryBodyFrame body={body}/>
+                    <Body body={body}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryFooterFrame diary={diary}/>
+                    <Footer diary={diary}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <DiaryPagingFrame diary={diary}/>
+                    <Pagination diary={diary}/>
                 </Grid>
                 <Grid item xs={12}>
                 </Grid>

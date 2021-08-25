@@ -13,7 +13,7 @@ import {putDiaryLiked} from 'repository/BlogRepository'
 import {TweetButton} from 'molecules/TweetButton'
 import {Links} from 'constants/Links'
 
-export const DiaryTitleFrame = ({date}:{date:string}) => {
+export const Title = ({date}:{date:string}) => {
 
     return (
         <Grid container>
@@ -38,7 +38,7 @@ export const DiaryTitleFrame = ({date}:{date:string}) => {
 }
 
 
-export const DiaryPagingFrame = ({diary}:{diary:DiaryWithAround}) => {
+export const Pagination = ({diary}:{diary:DiaryWithAround}) => {
 
     const getUrl = (blog:Blog|null) => {
         if(blog == null) return "/";
@@ -62,7 +62,7 @@ export const DiaryPagingFrame = ({diary}:{diary:DiaryWithAround}) => {
     )
 }
 
-export const DiaryBodyFrame = ({body}:{body:string}) => {
+export const Body = ({body}:{body:string}) => {
     return (
         <Card variant="outlined">
             <CardContent style={mPlusFont}>
@@ -72,7 +72,7 @@ export const DiaryBodyFrame = ({body}:{body:string}) => {
     )
 }
 
-export const DiaryFooterFrame = ({diary}:{diary:DiaryWithAround}) => {
+export const Footer = ({diary}:{diary:DiaryWithAround}) => {
 
     const [liked, setLiked] = useState<number>(diary.curr.liked);
 
