@@ -1,5 +1,5 @@
 import {Container,Grid} from '@material-ui/core';
-import {BlogType} from 'interfaces/BlogType'
+import {BlogType} from 'interfaces/Blog'
 import {Blog} from 'interfaces/Blog'
 import {BlogList} from 'organisms/BlogOrganism'
 import {getBlog} from 'repository/BlogRepository'
