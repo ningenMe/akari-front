@@ -1,4 +1,4 @@
 export interface ApplicationMeta {
-    applicationMetaId : string,
-    updateTime        : string
+  applicationMetaId : string,
+  updateTime        : string
 }
