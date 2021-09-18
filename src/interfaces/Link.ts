@@ -1,4 +1,4 @@
-export interface Link{
-  readonly href:  string,
+export interface Link {
+  readonly href: string,
   readonly name: string
 }
