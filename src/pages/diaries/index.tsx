@@ -1,7 +1,7 @@
 import {Container,Grid} from '@material-ui/core';
 import {BlogType} from 'interfaces/BlogType'
 import {Blog} from 'interfaces/Blog'
-import {BlogFrame} from 'organisms/BlogFrame'
+import {BlogList} from 'organisms/BlogOrganism'
 import {getBlog} from 'repository/BlogRepository'
 import {Title} from 'organisms/DiaryOrganism'
 
@@ -25,7 +25,7 @@ export const Diaries = ({blogs}:{blogs:Blog[]}) => {
                     <Title date=""/>
                 </Grid>
                 <Grid item xs={12}>
-                    <BlogFrame blogs = {blogs} title=""/>
+                    <BlogList blogs = {blogs} />
                 </Grid>
                 <Grid item xs={12}>
                 </Grid>
