@@ -14,11 +14,6 @@ export const creations : ReadonlyArray<Creation> = [
         body : "競技プログラミングのライブラリ。"
     },
     {
-        href : Paths.COMPRO_CATEGORY, 
-        title: "compro-category", 
-        body : "競技プログラミングの問題カテゴライズ。"
-    },
-    {
         href : Paths.DIARIES, 
         title: "今日のITドカタ", 
         body : "殴り書きに近めのブログ。主に業務のwebの話。"
