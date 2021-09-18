@@ -20,7 +20,6 @@ export class Links {
     static readonly PATHS             : ReadonlyArray<Link> = [
         {href:Paths.HOME,            name:Paths.HOME},
         {href:Paths.PROBLEMS,        name:Paths.PROBLEMS},
-        {href:Paths.COMPRO_CATEGORY, name:Paths.COMPRO_CATEGORY},
         {href:Paths.DIARIES,         name:Paths.DIARIES},
         {href:Paths.ARTICLES,        name:Paths.ARTICLES},
         {href:Paths.BLOGS,           name:Paths.BLOGS},
