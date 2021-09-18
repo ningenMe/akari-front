@@ -2,7 +2,6 @@ import Head from 'next/head'
 import {Urls} from 'constants/Urls'
 import {Links} from 'constants/Links'
 import { useRouter } from 'next/router';
-import { route } from 'next/dist/next-server/server/router';
 
 export const HtmlHead = () => {
   const router = useRouter();

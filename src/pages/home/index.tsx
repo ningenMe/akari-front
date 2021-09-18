@@ -1,8 +1,5 @@
 import {Grid, Container} from '@material-ui/core';
-import {ProfileFrame} from 'organisms/ProfileFrame'
-import {CreationFrame} from 'organisms/CreationFrame'
-import {ActivityFrame} from 'organisms/ActivityFrame'
-import {HistoryFrame} from 'organisms/HistoryFrame'
+import {Profile, Creation, Activity, History} from 'organisms/HomeOrganism'
 import {ApplicationMeta} from 'interfaces/ApplicationMeta'
 import {getApplicationMeta} from 'repository/ApplicationMetaRepository'
 import {LastUpdate} from 'molecules/LastUpdate'
@@ -23,10 +20,10 @@ export const Home = ({applicationMeta}:{applicationMeta:ApplicationMeta}) => {
                 <Grid item xs={12}></Grid>
             </Grid>
             <LastUpdate applicationMeta = {applicationMeta} />
-            <ProfileFrame/>
-            <CreationFrame/>
-            <ActivityFrame/>
-            <HistoryFrame/>
+            <Profile/>
+            <Creation/>
+            <Activity/>
+            <History/> 
         </Container>
     );
 }

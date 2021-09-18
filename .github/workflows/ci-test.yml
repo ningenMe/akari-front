@@ -21,3 +21,4 @@ jobs:
       - run: yarn check
       - run: yarn lint:fix
       - run: yarn prettier
+      - run: yarn build

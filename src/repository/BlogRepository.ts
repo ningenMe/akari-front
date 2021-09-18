@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {Blog,DiaryWithAround} from 'interfaces/Blog'
 import {Urls} from 'constants/Urls'
-import {BlogType} from 'interfaces/BlogType'
+import {BlogType} from 'interfaces/Blog'
 
 export const getBlog = async (blogTypes : BlogType[]): Promise<Blog[]> => {
     let blogs : Blog[] = [];
