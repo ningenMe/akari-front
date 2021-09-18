@@ -1,4 +1,4 @@
-import {BlogType} from 'interfaces/BlogType'
+import {BlogType} from 'interfaces/Blog'
 
 export const blogIconPath = (blogType:BlogType) :string => {
     if (blogType === "HATENA") return "hatena.svg";

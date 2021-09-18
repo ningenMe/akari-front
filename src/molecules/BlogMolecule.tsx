@@ -1,4 +1,4 @@
-import {Card,CardActionArea,CardContent,Typography,Grid,Box} from '@material-ui/core';
+import {Card,CardActionArea,CardContent,Typography,Grid} from '@material-ui/core';
 import {Blog} from 'interfaces/Blog'
 import {CardStyle} from 'styles/CardStyle'
 import {blogIconPath} from 'atoms/blogIconPath'

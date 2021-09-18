@@ -1,7 +1,7 @@
 import {Container} from '@material-ui/core';
 import {BlogType} from 'interfaces/BlogType'
 import {Blog} from 'interfaces/Blog'
-import {BlogFrame} from 'organisms/BlogFrame'
+import {BlogList} from 'organisms/BlogOrganism'
 import {getBlog} from 'repository/BlogRepository'
 
 export const getServerSideProps = async () => {
@@ -18,7 +18,7 @@ export const Blogs = ({blogs}:{blogs:Blog[]}) => {
 
     return (
         <Container>
-            <BlogFrame blogs = {blogs} title="Blogs"/>
+            <BlogList blogs = {blogs} />
         </Container>
     );
 }

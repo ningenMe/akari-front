@@ -1,4 +1,4 @@
-import {BlogType} from 'interfaces/BlogType'
+export type BlogType = "HATENA" | "QIITA" | "AMEBA" | "DIARY"
 
 export interface Blog{
     readonly url   :  string,

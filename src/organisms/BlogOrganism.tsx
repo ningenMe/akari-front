@@ -1,14 +1,12 @@
 import {Grid} from '@material-ui/core';
 import {Blog} from 'interfaces/Blog'
-import {BlogCard} from 'molecules/BlogCard'
-import {FrameTitle} from 'atoms/FrameTitle'
+import {BlogCard} from 'molecules/BlogMolecule'
 
-export const BlogFrame = ({blogs,title} : {blogs:Blog[],title:string}) => {
+export const BlogList = ({blogs} : {blogs:Blog[]}) => {
 
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <FrameTitle body={title} />
             </Grid>
             <Grid item xs={1}>
             </Grid>
