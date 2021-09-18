@@ -4,9 +4,9 @@ import {Links} from 'constants/Links'
 import { useRouter } from 'next/router';
 
 export const HtmlHead = () => {
-  const router = useRouter();
-
-  const getTitle = (path:string) : string => {
+    const router = useRouter();
+    
+    const getTitle = (path:string) : string => {
     if(path.startsWith(Links.DIARIES.href)) return Links.DIARIES.name
     return Links.NINGENME_NET.name;
   } 
