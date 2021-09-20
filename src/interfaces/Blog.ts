@@ -1,15 +1,22 @@
-export type BlogType = "HATENA" | "QIITA" | "AMEBA" | "DIARY"
-
-export interface Blog{
-  readonly url   :  string,
-  readonly type  :  BlogType,
-  readonly date  :  string,
-  readonly title :  string,
-  readonly liked :  number
+export class BlogTypeConst {
+  static readonly HATENA: string = 'HATENA'
+  static readonly AMEBA: string = 'AMEBA'
+  static readonly QIITA: string = 'QIITA'
+  static readonly DIARY: string = 'DIARY'
 }
 
-export interface DiaryWithAround{
-  readonly prev : Blog|null,
-  readonly curr : Blog,
-  readonly next : Blog|null,
+export type BlogType = typeof BlogTypeConst[keyof typeof BlogTypeConst]
+
+export interface Blog {
+  readonly url: string,
+  readonly type: BlogType,
+  readonly date: string,
+  readonly title: string,
+  readonly liked: number
+}
+
+export interface DiaryWithAround {
+  readonly prev: Blog | null,
+  readonly curr: Blog,
+  readonly next: Blog | null,
 }
