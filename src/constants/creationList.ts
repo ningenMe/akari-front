@@ -19,14 +19,9 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     body: '殴り書きに近めのブログ。主に業務のwebの話。',
   },
   {
-    href: PathConst.ARTICLES,
-    title: 'articles',
-    body: '技術記事。主に競プロかwebの話。',
-  },
-  {
     href: PathConst.BLOGS,
     title: 'blogs',
-    body: '趣味ブログ。主に漫画かアニメか私事の話。',
+    body: 'ブログ。webか競プロか漫画かアニメか私事の話。',
   },
   {
     href: UrlConst.WORKS,
