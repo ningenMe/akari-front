@@ -7,31 +7,31 @@ import {Title} from 'organisms/DiaryOrganism'
 
 export const getServerSideProps = async () => {
 
-    const blogTypes : BlogType[] = ["DIARY"];
-    const blogs : Blog[] = await getBlog(blogTypes);
+  const blogTypes : BlogType[] = ["DIARY"];
+  const blogs : Blog[] = await getBlog(blogTypes);
 
-    return {
-        props: {blogs}
-    };
+  return {
+    props: {blogs}
+  };
 }
 
 export const Diaries = ({blogs}:{blogs:Blog[]}) => {
-    return (
-        <Container>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                </Grid>
-                <Grid item xs={12}>
-                    <Title date=""/>
-                </Grid>
-                <Grid item xs={12}>
-                    <BlogList blogs = {blogs} />
-                </Grid>
-                <Grid item xs={12}>
-                </Grid>
-            </Grid>
-        </Container>
-    );
+  return (
+    <Container>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+        </Grid>
+        <Grid item xs={12}>
+          <Title date=""/>
+        </Grid>
+        <Grid item xs={12}>
+          <BlogList blogs = {blogs} />
+        </Grid>
+        <Grid item xs={12}>
+        </Grid>
+      </Grid>
+    </Container>
+  );
 }
 
 export default Diaries

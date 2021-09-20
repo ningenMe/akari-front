@@ -3,12 +3,12 @@ import { useRouter } from 'next/router'
 import { useEffect } from "react";
 
 export const Index: NextPage = () => {
-    const router = useRouter()
+  const router = useRouter()
 
-    useEffect(() => {
-        router.replace('/home') 
-    }, [])
+  useEffect(() => {
+    router.replace('/home')
+  }, [])
 
-    return null
+  return null
 }
 export default Index;
