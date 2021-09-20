@@ -4,7 +4,6 @@ import { Paths } from 'constants/Paths'
 
 export class Links {
   static readonly NINGENME_NET: Link = { href: Urls.NINGENME_NET, name: 'ningenMe.net' }
-  static readonly BETA_NINGENME_NET: Link = { href: Urls.BETA_NINGENME_NET, name: 'ningenMe.net' }
   static readonly GITHUB: Link = { href: Urls.GITHUB, name: 'GitHub' }
   static readonly TWITTER: Link = { href: Urls.TWITTER, name: '@ningenMe' }
   static readonly ATCODER: Link = { href: Urls.ATCODER, name: 'AtCoder' }

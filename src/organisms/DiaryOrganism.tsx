@@ -5,12 +5,11 @@ import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import IconButton from '@material-ui/core/IconButton'
 import { Paths } from 'constants/Paths'
-import { MarkdownList } from 'molecules/MarkdownList'
 import { useState } from 'react'
 import StarSharpIcon from '@material-ui/icons/StarSharp'
 import { putDiaryLiked } from 'repository/BlogRepository'
-import { TweetButton } from 'molecules/TweetButton'
 import { Links } from 'constants/Links'
+import { MarkdownList, TweetButton } from 'molecules/DiaryMolecule'
 
 export const Title = ({ date }: { date: string }) => {
 

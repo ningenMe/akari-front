@@ -2,8 +2,8 @@ import { Container, Grid } from '@material-ui/core'
 import { Activity, Creation, History, Profile } from 'organisms/HomeOrganism'
 import { ApplicationMeta } from 'interfaces/ApplicationMeta'
 import { getApplicationMeta } from 'repository/ApplicationMetaRepository'
-import { LastUpdate } from 'molecules/LastUpdate'
 import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { LastUpdate } from 'molecules/HomeMolecule'
 
 export const getServerSideProps = async () => {
 
