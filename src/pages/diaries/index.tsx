@@ -1,5 +1,5 @@
 import { Container, Grid } from '@material-ui/core'
-import { Blog, BlogType } from 'interfaces/Blog'
+import { Blog, BlogType, BlogTypeConst } from 'interfaces/Blog'
 import { BlogList } from 'organisms/BlogOrganism'
 import { getBlog } from 'repository/BlogRepository'
 import { Title } from 'organisms/DiaryOrganism'
@@ -7,7 +7,7 @@ import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 
 export const getServerSideProps = async () => {
 
-  const blogTypeList: BlogType[] = ['DIARY']
+  const blogTypeList: BlogType[] = [BlogTypeConst.DIARY]
   const blogList: Blog[] = await getBlog(blogTypeList)
 
   return {
