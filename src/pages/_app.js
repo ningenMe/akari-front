@@ -1,17 +1,16 @@
 import 'styles/globals.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Header} from 'organisms/Header'
-import {Footer} from 'organisms/Footer'
-import {HtmlHead} from 'organisms/HtmlHead'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 
 function MyApp ({ Component, pageProps }) {
   return (
     <div>
-      <HtmlHead/>
-      <Header/>
+      <HtmlHead />
+      <Header />
       <Component {...pageProps} />
-      <Footer/>
-    </div>)
+      <Footer />
+    </div>
+  )
 }
 
 export default MyApp

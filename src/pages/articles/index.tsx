@@ -1,26 +1,25 @@
-import {Container} from '@material-ui/core';
-import {BlogType} from 'interfaces/Blog'
-import {Blog} from 'interfaces/Blog'
-import {BlogList} from 'organisms/BlogOrganism'
-import {getBlog} from 'repository/BlogRepository'
+import { Container } from '@material-ui/core'
+import { Blog, BlogType } from 'interfaces/Blog'
+import { BlogList } from 'organisms/BlogOrganism'
+import { getBlog } from 'repository/BlogRepository'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
-    const blogTypes : BlogType[] = ["HATENA","QIITA"];
-    const blogs : Blog[] = await getBlog(blogTypes);
+  const blogTypes: BlogType[] = ['HATENA', 'QIITA']
+  const blogs: Blog[] = await getBlog(blogTypes)
 
-    return {
-        props: {blogs}
-    };
+  return {
+    props: { blogs },
+  }
 }
 
-export const Articles = ({blogs}:{blogs:Blog[]}) => {
+export const Articles = ({ blogs }: { blogs: Blog[] }) => {
 
-    return (
-        <Container>
-            <BlogList blogs = {blogs} />
-        </Container>
-    );
+  return (
+    <Container>
+      <BlogList blogs={blogs} />
+    </Container>
+  )
 }
 
 export default Articles
