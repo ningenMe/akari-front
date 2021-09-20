@@ -1,4 +1,4 @@
-export class Paths {
+export class PathConst {
   static readonly HOME: string = '/home'
   static readonly PROBLEMS: string = '/problems'
   static readonly ARTICLES: string = '/articles'

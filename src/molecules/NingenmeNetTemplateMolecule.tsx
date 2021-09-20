@@ -1,11 +1,11 @@
 import { Nav, NavDropdown } from 'react-bootstrap'
-import { Links } from 'constants/Links'
+import { LinkConst } from 'constants/LinkConst'
 import { Link } from 'interfaces/Link'
 
 export const NavGithub = () => {
   return (
     <Nav>
-      <Nav.Link href={Links.GITHUB.href}>{Links.GITHUB.name}</Nav.Link>
+      <Nav.Link href={LinkConst.GITHUB.href}>{LinkConst.GITHUB.name}</Nav.Link>
     </Nav>
   )
 }
@@ -13,7 +13,7 @@ export const NavGithub = () => {
 export const NavTwitter = () => {
   return (
     <Nav>
-      <Nav.Link href={Links.TWITTER.href}>{Links.TWITTER.name}</Nav.Link>
+      <Nav.Link href={LinkConst.TWITTER.href}>{LinkConst.TWITTER.name}</Nav.Link>
     </Nav>
   )
 }

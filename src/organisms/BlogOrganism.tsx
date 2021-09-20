@@ -1,8 +1,8 @@
-import {Grid} from '@material-ui/core';
-import {Blog} from 'interfaces/Blog'
-import {BlogCard} from 'molecules/BlogMolecule'
+import { Grid } from '@material-ui/core'
+import { Blog } from 'interfaces/Blog'
+import { BlogCard } from 'molecules/BlogMolecule'
 
-export const BlogList = ({blogs} : {blogs:Blog[]}) => {
+export const BlogList = ({ blogList }: { blogList: Blog[] }) => {
 
   return (
     <Grid container spacing={2}>
@@ -12,15 +12,15 @@ export const BlogList = ({blogs} : {blogs:Blog[]}) => {
       </Grid>
       <Grid item xs={10}>
         <Grid container spacing={2}>
-          {blogs.map((blog) =>
+          {blogList.map((blog) =>
             <Grid item xs={12}>
-              <BlogCard blog = {blog} />
-            </Grid>
+              <BlogCard blog={blog} />
+            </Grid>,
           )}
         </Grid>
       </Grid>
       <Grid item xs={1}>
       </Grid>
     </Grid>
-  );
+  )
 }

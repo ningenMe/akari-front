@@ -1,11 +1,11 @@
-import axios from 'axios';
-import {ApplicationMeta} from 'interfaces/ApplicationMeta'
-import {Urls} from 'constants/Urls'
+import axios from 'axios'
+import { ApplicationMeta } from 'interfaces/ApplicationMeta'
+import { UrlConst } from 'constants/UrlConst'
 
-export const getApplicationMeta = async (applicationMetaId : string): Promise<ApplicationMeta> => {
-  let applicationMeta:ApplicationMeta = {applicationMetaId:"none",updateTime:"2000-01-01T00:00:00"}
+export const getApplicationMeta = async (applicationMetaId: string): Promise<ApplicationMeta> => {
+  let applicationMeta: ApplicationMeta = { applicationMetaId: 'none', updateTime: '2000-01-01T00:00:00' }
 
-  const url = Urls.API_NINGENME_NET + "/v1/application-metas/" + applicationMetaId  + "/latest";
+  const url = UrlConst.API_NINGENME_NET + '/v1/application-metas/' + applicationMetaId + '/latest'
 
   await axios
     .get(url)
@@ -13,7 +13,7 @@ export const getApplicationMeta = async (applicationMetaId : string): Promise<Ap
       applicationMeta = results.data
     })
     .catch((error) => {
-      console.log(error.status);
-    });
-  return applicationMeta;
+      console.log(error.status)
+    })
+  return applicationMeta
 }

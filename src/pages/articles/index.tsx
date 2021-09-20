@@ -6,22 +6,22 @@ import { getBlog } from 'repository/BlogRepository'
 
 export const getServerSideProps = async () => {
 
-  const blogTypes: BlogType[] = ['HATENA', 'QIITA']
-  const blogs: Blog[] = await getBlog(blogTypes)
+  const blogTypeList: BlogType[] = ['HATENA', 'QIITA']
+  const blogList: Blog[] = await getBlog(blogTypeList)
 
   return {
-    props: { blogs },
+    props: { blogList },
   }
 }
 
-export const Articles = ({ blogs }: { blogs: Blog[] }) => {
+export const Articles = ({ blogList }: { blogList: Blog[] }) => {
 
   return (
     <>
       <HtmlHead />
       <Header />
       <Container>
-        <BlogList blogs={blogs} />
+        <BlogList blogList={blogList} />
       </Container>
       <Footer />
     </>
