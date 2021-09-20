@@ -71,7 +71,7 @@ export const Body = ({ body }: { body: string }) => {
   )
 }
 
-export const Footer = ({ diary }: { diary: DiaryWithAround }) => {
+export const ButtonList = ({ diary }: { diary: DiaryWithAround }) => {
 
   const [liked, setLiked] = useState<number>(diary.curr.liked)
 

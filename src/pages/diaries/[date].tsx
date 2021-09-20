@@ -1,67 +1,73 @@
-import {Container,Grid} from '@material-ui/core';
-import fs from 'fs';
-import {Title,Pagination,Body,Footer} from 'organisms/DiaryOrganism'
-import {getDiary} from 'repository/BlogRepository'
-import {DiaryWithAround} from 'interfaces/Blog'
+import { Container, Grid } from '@material-ui/core'
+import fs from 'fs'
+import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { Body, ButtonList, Pagination, Title } from 'organisms/DiaryOrganism'
+import { getDiary } from 'repository/BlogRepository'
+import { DiaryWithAround } from 'interfaces/Blog'
 
-const getBody = (date:string):string => {
-  let body:string = "# no contents";
+const getBody = (date: string): string => {
+  let body: string = '# no contents'
 
-  const matchList = date.match("^20[0-9]{2}-[0-9]{2}-[0-9]{1-2}$");
+  const matchList = date.match('^20[0-9]{2}-[0-9]{2}-[0-9]{1-2}$')
 
-  if(matchList?.length === 1) {
-    return body;
+  if (matchList?.length === 1) {
+    return body
   }
 
-  const tmpList = date.split("-");
-  const year:string = tmpList[0];
-  const day :string = tmpList[1]+"-"+tmpList[2];
+  const tmpList = date.split('-')
+  const year: string = tmpList[0]
+  const day: string = tmpList[1] + '-' + tmpList[2]
 
-  const filePath:string = "public/markdown/" + year + "/" + day + ".md"
+  const filePath: string = 'public/markdown/' + year + '/' + day + '.md'
   try {
-    body = fs.readFileSync(filePath,{encoding: "utf8"});
+    body = fs.readFileSync(filePath, { encoding: 'utf8' })
+  } catch {
   }
-  catch {
-  }
-  return body;
+  return body
 }
 
-export const getServerSideProps = async ({params}:{params:{date:string}}) => {
+export const getServerSideProps = async ({ params }: { params: { date: string } }) => {
 
-  const date:string = params.date;
-  const body:string = getBody(date);
-  const diary:DiaryWithAround = await getDiary(date);
+  const date: string = params.date
+  const body: string = getBody(date)
+  const diary: DiaryWithAround = await getDiary(date)
 
   return {
-    props: {body,date,diary}
-  };
+    props: { body, date, diary },
+  }
 }
 
-export const DiariesDate = ({body,date,diary}:{body:string,date:string,diary:DiaryWithAround}) => {
+export const DiariesDate = ({ body, date, diary }: { body: string, date: string, diary: DiaryWithAround }) => {
   return (
-    <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
+    <>
+      <HtmlHead />
+      <Header />
+
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+          </Grid>
+          <Grid item xs={12}>
+            <Title date={date} />
+          </Grid>
+          <Grid item xs={12}>
+            <Pagination diary={diary} />
+          </Grid>
+          <Grid item xs={12}>
+            <Body body={body} />
+          </Grid>
+          <Grid item xs={12}>
+            <ButtonList diary={diary} />
+          </Grid>
+          <Grid item xs={12}>
+            <Pagination diary={diary} />
+          </Grid>
+          <Grid item xs={12}>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Title date={date}/>
-        </Grid>
-        <Grid item xs={12}>
-          <Pagination diary={diary}/>
-        </Grid>
-        <Grid item xs={12}>
-          <Body body={body}/>
-        </Grid>
-        <Grid item xs={12}>
-          <Footer diary={diary}/>
-        </Grid>
-        <Grid item xs={12}>
-          <Pagination diary={diary}/>
-        </Grid>
-        <Grid item xs={12}>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+      <Footer />
+    </>
   )
 }
-export default DiariesDate;
+export default DiariesDate

@@ -1,4 +1,5 @@
 import { Container } from '@material-ui/core'
+import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { Blog, BlogType } from 'interfaces/Blog'
 import { BlogList } from 'organisms/BlogOrganism'
 import { getBlog } from 'repository/BlogRepository'
@@ -16,9 +17,14 @@ export const getServerSideProps = async () => {
 export const Articles = ({ blogs }: { blogs: Blog[] }) => {
 
   return (
-    <Container>
-      <BlogList blogs={blogs} />
-    </Container>
+    <>
+      <HtmlHead />
+      <Header />
+      <Container>
+        <BlogList blogs={blogs} />
+      </Container>
+      <Footer />
+    </>
   )
 }
 

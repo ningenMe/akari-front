@@ -1,8 +1,14 @@
-import { SystemCard } from "organisms/SystemOrganism";
+import { SystemCard } from 'organisms/SystemOrganism'
+import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 
 export const Systems = () => {
   return (
-    <SystemCard />
+    <>
+      <HtmlHead />
+      <Header />
+      <SystemCard />
+      <Footer />
+    </>
   )
 }
-export default Systems;
+export default Systems

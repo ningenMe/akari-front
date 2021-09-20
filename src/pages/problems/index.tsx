@@ -1,11 +1,17 @@
-import {Container} from '@material-ui/core';
-import {ProblemCardList} from 'organisms/ProblemOrganism'
+import { Container } from '@material-ui/core'
+import { ProblemCardList } from 'organisms/ProblemOrganism'
+import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 
 export const Problems = () => {
   return (
-    <Container>
-      <ProblemCardList/>
-    </Container>
-  );
+    <>
+      <HtmlHead />
+      <Header />
+      <Container>
+        <ProblemCardList />
+      </Container>
+      <Footer />
+    </>
+  )
 }
 export default Problems
