@@ -14,14 +14,14 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     body: '競技プログラミングのライブラリ。',
   },
   {
-    href: PathConst.DIARIES,
-    title: '今日のITドカタ',
-    body: '殴り書きに近めのブログ。主に業務のwebの話。',
-  },
-  {
     href: PathConst.BLOGS,
     title: 'blogs',
     body: 'ブログ。webか競プロか漫画かアニメか私事の話。',
+  },
+  {
+    href: PathConst.DIARIES,
+    title: '今日のITドカタ',
+    body: '殴り書きに近めのブログ。主に業務のwebの話。',
   },
   {
     href: UrlConst.WORKS,

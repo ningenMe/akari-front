@@ -70,7 +70,7 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
     [blogTypeList],
   )
 
-  const style = Object.assign({}, mPlusFont, { fontWeight: 'bold', paddingTop: '5%', paddingBottom: '5%' })
+  const style = Object.assign({}, mPlusFont, { paddingTop: '5%', paddingBottom: '5%' })
   return (
     <>
       <Typography variant='h5' align='center' style={style}>
