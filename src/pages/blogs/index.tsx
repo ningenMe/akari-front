@@ -6,22 +6,22 @@ import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 
 export const getServerSideProps = async () => {
 
-  const blogTypes: BlogType[] = ['AMEBA']
-  const blogs: Blog[] = await getBlog(blogTypes)
+  const blogTypeList: BlogType[] = ['AMEBA']
+  const blogList: Blog[] = await getBlog(blogTypeList)
 
   return {
-    props: { blogs },
+    props: { blogList },
   }
 }
 
-export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
+export const Blogs = ({ blogList }: { blogList: Blog[] }) => {
 
   return (
     <>
       <HtmlHead />
       <Header />
       <Container>
-        <BlogList blogs={blogs} />
+        <BlogList blogList={blogList} />
       </Container>
       <Footer />
     </>

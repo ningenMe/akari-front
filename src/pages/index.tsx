@@ -1,12 +1,13 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { PathConst } from 'constants/PathConst'
 
 export const Index: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    router.replace('/home')
+    router.replace(PathConst.HOME)
   }, [])
 
   return null

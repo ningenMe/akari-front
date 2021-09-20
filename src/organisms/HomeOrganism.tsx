@@ -1,13 +1,13 @@
 import React from 'react'
 import { Card, CardContent, Grid, Typography } from '@material-ui/core'
 import { FrameTitle } from 'atoms/FrameTitle'
-import { creations } from 'constants/Creations'
-import { activities } from 'constants/Activities'
 import { OptionalHref } from 'atoms/OptionalHref'
-import { histories } from 'constants/Histories'
 import { CardStyle } from 'styles/CardStyle'
 import { HistoryContent } from 'interfaces/HistoryContent'
 import { CreationCard, ProfileCard } from 'molecules/HomeMolecule'
+import { CREATION_LIST } from 'constants/creationList'
+import { ACTIVITY_LIST } from 'constants/activityList'
+import { HISTORY_LIST } from 'constants/historyList'
 
 export const Profile = () => {
   return (
@@ -17,7 +17,7 @@ export const Profile = () => {
 
 export const Creation = () => {
 
-  const cards = creations.map((creation) =>
+  const cards = CREATION_LIST.map((creation) =>
     <Grid item xs={12} sm={4}>
       <CreationCard creation={creation} />
     </Grid>,
@@ -35,7 +35,7 @@ export const Creation = () => {
 
 export const Activity = () => {
 
-  const contents = activities.map((activity) =>
+  const contents = ACTIVITY_LIST.map((activity) =>
     <Typography variant='body2' component='p' key={activity.body}>
       <OptionalHref body={activity.year + ': ' + activity.body} href={activity.href} />
     </Typography>,
@@ -59,8 +59,8 @@ export const Activity = () => {
 
 export const History = () => {
 
-  const innerContents = (historyContents: ReadonlyArray<HistoryContent>) => {
-    return historyContents.map((historyContent) =>
+  const innerContents = (historyContentList: ReadonlyArray<HistoryContent>) => {
+    return historyContentList.map((historyContent) =>
       <>
         <Grid item xs={1}>
         </Grid>
@@ -72,13 +72,13 @@ export const History = () => {
     )
   }
 
-  const contents = histories.map((history) =>
+  const contents = HISTORY_LIST.map((history) =>
     <>
       <Typography variant='body1' component='p'>
         {history.yearFrom}-{history.yearTo}: {history.body}
       </Typography>
       <Grid container>
-        {innerContents(history.contents)}
+        {innerContents(history.contentList)}
       </Grid>
     </>,
   )

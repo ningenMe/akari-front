@@ -4,12 +4,12 @@ import { Blog, DiaryWithAround } from 'interfaces/Blog'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import IconButton from '@material-ui/core/IconButton'
-import { Paths } from 'constants/Paths'
 import { useState } from 'react'
 import StarSharpIcon from '@material-ui/icons/StarSharp'
 import { putDiaryLiked } from 'repository/BlogRepository'
-import { Links } from 'constants/Links'
+import { LinkConst } from 'constants/LinkConst'
 import { MarkdownList, TweetButton } from 'molecules/DiaryMolecule'
+import { PathConst } from 'constants/PathConst'
 
 export const Title = ({ date }: { date: string }) => {
 
@@ -49,7 +49,7 @@ export const Pagination = ({ diary }: { diary: DiaryWithAround }) => {
         prev
         <ArrowLeftIcon fontSize='large' />
       </IconButton>
-      <Button variant='outlined' color='primary' size='large' href={Paths.DIARIES}>
+      <Button variant='outlined' color='primary' size='large' href={PathConst.DIARIES}>
         一覧
       </Button>
       <IconButton color='primary' href={getUrl(diary.next)} disabled={diary.next == null}>
@@ -90,7 +90,7 @@ export const ButtonList = ({ diary }: { diary: DiaryWithAround }) => {
         </IconButton>
       </Grid>
       <Grid item>
-        <TweetButton url={diary.curr.url} text={diary.curr.title + ' - ' + Links.DIARIES.name} />
+        <TweetButton url={diary.curr.url} text={diary.curr.title + ' - ' + LinkConst.DIARIES.name} />
       </Grid>
     </Grid>
   )
