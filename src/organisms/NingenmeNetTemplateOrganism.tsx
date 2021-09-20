@@ -1,10 +1,9 @@
 import { Navbar } from 'react-bootstrap'
 import { Links } from 'constants/Links'
-import { NavGithub } from 'molecules/NavGithub'
-import { Dropdown } from 'molecules/Dropdown'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { Urls } from 'constants/Urls'
+import { Dropdown, NavGithub, NavTwitter } from 'molecules/NingenmeNetTemplateMolecule'
 
 export const Header = () => {
   return (
@@ -13,6 +12,7 @@ export const Header = () => {
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <NavGithub />
+        <NavTwitter />
         <Dropdown title='compro' links={Links.COMPROS} />
         <Dropdown title='blog' links={Links.BLOGS} />
       </Navbar.Collapse>
