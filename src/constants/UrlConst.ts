@@ -6,6 +6,7 @@ export class UrlConst {
   static readonly ATCODER: string = 'https://atcoder.jp/users/ningenMe'
   static readonly CODEFORCES: string = 'https://codeforces.com/profile/ningenMe'
   static readonly YUKICODER: string = 'https://yukicoder.me/users/4145'
+  static readonly TOKI: string = 'https://tlx.toki.id/profiles/ningenMe'
   static readonly CSACADEMY: string = 'https://csacademy.com/user/ningenMe'
   static readonly HATENA: string = 'https://ningenme.hatenablog.com/archive'
   static readonly AMEBA: string = 'https://profile.ameba.jp/ameba/ningenme'
