@@ -9,11 +9,12 @@ export class LinkConst {
   static readonly ATCODER: Link = { href: UrlConst.ATCODER, name: 'AtCoder' }
   static readonly CODEFORCES: Link = { href: UrlConst.CODEFORCES, name: 'Codeforces' }
   static readonly YUKICODER: Link = { href: UrlConst.YUKICODER, name: 'yukicoder' }
+  static readonly TOKI: Link = { href: UrlConst.TOKI, name: 'toki' }
   static readonly CSACADEMY: Link = { href: UrlConst.CSACADEMY, name: 'CSAcademy' }
   static readonly HATENA: Link = { href: UrlConst.HATENA, name: 'Hatena' }
   static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'Ameba' }
   static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'Qiita' }
   static readonly DIARIES: Link = { href: PathConst.DIARIES, name: '今日のITドカタ' }
-  static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.CSACADEMY] as const
+  static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.TOKI, LinkConst.CSACADEMY] as const
   static readonly BLOGS: ReadonlyArray<Link> = [LinkConst.HATENA, LinkConst.AMEBA, LinkConst.QIITA, LinkConst.DIARIES] as const
 }
