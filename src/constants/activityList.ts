@@ -4,6 +4,11 @@ import { UrlConst } from 'constants/UrlConst'
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
     year: 2021,
+    body: '応用情報技術者試験合格',
+    href: null,
+  },
+  {
+    year: 2021,
     body: 'Google Code jam　Round2 進出',
     href: null,
   },
