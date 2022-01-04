@@ -2,7 +2,8 @@ import { Container } from '@material-ui/core'
 import { Blog, BlogType, BlogTypeConst } from 'interfaces/Blog'
 import { BlogTypeFilterList } from 'organisms/BlogOrganism'
 import { getBlog } from 'repository/BlogRepository'
-import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { Footer, Header, HtmlHead, CustomHtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { ImageConst } from 'constants/ImageConst'
 
 export const getServerSideProps = async () => {
 
@@ -18,7 +19,7 @@ export const Blogs = ({ blogList }: { blogList: Blog[] }) => {
 
   return (
     <>
-      <HtmlHead />
+      <CustomHtmlHead title='くるの blog 一覧' image={ImageConst.NINGENME_NET} />
       <Header />
       <Container>
         <BlogTypeFilterList blogList={blogList} />
