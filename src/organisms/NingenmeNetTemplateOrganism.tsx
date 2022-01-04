@@ -1,5 +1,6 @@
 import { Navbar } from 'react-bootstrap'
 import { LinkConst } from 'constants/LinkConst'
+import { ImageConst } from 'constants/ImageConst'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { Dropdown, NavGithub, NavTwitter } from 'molecules/NingenmeNetTemplateMolecule'
@@ -37,13 +38,13 @@ export const HtmlHead = () => {
     return LinkConst.NINGENME_NET.name
   }
   const getImage = (path: string): string => {
-    if (path.startsWith(LinkConst.DIARIES.href)) return 'https://static.ningenme.net/net-front/dokata.png'
-    return 'https://static.ningenme.net/net-front/ningenme.png'
+    if (path.startsWith(LinkConst.DIARIES.href)) return ImageConst.DOKATA
+    return ImageConst.NINGENME_NET
   }
 
   return (
     <Head>
-      <title>ningenMe.net</title>HtmlHead
+      <title>ningenMe.net</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <meta name='twitter:card' content='summary' />
       <meta property='og:url' content={UrlConst.NINGENME_NET + router.asPath} />
@@ -53,3 +54,23 @@ export const HtmlHead = () => {
   )
 }
 
+interface HtmlHeadElement {
+  title : string,
+  image : string
+}
+
+export const CustomHtmlHead = (htmlHeadElement:HtmlHeadElement) => {
+
+  const router = useRouter()
+
+  return (
+    <Head>
+      <title>{htmlHeadElement.title}</title>
+      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      <meta name='twitter:card' content='summary' />
+      <meta property='og:url' content={UrlConst.NINGENME_NET + router.asPath} />
+      <meta property='og:title' content={htmlHeadElement.title} />
+      <meta property='og:image' content={htmlHeadElement.image} />
+    </Head>
+  )
+}
