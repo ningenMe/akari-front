@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, FormGroup, Grid, Typography } from '@material-ui/core'
 import { Blog, BlogType, BlogTypeConst } from 'interfaces/Blog'
 import React, { useEffect, useState } from 'react'
-import { BlogCard } from 'molecules/BlogMolecule'
+import { BlogCard, BlogPostedGraph } from 'molecules/BlogMolecule'
 import { mPlusFont } from 'styles/FontStyles'
 
 export const BlogList = ({ blogList }: { blogList: Blog[] }) => {
@@ -31,6 +31,7 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
   const [isHatena, setIsHatena] = useState<boolean>(true)
   const [isQiita, setIsQiita] = useState<boolean>(true)
   const [isDiary, setIsDiary] = useState<boolean>(true)
+  const [blogTypeList, setBlogTypeList] = useState<BlogType[]>([])
   const [filteredBlogList, setFilteredBlogList] = useState<Blog[]>(blogList)
 
   const switchAmeba = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,8 +46,6 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
   const switchDiary = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsDiary(event.target.checked)
   }
-
-  const [blogTypeList, setBlogTypeList] = useState<BlogType[]>([])
 
   useEffect(() => {
     const list: BlogType[] = []
@@ -86,6 +85,7 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
         <FormControlLabel control={<Checkbox defaultChecked onChange={switchDiary} />}
                           label='自作ブログ「今日のITドカタ」：雑に書く技術系の話' />
       </FormGroup>
+      {/*<BlogPostedGraph blogList={filteredBlogList} />*/}
       <Typography align='right' variant='h6'>
         {filteredBlogList.length} / {blogList.length} articles
       </Typography>
