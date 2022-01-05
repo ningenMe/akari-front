@@ -85,7 +85,7 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
         <FormControlLabel control={<Checkbox defaultChecked onChange={switchDiary} />}
                           label='自作ブログ「今日のITドカタ」：雑に書く技術系の話' />
       </FormGroup>
-      <BlogPostedGraph blogList={filteredBlogList} />
+      {/*<BlogPostedGraph blogList={filteredBlogList} />*/}
       <Typography align='right' variant='h6'>
         {filteredBlogList.length} / {blogList.length} articles
       </Typography>
