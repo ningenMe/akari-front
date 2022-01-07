@@ -11,6 +11,7 @@ export class UrlConst {
   static readonly HATENA: string = 'https://ningenme.hatenablog.com/archive'
   static readonly AMEBA: string = 'https://profile.ameba.jp/ameba/ningenme'
   static readonly QIITA: string = 'https://qiita.com/ningenMe'
+  static readonly ZENN: string = 'https://zenn.dev/ningenme'
   static readonly COMPRO_LIBRARY: string = 'https://ningenme.github.io/compro-library'
   static readonly WORKS: string = 'https://indies.mangabox.me/amp/author/10633/'
   static readonly OUPC_2020: string = 'https://onlinejudge.u-aizu.ac.jp/beta/room.html#OUPC2020/info'
