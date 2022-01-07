@@ -15,6 +15,7 @@ export class LinkConst {
   static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'Ameba' }
   static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'Qiita' }
   static readonly DIARIES: Link = { href: PathConst.DIARIES, name: '今日のITドカタ' }
+  static readonly BLOGS_GRAPHS: Link = { href: PathConst.BLOGS_GRAPHS, name: 'blogの投稿数グラフ'}
   static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.TOKI, LinkConst.CSACADEMY] as const
   static readonly BLOGS: ReadonlyArray<Link> = [LinkConst.HATENA, LinkConst.AMEBA, LinkConst.QIITA, LinkConst.DIARIES] as const
 }
