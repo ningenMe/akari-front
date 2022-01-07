@@ -1,27 +1,27 @@
 import { Container } from '@material-ui/core'
-import { Blog, BlogType, BlogTypeConst } from 'interfaces/Blog'
-import { BlogTypeFilterList } from 'organisms/BlogOrganism'
-import { getBlog } from 'repository/BlogRepository'
-import { Footer, Header, HtmlHead, CustomHtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { getBlogPostedCount } from 'repository/BlogRepository'
+import { Footer, Header, CustomHtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { ImageConst } from 'constants/ImageConst'
+import { BlogPostedCount } from '../../../interfaces/BlogPostedCount'
+import { BlogPostedGraph } from '../../../organisms/BlogOrganism'
 
 export const getServerSideProps = async () => {
 
-  const blogTypeList: BlogType[] = [BlogTypeConst.AMEBA, BlogTypeConst.HATENA, BlogTypeConst.QIITA, BlogTypeConst.DIARY]
-  const blogList: Blog[] = await getBlog(blogTypeList)
+  const blogPostedCountList: BlogPostedCount[] = await getBlogPostedCount()
 
   return {
-    props: { blogList },
+    props: { blogPostedCountList },
   }
 }
 
-export const BlogsGraphs = ({ blogList }: { blogList: Blog[] }) => {
+export const BlogsGraphs = ({ blogPostedCountList }: { blogPostedCountList: BlogPostedCount[] }) => {
 
   return (
     <>
       <CustomHtmlHead title='blogの投稿数グラフ' image={ImageConst.NINGENME_NET} />
       <Header />
       <Container>
+        <BlogPostedGraph blogPostedCountList={blogPostedCountList} />
       </Container>
       <Footer />
     </>

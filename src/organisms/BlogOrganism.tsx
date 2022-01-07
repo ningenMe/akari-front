@@ -1,8 +1,14 @@
-import { Checkbox, FormControlLabel, FormGroup, Grid, Typography } from '@material-ui/core'
+import { Checkbox, FormControlLabel, FormGroup, Grid, Link, Typography } from '@material-ui/core'
+import GraphicEqIcon from '@material-ui/icons/GraphicEq';
 import { Blog, BlogType, BlogTypeConst } from 'interfaces/Blog'
 import React, { useEffect, useState } from 'react'
-import { BlogCard, BlogPostedGraph } from 'molecules/BlogMolecule'
+import { BlogCard } from 'molecules/BlogMolecule'
 import { mPlusFont } from 'styles/FontStyles'
+import Chart from 'chart.js/auto'
+import { CategoryScale } from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+import { BlogPostedCount } from '../interfaces/BlogPostedCount'
+import { LinkConst } from '../constants/LinkConst'
 
 export const BlogList = ({ blogList }: { blogList: Blog[] }) => {
 
@@ -75,6 +81,11 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
       <Typography variant='h5' align='center' style={style}>
         くるの blog 一覧
       </Typography>
+      <Typography align='right' variant='h6'>
+        <Link href={LinkConst.BLOGS_GRAPHS.href}>
+          {LinkConst.BLOGS_GRAPHS.name}
+        </Link>
+      </Typography>
       <FormGroup>
         <FormControlLabel control={<Checkbox defaultChecked onChange={switchAmeba} />}
                           label='Ameba「くるのブログ」：主に漫画・ゲームの感想' />
@@ -85,7 +96,6 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
         <FormControlLabel control={<Checkbox defaultChecked onChange={switchDiary} />}
                           label='自作ブログ「今日のITドカタ」：雑に書く技術系の話' />
       </FormGroup>
-      {/*<BlogPostedGraph blogList={filteredBlogList} />*/}
       <Typography align='right' variant='h6'>
         {filteredBlogList.length} / {blogList.length} articles
       </Typography>
@@ -94,5 +104,35 @@ export const BlogTypeFilterList = ({ blogList }: { blogList: Blog[] }) => {
       />
     </>
   )
+}
+
+export const BlogPostedGraph = ({ blogPostedCountList }: { blogPostedCountList: BlogPostedCount[] }) => {
+  Chart.register(CategoryScale)
+  const data = {
+    // x 軸のラベル
+    labels: blogPostedCountList.map((blogPostedCount:BlogPostedCount) => blogPostedCount.month),
+    datasets: [
+      {
+        label: 'blogの投稿数',
+        // データの値
+        data: blogPostedCountList.map((blogPostedCount:BlogPostedCount) => blogPostedCount.count),
+        // グラフの背景色
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        ],
+        // グラフの枠線の色
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+        ],
+        // グラフの枠線の太さ
+        borderWidth: 2,
+      },
+    ],
+  };
+  return (
+    <Bar data={data} />
+  );
 }
 
