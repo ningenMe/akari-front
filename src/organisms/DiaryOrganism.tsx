@@ -6,7 +6,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import IconButton from '@material-ui/core/IconButton'
 import { useState } from 'react'
 import StarSharpIcon from '@material-ui/icons/StarSharp'
-import { putDiaryLiked } from 'repository/BlogRepository'
+// import { putDiaryLiked } from 'repository/BlogRepository'
 import { LinkConst } from 'constants/LinkConst'
 import { MarkdownList, TweetButton } from 'molecules/DiaryMolecule'
 import { PathConst } from 'constants/PathConst'
@@ -74,20 +74,20 @@ export const ButtonList = ({ diary }: { diary: DiaryWithAround }) => {
 
   const [liked, setLiked] = useState<number>(diary.curr.liked)
 
-  const incrementLiked = async () => {
-    setLiked(liked + 1)
-    putDiaryLiked(diary.curr.date)
-  }
+  // const incrementLiked = async () => {
+  //   setLiked(liked + 1)
+  //   putDiaryLiked(diary.curr.date)
+  // }
 
   return (
     <Grid container>
       <Grid item>
-        <IconButton color='secondary' onClick={() => {
-          incrementLiked()
-        }}>
-          <StarSharpIcon />
-          {liked}
-        </IconButton>
+        {/*<IconButton color='secondary' onClick={() => {*/}
+        {/*  incrementLiked()*/}
+        {/*}}>*/}
+        {/*  <StarSharpIcon />*/}
+        {/*  {liked}*/}
+        {/*</IconButton>*/}
       </Grid>
       <Grid item>
         <TweetButton url={diary.curr.url} text={diary.curr.title + ' - ' + LinkConst.DIARIES.name} />
