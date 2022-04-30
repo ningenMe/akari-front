@@ -2,7 +2,6 @@ import { Container, Grid } from '@material-ui/core'
 import fs from 'fs'
 import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { Body, ButtonList, Pagination, Title } from 'organisms/DiaryOrganism'
-import { getDiary } from 'repository/BlogRepository'
 import { DiaryWithAround } from 'interfaces/Blog'
 
 const getBody = (date: string): string => {
@@ -30,7 +29,17 @@ export const getServerSideProps = async ({ params }: { params: { date: string } 
 
   const date: string = params.date
   const body: string = getBody(date)
-  const diary: DiaryWithAround = await getDiary(date)
+  const diary: DiaryWithAround = {
+    prev: null,
+    curr: {
+      url: "",
+      type: 'HATENA',
+      date: date,
+      title: "test",
+      liked: 0
+    },
+    next: null
+  }
 
   return {
     props: { body, date, diary },
