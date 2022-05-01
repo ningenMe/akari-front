@@ -4,16 +4,10 @@ import { FrameTitle } from 'atoms/FrameTitle'
 import { OptionalHref } from 'atoms/OptionalHref'
 import { CardStyle } from 'styles/CardStyle'
 import { HistoryContent } from 'interfaces/HistoryContent'
-import { CreationCard, ProfileCard } from 'molecules/HomeMolecule'
+import { CreationCard } from 'molecules/HomeMolecule'
 import { CREATION_LIST } from 'constants/creationList'
 import { ACTIVITY_LIST } from 'constants/activityList'
 import { HISTORY_LIST } from 'constants/historyList'
-
-export const Profile = () => {
-  return (
-    <ProfileCard />
-  )
-}
 
 export const Creation = () => {
 
