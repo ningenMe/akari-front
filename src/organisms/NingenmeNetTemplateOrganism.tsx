@@ -21,15 +21,6 @@ export const Header = () => {
   )
 }
 
-export const Footer = () => {
-  return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
-      <Navbar.Brand>&copy; 2021 Furuta Taishi</Navbar.Brand>
-    </Navbar>
-  )
-}
-
-
 export const HtmlHead = () => {
   const router = useRouter()
 

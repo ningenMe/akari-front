@@ -1,6 +1,7 @@
 import { Container } from '@material-ui/core'
-import { Footer, Header, CustomHtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { Header, CustomHtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { ImageConst } from 'constants/ImageConst'
+import { Footer } from '../../components/organisms/Footer'
 
 // export const getServerSideProps = async () => {
 //
