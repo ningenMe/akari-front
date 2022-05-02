@@ -13,15 +13,15 @@ export const History = () => {
   const innerContents = (historyContentList: ReadonlyArray<HistoryContent>) => {
     return historyContentList.map((historyContent, idx) =>
       <div key={idx}>
-        {'・'}
-        <OptionalHref body={historyContent.body} href={historyContent.href} />
+          {'・'}
+          <OptionalHref body={historyContent.body} href={historyContent.href} />
       </div>
     )
   }
 
   const contents = HISTORY_LIST.map((history, idx) =>
     <div key={idx} className={fontStyles.body}>
-      {history.yearFrom}-{history.yearTo}: {history.body}
+      <span className={styles.year}>{history.yearFrom}-{history.yearTo}</span>: {history.body}
       <div className={styles.inner}>
         {innerContents(history.contentList)}
       </div>
