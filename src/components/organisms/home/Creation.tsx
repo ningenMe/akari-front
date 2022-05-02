@@ -9,7 +9,7 @@ export const Creation = () => {
 
   const cards = CREATION_LIST.map((creation) =>
     <CustomLinkCard href={creation.href}>
-      <h5>
+      <h5 className={styles.title}>
         {creation.title}
       </h5>
       <p className={fontStyles.body}>
