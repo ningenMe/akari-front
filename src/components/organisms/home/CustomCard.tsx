@@ -1,12 +1,23 @@
 import { ReactNode } from 'react'
 import styles from './CustomCard.module.scss'
 
-export const CustomCard = (
+export const CustomNormalCard = (
   {children} : {children: ReactNode}
 ) => {
   return (
-    <div className={styles.card}>
+    <div className={styles.normalCard}>
       {children}
+    </div>
+  )
+}
+
+export const CustomLinkCard = (
+  {href, children} : {href: string, children: ReactNode}
+) => {
+  return (
+    <div className={styles.linkCard}>
+      {children}
+      <a href={href} className={styles.href} />
     </div>
   )
 }

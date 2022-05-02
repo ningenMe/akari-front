@@ -1,13 +1,21 @@
 import { CREATION_LIST } from '../../../constants/creationList'
-import { CreationCard } from '../../../molecules/HomeMolecule'
 import React from 'react'
 import { Title } from '../../atoms/home/Title'
 import styles from './Creation.module.scss'
+import { CustomLinkCard } from './CustomCard'
+import fontStyles from 'styles/Font.module.scss'
 
 export const Creation = () => {
 
   const cards = CREATION_LIST.map((creation) =>
-    <CreationCard creation={creation} />
+    <CustomLinkCard href={creation.href}>
+      <h5>
+        {creation.title}
+      </h5>
+      <p className={fontStyles.body}>
+        {creation.body}
+      </p>
+    </CustomLinkCard>
   )
 
   return (
