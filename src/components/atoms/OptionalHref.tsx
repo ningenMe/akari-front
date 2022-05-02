@@ -1,5 +1,3 @@
-import {Link} from '@material-ui/core';
-
 export const OptionalHref = ({body,href} : {body:string,href:string|null} ) => {
   if(href === null) {
     return (
@@ -10,9 +8,9 @@ export const OptionalHref = ({body,href} : {body:string,href:string|null} ) => {
   }
   else {
     return (
-      <Link href={href}>
+      <a href={href}>
         {body}
-      </Link>
+      </a>
     )
   }
 }
