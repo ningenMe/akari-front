@@ -1,7 +1,8 @@
 import { Container } from '@material-ui/core'
-import { Activity, Creation, History} from 'organisms/HomeOrganism'
+import { Activity, History} from 'organisms/HomeOrganism'
 import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { Profile } from '../../components/organisms/home/Profile'
+import { Creation } from '../../components/organisms/home/Creation'
 
 export const Home = () => {
   return (

@@ -4,28 +4,8 @@ import { FrameTitle } from 'atoms/FrameTitle'
 import { OptionalHref } from 'atoms/OptionalHref'
 import { CardStyle } from 'styles/CardStyle'
 import { HistoryContent } from 'interfaces/HistoryContent'
-import { CreationCard } from 'molecules/HomeMolecule'
-import { CREATION_LIST } from 'constants/creationList'
 import { ACTIVITY_LIST } from 'constants/activityList'
 import { HISTORY_LIST } from 'constants/historyList'
-
-export const Creation = () => {
-
-  const cards = CREATION_LIST.map((creation) =>
-    <Grid item xs={12} sm={4}>
-      <CreationCard creation={creation} />
-    </Grid>,
-  )
-
-  return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <FrameTitle body='Creation' />
-      </Grid>
-      {cards}
-    </Grid>
-  )
-}
 
 export const Activity = () => {
 
