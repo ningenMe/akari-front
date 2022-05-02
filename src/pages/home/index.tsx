@@ -1,22 +1,14 @@
-import { Container } from '@material-ui/core'
-import { Activity, History} from 'organisms/HomeOrganism'
 import { Footer, Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
-import { Profile } from '../../components/organisms/home/Profile'
-import { Creation } from '../../components/organisms/home/Creation'
+import { Home } from '../../components/templates/Home'
 
-export const Home = () => {
+export const Index = () => {
   return (
     <>
       <HtmlHead />
       <Header />
-      <Container>
-        <Profile />
-        <Creation />
-        <Activity />
-        <History />
-      </Container>
+      <Home />
       <Footer />
     </>
   )
 }
-export default Home
+export default Index

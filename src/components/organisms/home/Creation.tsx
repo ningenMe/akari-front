@@ -8,7 +8,7 @@ import fontStyles from 'styles/Font.module.scss'
 export const Creation = () => {
 
   const cards = CREATION_LIST.map((creation) =>
-    <CustomLinkCard href={creation.href}>
+    <CustomLinkCard href={creation.href} key={creation.href}>
       <h5 className={styles.title}>
         {creation.title}
       </h5>
