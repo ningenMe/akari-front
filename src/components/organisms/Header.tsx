@@ -1,10 +1,12 @@
 import { LinkConst } from '../../constants/LinkConst'
 import { Link } from '../../interfaces/Link'
 import styles from './Header.module.scss'
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import ArticleIcon from '@mui/icons-material/Article';
+import ComputerIcon from '@mui/icons-material/Computer';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {
   AppBar,
   Button,
@@ -16,7 +18,20 @@ import {
 import { Box } from '@mui/system'
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Dropdown = ({ title, links, className }: { title: string, links: ReadonlyArray<Link>, className?: string}) => {
+const NormalElement = (
+  {link,className,icon}: {link:Link, className: string, icon: ReactNode}
+) => {
+  return (
+    <div>
+      <Button className={className} href={link.href}>
+        {icon}
+        {link.name}
+      </Button>
+    </div>
+  );
+}
+
+const DropdownElement = ({ title, links, className, icon}: { title: string, links: ReadonlyArray<Link>, className: string, icon: ReactNode}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const onOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -27,8 +42,9 @@ const Dropdown = ({ title, links, className }: { title: string, links: ReadonlyA
   return (
     <div>
       <Button onClick={onOpen} className={className}>
-        <ArticleIcon />
+        {icon}
         {title}
+        <KeyboardArrowDownIcon />
       </Button>
       <Menu
         anchorEl={anchorEl}
@@ -47,14 +63,14 @@ const Dropdown = ({ title, links, className }: { title: string, links: ReadonlyA
   );
 }
 
-export const ResponsiveAppBar = () => {
+export const Header = () => {
 
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const onOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
   };
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const onClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -64,17 +80,26 @@ export const ResponsiveAppBar = () => {
           {LinkConst.NINGENME_NET.name}
         </a>
 
+        {/*pc*/}
+        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <NormalElement link={LinkConst.GITHUB} className={styles.buttonPc} icon={<GitHubIcon />} />
+          <NormalElement link={LinkConst.TWITTER} className={styles.buttonPc} icon={<TwitterIcon />} />
+          <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonPc} icon={<ComputerIcon />}/>
+          <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonPc} icon={<ArticleIcon />}/>
+        </Box>
+
+        {/*sp*/}
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
             aria-haspopup="true"
-            onClick={handleOpenNavMenu}
+            onClick={onOpen}
             color="inherit"
             className={styles.hamburger}
           >
             <MenuIcon />
           </IconButton>
           <Menu
-            anchorEl={anchorElNav}
+            anchorEl={anchorEl}
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'left',
@@ -83,41 +108,15 @@ export const ResponsiveAppBar = () => {
               vertical: 'top',
               horizontal: 'left',
             }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: 'block', md: 'none' },
-            }}
+            open={Boolean(anchorEl)}
+            onClose={onClose}
+            sx={{ display: { xs: 'block', md: 'none' }, }}
           >
-            <div>
-              <Button className={styles.buttonSp} href={LinkConst.GITHUB.href}>
-                <GitHubIcon />
-                {LinkConst.GITHUB.name}
-              </Button>
-            </div>
-            <div>
-              <Button className={styles.buttonSp} href={LinkConst.TWITTER.href}>
-                <TwitterIcon />
-                {LinkConst.TWITTER.name}
-              </Button>
-            </div>
-
-            <Dropdown title={"compro"} links={LinkConst.COMPROS} className={styles.buttonSp}/>
-            <Dropdown title={"blog"} links={LinkConst.BLOGS} className={styles.buttonSp}/>
+            <NormalElement link={LinkConst.GITHUB} className={styles.buttonSp} icon={<GitHubIcon />} />
+            <NormalElement link={LinkConst.TWITTER} className={styles.buttonSp} icon={<TwitterIcon />} />
+            <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonSp} icon={<ComputerIcon />}/>
+            <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonSp} icon={<ArticleIcon />}/>
           </Menu>
-        </Box>
-
-        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Button className={styles.buttonPc} href={LinkConst.GITHUB.href}>
-            <GitHubIcon />
-            {LinkConst.GITHUB.name}
-          </Button>
-          <Button className={styles.buttonPc} href={LinkConst.TWITTER.href}>
-            <TwitterIcon />
-            {LinkConst.TWITTER.name}
-          </Button>
-          <Dropdown title={"compro"} links={LinkConst.COMPROS} className={styles.buttonPc}/>
-          <Dropdown title={"blog"} links={LinkConst.BLOGS} className={styles.buttonPc}/>
         </Box>
 
       </Toolbar>
