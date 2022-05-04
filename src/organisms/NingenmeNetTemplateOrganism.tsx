@@ -1,25 +1,8 @@
-import { Navbar } from 'react-bootstrap'
 import { LinkConst } from 'constants/LinkConst'
 import { ImageConst } from 'constants/ImageConst'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { Dropdown, NavGithub, NavTwitter } from 'molecules/NingenmeNetTemplateMolecule'
 import { UrlConst } from 'constants/UrlConst'
-
-export const Header = () => {
-  return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
-      <Navbar.Brand href={LinkConst.NINGENME_NET.href}>{LinkConst.NINGENME_NET.name}</Navbar.Brand>
-      <Navbar.Toggle aria-controls='basic-navbar-nav' />
-      <Navbar.Collapse id='basic-navbar-nav'>
-        <NavGithub />
-        <NavTwitter />
-        <Dropdown title='compro' links={LinkConst.COMPROS} />
-        <Dropdown title='blog' links={LinkConst.BLOGS} />
-      </Navbar.Collapse>
-    </Navbar>
-  )
-}
 
 export const HtmlHead = () => {
   const router = useRouter()
