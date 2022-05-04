@@ -1,9 +1,27 @@
+.appbar {
+  background-color: #212529;
+}
+.button {
+  text-transform: none
+}
 .brand {
   margin-left: 10%;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
 }
 .toggle {
   margin-right: 10%;
 }
 .collapse {
   margin-left: 5px;
+}
+.githubIcon {
+  color: white;
+  align-content: center;
 }
