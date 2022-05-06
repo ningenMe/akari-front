@@ -1,9 +1,8 @@
 .appbar {
-  background-color: #212529;
+  background-color: #212529 !important;
 }
 .brand {
-  margin-left: 10%;
-  margin-right: 10px;
+  margin: 10px 10px 10px 10%;
   color: white;
   font-weight: bold;
   font-size: large;
@@ -15,24 +14,26 @@
 }
 .button {
   margin: 5px 5px 1px;
-  text-transform: none
+  text-transform: none !important
 }
 .buttonPc {
   @extend .button;
-  color: white;
+  color: white !important;
   &:hover {
-    color: rgba(188,188,188,0.94);
+    color: rgba(188,188,188,0.94) !important;
   }
 }
 .buttonSp {
   @extend .button;
-  color: black;
+  color: black !important;
   &:hover {
-    color: black;
+    color: black !important;
   }
 }
 .hamburger {
-  position: absolute;
-  top: 5px;
-  right: 0;
+  position: absolute !important;
+  top: 5px !important;
+  right: 0 !important;
+  margin-right: 5% !important;
+  color: white !important;
 }
