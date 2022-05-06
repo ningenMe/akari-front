@@ -1,9 +1,10 @@
 import { Container, Grid } from '@material-ui/core'
 import fs from 'fs'
-import { Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { Body, ButtonList, Pagination, Title } from 'organisms/DiaryOrganism'
 import { DiaryWithAround } from 'interfaces/Blog'
 import { Footer } from '../../components/organisms/Footer'
+import { Header } from '../../components/organisms/Header'
 
 const getBody = (date: string): string => {
   let body: string = '# no contents'

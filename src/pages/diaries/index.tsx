@@ -1,7 +1,8 @@
 import { Container, Grid } from '@material-ui/core'
 import { Title } from 'organisms/DiaryOrganism'
-import { Header, HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { Footer } from '../../components/organisms/Footer'
+import { Header } from '../../components/organisms/Header'
 
 export const Diaries = () => {
   return (
