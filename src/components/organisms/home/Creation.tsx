@@ -2,7 +2,7 @@ import { CREATION_LIST } from '../../../constants/creationList'
 import React from 'react'
 import { Title } from '../../atoms/home/Title'
 import styles from './Creation.module.scss'
-import { CustomLinkCard } from './CustomCard'
+import { CustomLinkCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
 
 export const Creation = () => {
