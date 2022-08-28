@@ -1,4 +1,4 @@
-import { HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
+import { HtmlHead } from 'components/organisms/HtmlHead'
 import { Footer } from '../../components/organisms/Footer'
 import { Header } from '../../components/organisms/Header'
 import { Task } from '../../components/organisms/task/Task'
