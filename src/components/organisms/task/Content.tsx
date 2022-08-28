@@ -17,8 +17,6 @@ export const Content = () => {
           {cardList}
         </Grid>
       </Grid>
-      <Grid item xs={1}>
-      </Grid>
     </Grid>
   )
 }
