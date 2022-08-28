@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 import { OptionalHref } from 'components/atoms/OptionalHref'
-import { CustomNormalCard } from './CustomCard'
+import { CustomNormalCard } from '../CustomCard'
 import { HistoryContent } from 'interfaces/HistoryContent'
 import { HISTORY_LIST } from 'constants/historyList'
 import { Title } from '../../atoms/home/Title'

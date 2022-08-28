@@ -1,4 +1,4 @@
-import { CustomNormalCard } from './CustomCard'
+import { CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
 
 export const Profile = () => {
