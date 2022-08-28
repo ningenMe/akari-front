@@ -25,6 +25,7 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     href: UrlConst.WORK,
     title: 'work',
     body: '描いた漫画一覧。大学時代に漫研で活動していました。',
+    isDone: false
   },
   // {
   //   href: PathConst.DIARIES,
