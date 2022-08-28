@@ -1,19 +1,16 @@
-import { Container } from '@material-ui/core'
-import { ProblemCardList } from 'organisms/ProblemOrganism'
 import { HtmlHead } from 'organisms/NingenmeNetTemplateOrganism'
 import { Footer } from '../../components/organisms/Footer'
 import { Header } from '../../components/organisms/Header'
+import { Task } from '../../components/templates/Task'
 
-export const Problems = () => {
+export const Index = () => {
   return (
     <>
       <HtmlHead />
       <Header />
-      <Container>
-        <ProblemCardList />
-      </Container>
+      <Task />
       <Footer />
     </>
   )
 }
-export default Problems
+export default Index

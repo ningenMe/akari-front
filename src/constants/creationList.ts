@@ -4,8 +4,8 @@ import { PathConst } from 'constants/PathConst'
 
 export const CREATION_LIST: ReadonlyArray<Creation> = [
   {
-    href: PathConst.PROBLEMS,
-    title: 'problems',
+    href: PathConst.TASK,
+    title: 'task',
     body: '競技プログラミングの作問リスト。',
   },
   {
