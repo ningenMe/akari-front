@@ -1,9 +1,9 @@
 import {Card,CardActionArea,CardContent,Typography,Grid} from '@material-ui/core';
-import {Problem} from 'interfaces/Problem'
+import {Task} from 'interfaces/Task'
 import {CardStyle} from 'styles/CardStyle'
 import {onlineJudgeIconPath} from 'atoms/onlineJudgeIconPath'
 
-export const ProblemCard = ({problem}: {problem:Problem}) => {
+export const ProblemCard = ({problem}: {problem:Task}) => {
   return (
     <Card variant="outlined" style={CardStyle}>
       <CardActionArea href={problem.href}>

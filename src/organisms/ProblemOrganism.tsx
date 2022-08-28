@@ -1,10 +1,10 @@
 import { Grid, Typography } from '@material-ui/core'
 import { FrameTitle, ProblemCard } from 'molecules/ProblemMolecule'
-import { problemList } from 'constants/problemList'
+import { taskList } from 'constants/taskList'
 
 export const ProblemCardList = () => {
 
-  const cardList = problemList.map((problem) =>
+  const cardList = taskList.map((problem) =>
     <Grid item xs={12}>
       <ProblemCard problem={problem} />
     </Grid>,

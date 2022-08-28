@@ -1,6 +1,6 @@
-import { Problem } from 'interfaces/Problem'
+import { Task } from 'interfaces/Task'
 
-export const problemList: ReadonlyArray<Problem> = [
+export const TASK_LIST: ReadonlyArray<Task> = [
   {
     title: 'Construction Set',
     type: 'AOJ',
