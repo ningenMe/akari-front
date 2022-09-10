@@ -1,80 +1,87 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
-name: cd
+name: deploy
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  id-token: write
+
 jobs:
-  build-and-ecr-push:
+  constant:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_ECR_REGISTORY: ${{ secrets.AWS_ECR_REGISTORY }}
-      AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-
+    outputs:
+      node-version: ${{ steps.constant.outputs.node-version }}
+      aws-region: ${{ steps.constant.outputs.aws-region }}
+      aws-ecr-repository: net-front-repository
     steps:
-      - uses: actions/checkout@v2
-      - name: image build
-        run: docker build -t ${{ env.AWS_ECR_REGISTORY }}/${{ env.AWS_ECR_REPOSITORY }}:latest .
-      - name: aws-credential-setup
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
-      - name: image push
-        run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.AWS_ECR_REGISTORY }}
-          docker push ${{ env.AWS_ECR_REGISTORY }}/${{ env.AWS_ECR_REPOSITORY }}:latest
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v3.0.0
+      - id: constant
+        name: constant
+        uses: ./.github/workflows/composite/constant
 
-  deploy:
-    needs: build-and-ecr-push
+  build-and-push-image:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-
+    needs: [ constant ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - id: checkout
+        name: checkout
+        uses: actions/checkout@v3.0.0
+      - id: build-and-push-image
+        name: build and push image
+        uses: ./.github/workflows/composite/build-and-push-image
         with:
-          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          aws-region: ${{ needs.constant.outputs.aws-region }}
+          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
+          aws-ecr-repository: ${{ needs.constant.outputs.aws-ecr-repository }}
 
-      - name: Download task definition
-        run: |
-          aws ecs describe-task-definition --task-definition net-front --query taskDefinition > task-definition.json
 
-      - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: task-definition.json
-          service: net-front-ecs-service
-          cluster: ningenme-cluster
-          wait-for-service-stability: true
-          codedeploy-appspec: appspec.yaml
-          codedeploy-application: net-front-codedeploy-app
-          codedeploy-deployment-group: net-front-deployment-group
-
-  application-meta-push:
-    needs: deploy
-    runs-on: ubuntu-latest
-    env:
-      NET_API_USERNAME: ${{ secrets.NET_API_USERNAME }}
-      NET_API_PASSWORD: ${{ secrets.NET_API_PASSWORD }}
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: application-meta push
-        run: |
-          token=`curl -X POST -d email=${{ env.NET_API_USERNAME }} -d password=${{ env.NET_API_PASSWORD }} https://api.ningenme.net/v1/login -i | grep MeCookie | awk -F '=|;' '{print $2}'`
-          curl -X POST -b "MeCookie=${token}" -H "Content-Type: application/json" https://api.ningenme.net/v1/application-metas/net-front
+#  deploy:
+#    needs: build-and-ecr-push
+#    runs-on: ubuntu-latest
+#    env:
+#      AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+#      AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#      AWS_REGION: ${{ secrets.AWS_REGION }}
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Configure AWS Credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: ${{ env.AWS_REGION }}
+#
+#      - name: Download task definition
+#        run: |
+#          aws ecs describe-task-definition --task-definition net-front --query taskDefinition > task-definition.json
+#
+#      - name: Deploy to Amazon ECS
+#        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#        with:
+#          task-definition: task-definition.json
+#          service: net-front-ecs-service
+#          cluster: ningenme-cluster
+#          wait-for-service-stability: true
+#          codedeploy-appspec: appspec.yaml
+#          codedeploy-application: net-front-codedeploy-app
+#          codedeploy-deployment-group: net-front-deployment-group
+#
+#  application-meta-push:
+#    needs: deploy
+#    runs-on: ubuntu-latest
+#    env:
+#      NET_API_USERNAME: ${{ secrets.NET_API_USERNAME }}
+#      NET_API_PASSWORD: ${{ secrets.NET_API_PASSWORD }}
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: application-meta push
+#        run: |
+#          token=`curl -X POST -d email=${{ env.NET_API_USERNAME }} -d password=${{ env.NET_API_PASSWORD }} https://api.ningenme.net/v1/login -i | grep MeCookie | awk -F '=|;' '{print $2}'`
+#          curl -X POST -b "MeCookie=${token}" -H "Content-Type: application/json" https://api.ningenme.net/v1/application-metas/net-front
