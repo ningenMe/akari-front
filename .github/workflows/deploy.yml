@@ -12,7 +12,6 @@ jobs:
   constant:
     runs-on: ubuntu-latest
     outputs:
-      node-version: ${{ steps.constant.outputs.node-version }}
       aws-region: ${{ steps.constant.outputs.aws-region }}
       aws-ecr-repository: net-front-repository
     steps:
