@@ -19,11 +19,14 @@
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.4",
     "@mui/styles": "^5.6.2",
+    "@types/google-protobuf": "^3.15.6",
+    "@types/webpack": "^5.28.0",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
     "chart.js": "^3.7.0",
     "fs": "^0.0.1-security",
+    "mami-interface": "https://github.com/ningenMe/mami-interface.git#master",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-bootstrap": "^1.6.1",
@@ -32,7 +35,9 @@
     "react-markdown": "^6.0.2",
     "react-share": "^4.4.0",
     "sass": "^1.51.0",
-    "sharp": "^0.29.3"
+    "sharp": "^0.29.3",
+    "ts-loader": "^9.4.0",
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
