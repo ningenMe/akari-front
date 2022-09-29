@@ -6,7 +6,7 @@ import { System } from '../../components/organisms/system/System'
 export const Index = () => {
   return (
     <>
-      <HtmlHead />
+      <HtmlHead title='system - ' />
       <Header />
       <System />
       <Footer />

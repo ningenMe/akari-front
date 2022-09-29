@@ -4,7 +4,6 @@ import { Title } from '../../atoms/home/Title'
 import styles from './Creation.module.scss'
 import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
-import { PathConst } from '../../../constants/PathConst'
 
 export const Creation = () => {
 

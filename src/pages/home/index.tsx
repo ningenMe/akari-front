@@ -6,7 +6,7 @@ import { Header } from '../../components/organisms/Header'
 export const Index = () => {
   return (
     <>
-      <HtmlHead />
+      <HtmlHead title={undefined} />
       <Header />
       <Home />
       <Footer />

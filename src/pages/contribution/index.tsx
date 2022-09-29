@@ -6,7 +6,7 @@ import { Contribution } from '../../components/organisms/contribution/Contributi
 export const Index = () => {
   return (
     <>
-      <HtmlHead />
+      <HtmlHead title='contribution - ' />
       <Header />
       <Contribution />
       <Footer />

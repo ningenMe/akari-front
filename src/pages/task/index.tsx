@@ -6,7 +6,7 @@ import { Task } from '../../components/organisms/task/Task'
 export const Index = () => {
   return (
     <>
-      <HtmlHead />
+      <HtmlHead title='task - ' />
       <Header />
       <Task />
       <Footer />
