@@ -6,7 +6,7 @@ const LINE_CONTENT_LIST: ReadonlyArray<HistoryContent> = [
 ] as const
 
 const YAHOO_CONTENT_LIST: ReadonlyArray<HistoryContent> = [
-  { body: 'ヤフーショッピング 商品レビュー バックエンド開発', href: null },
+  { body: 'ヤフーショッピング バックエンド開発', href: null },
 ] as const
 
 const OU_CONTENT_LIST: ReadonlyArray<HistoryContent> = [

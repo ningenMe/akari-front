@@ -5,7 +5,7 @@ import React from 'react'
 import { TASK_LIST } from '../../../constants/taskList'
 import { CustomLinkCard } from '../CustomCard'
 import styles from './Task.module.scss'
-import { onlineJudgeIconPath } from '../../../atoms/onlineJudgeIconPath'
+import { onlineJudgeIconPath } from '../../atoms/task/onlineJudgeIconPath'
 
 export const Task = () => {
   const cardList = TASK_LIST.map((task) =>
