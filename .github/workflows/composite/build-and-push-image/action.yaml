@@ -19,7 +19,9 @@ runs:
         node-version: 16.13.1
     - id: yarn
       name: yarn
-      run: yarn install
+      run: |
+        yarn install
+        yarn build
       shell: bash
     - id: image-build
       name: image build
