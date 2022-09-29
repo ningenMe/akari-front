@@ -29,15 +29,6 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v3.0.0
-      - id: setup-node
-        name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.13.1
-      - id: yarn
-        name: yarn
-        run: yarn install
-        shell: bash
       - id: build-and-push-image
         name: build and push image
         uses: ./.github/workflows/composite/build-and-push-image
