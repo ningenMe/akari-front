@@ -4,7 +4,7 @@ import { Title } from '../../atoms/home/Title'
 import React from 'react'
 import { TASK_LIST } from '../../../constants/taskList'
 import { CustomLinkCard } from '../CustomCard'
-import styles from '../home/Creation.module.scss'
+import styles from './Task.module.scss'
 import { onlineJudgeIconPath } from '../../../atoms/onlineJudgeIconPath'
 
 export const Task = () => {
