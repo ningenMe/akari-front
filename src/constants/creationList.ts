@@ -1,6 +1,5 @@
 import { Creation } from 'interfaces/Creation'
-import { UrlConst } from 'constants/UrlConst'
-import { PathConst } from 'constants/PathConst'
+import { PathConst, UrlConst } from './Const'
 
 export const CREATION_LIST: ReadonlyArray<Creation> = [
   {

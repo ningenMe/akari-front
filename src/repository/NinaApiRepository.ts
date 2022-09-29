@@ -1,8 +1,7 @@
 import { HealthServiceClient } from 'mami-interface/mami-generated-client/nina-api-grpc/HealthServiceClientPb'
 import { GithubContributionServiceClient } from 'mami-interface/mami-generated-client/nina-api-grpc/Github_contributionServiceClientPb'
+import { UrlConst } from '../constants/Const'
 
-// TODO constで管理
-const HOSTNAME = 'https://nina-envoy-api.ningenme.net'
-export const ninaApiHealthClient = new HealthServiceClient(HOSTNAME)
-export const ninaApiGithubContributionClient = new GithubContributionServiceClient(HOSTNAME)
+export const ninaApiHealthClient = new HealthServiceClient(UrlConst.NINA_ENVOY_API)
+export const ninaApiGithubContributionClient = new GithubContributionServiceClient(UrlConst.NINA_ENVOY_API)
 

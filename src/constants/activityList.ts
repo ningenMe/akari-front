@@ -1,5 +1,5 @@
 import { Activity } from 'interfaces/Activity'
-import { UrlConst } from 'constants/UrlConst'
+import { UrlConst } from './Const'
 
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {

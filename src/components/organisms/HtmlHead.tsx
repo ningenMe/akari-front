@@ -1,8 +1,6 @@
-import { LinkConst } from 'constants/LinkConst'
-import { ImageConst } from 'constants/ImageConst'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { UrlConst } from 'constants/UrlConst'
+import { ImageConst, LinkConst, UrlConst } from '../../constants/Const'
 
 export const HtmlHead = () => {
   const router = useRouter()

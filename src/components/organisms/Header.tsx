@@ -1,22 +1,15 @@
-import { LinkConst } from '../../constants/LinkConst'
 import { Link } from '../../interfaces/Link'
 import styles from './Header.module.scss'
 import React, { ReactNode, useState } from 'react'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import ArticleIcon from '@mui/icons-material/Article';
-import ComputerIcon from '@mui/icons-material/Computer';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import {
-  AppBar,
-  Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-} from '@mui/material'
+import ArticleIcon from '@mui/icons-material/Article'
+import ComputerIcon from '@mui/icons-material/Computer'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '@mui/icons-material/Menu'
+import { LinkConst } from '../../constants/Const'
 
 const NormalElement = (
   {link,className,icon}: {link:Link, className: string, icon: ReactNode}
