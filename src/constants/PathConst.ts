@@ -5,5 +5,6 @@ export class PathConst {
   static readonly BLOGS_GRAPHS: string = '/blogs/graphs'
   static readonly DIARIES: string = '/diaries'
   static readonly CONTRIBUTION: string = '/contribution'
+  static readonly SYSTEM: string = '/system'
 }
 

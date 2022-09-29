@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import { Title } from '../../atoms/home/Title'
 import React from 'react'
-import styles from './Health.module.scss'
+import styles from './System.module.scss'
 import { TASK_LIST } from '../../../constants/taskList'
 import { CustomLinkCard } from '../CustomCard'
 
@@ -20,7 +20,7 @@ import { CustomLinkCard } from '../CustomCard'
 //   return message
 // }
 
-export const Health = () => {
+export const System = () => {
   const cardList = TASK_LIST.map((task) =>
     <CustomLinkCard href={task.href} key={task.href}>
       <></>

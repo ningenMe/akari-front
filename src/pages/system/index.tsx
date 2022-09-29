@@ -1,14 +1,14 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { Footer } from '../../components/organisms/Footer'
 import { Header } from '../../components/organisms/Header'
-import { Health } from '../../components/organisms/health/Health'
+import { System } from '../../components/organisms/system/System'
 
 export const Index = () => {
   return (
     <>
       <HtmlHead />
       <Header />
-      <Health />
+      <System />
       <Footer />
     </>
   )

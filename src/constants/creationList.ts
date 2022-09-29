@@ -19,7 +19,7 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     href: PathConst.CONTRIBUTION,
     title: 'contribution',
     body: '日々のgithubのcontribution。',
-    isDone: true
+    isDone: false
   },
   {
     href: PathConst.BLOG,
@@ -32,6 +32,12 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     title: 'work',
     body: '描いた漫画一覧。大学時代に漫研で活動していました。',
     isDone: false
+  },
+  {
+    href: PathConst.SYSTEM,
+    title: 'system',
+    body: 'システム詳細。',
+    isDone: true
   },
   // {
   //   href: PathConst.DIARIES,
