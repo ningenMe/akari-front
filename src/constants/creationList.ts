@@ -16,6 +16,12 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     isDone: true
   },
   {
+    href: PathConst.CONTRIBUTION,
+    title: 'contribution',
+    body: '日々のgithubのcontribution。',
+    isDone: true
+  },
+  {
     href: PathConst.BLOG,
     title: 'blog',
     body: 'ブログ。webか競プロか漫画かアニメか私事の話。',
