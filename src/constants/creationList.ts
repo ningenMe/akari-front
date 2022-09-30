@@ -18,7 +18,7 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     href: PathConst.CONTRIBUTION,
     title: 'contribution',
     body: '日々のgithubのcontribution。',
-    isDone: false
+    isDone: true
   },
   {
     href: PathConst.BLOG,
