@@ -9,11 +9,20 @@ import {
 } from 'mami-interface/mami-generated-client/nina-api-grpc/github_contribution_pb'
 
 import { Chart } from 'react-chartjs-2'
-import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, Title } from 'chart.js'
+import {
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+} from 'chart.js'
 
-ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, BarElement);
+ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, BarElement, BarController);
 
-
+//TODO 全体的に粒度は見直し
 const useNinaApiGithubContributionGetSummary = () => {
   const [response, setResponse] = useState < GetGithubContributionSummaryResponse | undefined>()
 
