@@ -8,7 +8,7 @@ export const Profile = () => {
         Furuta Taishi
       </h4>
       <p className={fontStyles.body}>
-        webのバックエンド開発をしています。インフラもたまにやります。
+        webのバックエンド開発やアーキテクトをしています。
         競技プログラミングが好きです。
         学生時代は物性物理と機械学習をしていました。
       </p>
