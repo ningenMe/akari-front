@@ -67,20 +67,26 @@ export const Contribution = () => {
     // TODO templateに移す
     <Container>
       <Title title='Github Contribution' />
-      <Typography variant='body2'>ningenMeのgithubのcontribution</Typography>
+      <Typography variant='body2'>ningenMeのgithubのcontribution。1メモリ=1week。データの更新はまちまち。</Typography>
       {/*TODO cssを当てる*/}
       <PageNation
         centerText={getFormatDate(datePeriod.startDate) + " ~ " + getFormatDate(datePeriod.endDate)}
         datePeriod={datePeriod}
         setDatePeriod={setDatePeriod}
       />
-      <SubTitle title='Create PullRequest' />
-      <Graph list={filteredCreatedPullRequestList} />
-      <SubTitle title='Give Approve' />
-      <Graph list={filteredApprovedList} />
-      <SubTitle title='Give Comment' />
-      <Graph list={filteredCommentedList} />
+      <StatusModule title='Create PullRequest' list={filteredCreatedPullRequestList} />
+      <StatusModule title='Give Approve' list={filteredApprovedList} />
+      <StatusModule title='Give Comment' list={filteredCommentedList} />
     </Container>
+  )
+}
+const StatusModule = ({ title,list }: { title: string, list: ContributionSum[] }) => {
+  return (
+    <div className={styles.statusTitle}>
+      <SubTitle title={title} />
+      <Accumulation list={list} />
+      <Graph list={list} />
+    </div>
   )
 }
 
@@ -116,16 +122,24 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
     </div>
   )
 }
+const Accumulation = ({ list }: { list: ContributionSum[] }) => {
+  return (
+    <div className={styles.accumulation}>
+      sum: {sum(list)}  avg: {average(list)}
+    </div>
+  );
+}
 
-const average = (list: ContributionSum[]): number => {
+const average = (list: ContributionSum[]): string => {
   if (!list?.length) {
-    return 0
+    return '0.00'
   }
   const numerator = list.length
   const enumerator = list.map(e => e.getSum()).reduce(
     (prev, curr) => prev + curr, 0
   )
-  return enumerator / numerator
+  const res = enumerator / numerator
+  return res.toFixed(2)
 }
 const sum = (list: ContributionSum[]): number => {
   return  list.map(e => e.getSum()).reduce(
