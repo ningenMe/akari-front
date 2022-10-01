@@ -43,7 +43,7 @@ export const Contribution = () => {
         })
       )
     }
-    ,[datePeriod])
+    ,[datePeriod, statistics])
 
   return (
     <Container>
