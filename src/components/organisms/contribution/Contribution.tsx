@@ -1,5 +1,4 @@
-import { Button, Container, IconButton } from '@mui/material'
-import { Title as CustomTitle } from '../../atoms/home/Title'
+import { Container, IconButton } from '@mui/material'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ninaApiGithubContributionClient } from '../../../repository/NinaApiRepository'
 import { Graph } from './Graph'
@@ -12,6 +11,9 @@ import {
   GetStatisticsRequest,
   GetStatisticsResponse,
 } from 'mami-interface/mami-generated-client/nina-api-grpc/github_contribution_pb'
+import { SubTitle, Title } from '../../atoms/Title'
+import { Typography } from '@material-ui/core'
+import styles from './Contribution.module.scss'
 
 export const Contribution = () => {
   const initDatePeriod = getInitDatePeriod()
@@ -62,18 +64,21 @@ export const Contribution = () => {
     ,[datePeriod, statistics])
 
   return (
+    // TODO templateに移す
     <Container>
+      <Title title='Github Contribution' />
+      <Typography variant='body2'>ningenMeのgithubのcontribution</Typography>
       {/*TODO cssを当てる*/}
       <PageNation
         centerText={getFormatDate(datePeriod.startDate) + " ~ " + getFormatDate(datePeriod.endDate)}
         datePeriod={datePeriod}
         setDatePeriod={setDatePeriod}
       />
-      <CustomTitle title='Create PullRequest' />
+      <SubTitle title='Create PullRequest' />
       <Graph list={filteredCreatedPullRequestList} />
-      <CustomTitle title='Give Approve' />
+      <SubTitle title='Give Approve' />
       <Graph list={filteredApprovedList} />
-      <CustomTitle title='Give Comment' />
+      <SubTitle title='Give Comment' />
       <Graph list={filteredCommentedList} />
     </Container>
   )
@@ -96,15 +101,15 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
     })
   }
   return (
-    <div>
-      <IconButton color='primary' onClick={leftClick}>
+    <div className={styles.wrapper}>
+      <IconButton onClick={leftClick} className={styles.button}>
         prev
         <ArrowLeftIcon fontSize='large' />
       </IconButton>
-      <Button variant='outlined' color='primary' size='large' >
+      <span className={styles.periodBox}>
         {centerText}
-      </Button>
-      <IconButton color='primary' onClick={rightClick}>
+      </span>
+      <IconButton onClick={rightClick} className={styles.button}>
         <ArrowRightIcon fontSize='large' />
         next
       </IconButton>

@@ -1,6 +1,6 @@
 import { Container } from '@mui/material'
 import { Typography } from '@material-ui/core'
-import { Title } from '../../atoms/home/Title'
+import { Title } from '../../atoms/Title'
 import React from 'react'
 import { TASK_LIST } from '../../../constants/taskList'
 import { CustomLinkCard } from '../CustomCard'

@@ -1,5 +1,5 @@
 import { Container } from '@mui/material'
-import { Title } from '../../atoms/home/Title'
+import { Title } from '../../atoms/Title'
 import React, { useEffect, useState } from 'react'
 import styles from './System.module.scss'
 import { CustomNormalCard } from '../CustomCard'

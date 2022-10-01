@@ -9,3 +9,13 @@ export const Title = ({ title }: { title: string }) => {
     </div>
   )
 }
+
+export const SubTitle = ({ title }: { title: string }) => {
+  return (
+    <div className={styles.wrapper}>
+      <span className={styles.subtitle}>
+        {title}
+      </span>
+    </div>
+  )
+}

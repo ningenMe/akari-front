@@ -1,6 +1,6 @@
 import { CREATION_LIST } from '../../../constants/creationList'
 import React from 'react'
-import { Title } from '../../atoms/home/Title'
+import { Title } from '../../atoms/Title'
 import styles from './Creation.module.scss'
 import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
