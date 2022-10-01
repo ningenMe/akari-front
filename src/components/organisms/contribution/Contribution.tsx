@@ -109,7 +109,6 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
   return (
     <div className={styles.wrapper}>
       <span onClick={leftClick} className={styles.button}>
-        prev
         <ArrowLeftIcon fontSize='large' />
       </span>
       <span className={styles.periodBox}>
@@ -117,7 +116,6 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
       </span>
       <span onClick={rightClick} className={styles.button}>
         <ArrowRightIcon fontSize='large' />
-        next
       </span>
     </div>
   )
