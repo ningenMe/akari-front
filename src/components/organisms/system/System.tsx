@@ -8,7 +8,8 @@ import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { HostConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 
-const useNinaApiHealth = ():string => {
+export const System = () => {
+
   const [message, setMessage] = useState < string>('')
 
   useEffect(() => {
@@ -18,12 +19,8 @@ const useNinaApiHealth = ():string => {
         console.log(err)
         setMessage('not found')
       })
-  }, [message])
+  }, [])
 
-  return message
-}
-
-export const System = () => {
   const ninaApiCard = () => (
     <CustomNormalCard>
       <div>
@@ -31,7 +28,7 @@ export const System = () => {
           {HostConst.NINA_ENVOY_API}
         </h5>
         <p className={fontStyles.body}>
-          healthcheck: {useNinaApiHealth()}
+          healthcheck: {message}
         </p>
       </div>
     </CustomNormalCard>)

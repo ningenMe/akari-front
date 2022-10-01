@@ -112,7 +112,7 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
   )
 }
 
-const average = (list: ContributionSum[]): Number => {
+const average = (list: ContributionSum[]): number => {
   if (!list?.length) {
     return 0
   }
@@ -122,7 +122,7 @@ const average = (list: ContributionSum[]): Number => {
   )
   return enumerator / numerator
 }
-const sum = (list: ContributionSum[]): Number => {
+const sum = (list: ContributionSum[]): number => {
   return  list.map(e => e.getSum()).reduce(
     (prev, curr) => prev + curr, 0
   )
