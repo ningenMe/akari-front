@@ -2857,8 +2857,8 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 "mami-interface@https://github.com/ningenMe/mami-interface.git#master":
-  version "0.1.0"
-  resolved "https://github.com/ningenMe/mami-interface.git#85a5fef9b302239ea09c49cf702420274fe0d4d3"
+  version "0.2.0"
+  resolved "https://github.com/ningenMe/mami-interface.git#a74253eca1e902450e5d0d72f5d7c3f22d3a4c54"
   dependencies:
     ts-protoc-gen "^0.15.0"
 
