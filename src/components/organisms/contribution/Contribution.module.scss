@@ -7,8 +7,7 @@
   box-shadow: 2px 2px 6px rgba(0,0,0,.4);
 
   background-color: transparent;
-  border: 1px solid #003dff;
-  color: #003dff !important;
+  color: #000000 !important;
 }
 .wrapper {
   margin: 30px 10px 30px 10px;
@@ -18,7 +17,17 @@
   margin: 30px 10px 30px 10px;
 }
 .button {
-  color: #003dff !important;
+  color: #0066af !important;
+  position:relative;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,.4);
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid #003dff;
+    color: #003dff !important;
+  }
 }
 .accumulation {
   margin: 5px 10px 5px 10px;

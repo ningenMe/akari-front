@@ -1,4 +1,4 @@
-import { Container, IconButton } from '@mui/material'
+import { Container } from '@mui/material'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ninaApiGithubContributionClient } from '../../../repository/NinaApiRepository'
 import { Graph } from './Graph'
@@ -108,17 +108,17 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
   }
   return (
     <div className={styles.wrapper}>
-      <IconButton onClick={leftClick} className={styles.button}>
+      <span onClick={leftClick} className={styles.button}>
         prev
         <ArrowLeftIcon fontSize='large' />
-      </IconButton>
+      </span>
       <span className={styles.periodBox}>
         {centerText}
       </span>
-      <IconButton onClick={rightClick} className={styles.button}>
+      <span onClick={rightClick} className={styles.button}>
         <ArrowRightIcon fontSize='large' />
         next
-      </IconButton>
+      </span>
     </div>
   )
 }
