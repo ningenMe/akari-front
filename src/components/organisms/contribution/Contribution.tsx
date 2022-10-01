@@ -1,18 +1,34 @@
 import { Button, Container, IconButton } from '@mui/material'
 import { Title as CustomTitle } from '../../atoms/home/Title'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { useNinaApiGetStatistics } from '../../../repository/NinaApiRepository'
+import { ninaApiGithubContributionClient } from '../../../repository/NinaApiRepository'
 import { Graph } from './Graph'
 import { DatePeriod, getEndDate, getFormatDate, getInitDatePeriod } from './DatePeriod'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import dayjs from 'dayjs'
-
-const initDatePeriod = getInitDatePeriod()
+import {
+  ContributionSum,
+  GetStatisticsRequest,
+  GetStatisticsResponse,
+} from 'mami-interface/mami-generated-client/nina-api-grpc/github_contribution_pb'
 
 export const Contribution = () => {
+  const initDatePeriod = getInitDatePeriod()
 
-  const statistics = useNinaApiGetStatistics()
+  const [statistics, setStatistics] = useState < GetStatisticsResponse | undefined>()
+
+  useEffect(() => {
+    const request = new GetStatisticsRequest()
+    request.setUser("ningenMe")
+
+    ninaApiGithubContributionClient.getStatistics(request, null)
+      .then(res => setStatistics(res))
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
   const createdPullRequestList = statistics?.getCreatedpullrequeststatistics()?.getContributionsumlistList() ?? []
   const approvedList = statistics?.getApprovedstatistics()?.getContributionsumlistList() ?? []
   const commentedList = statistics?.getCommentedstatistics()?.getContributionsumlistList() ?? []
@@ -43,10 +59,11 @@ export const Contribution = () => {
         })
       )
     }
-    ,[datePeriod, statistics])
+    ,[datePeriod])
 
   return (
     <Container>
+      {/*TODO cssを当てる*/}
       <PageNation
         centerText={getFormatDate(datePeriod.startDate) + " ~ " + getFormatDate(datePeriod.endDate)}
         datePeriod={datePeriod}
@@ -92,5 +109,21 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
         next
       </IconButton>
     </div>
+  )
+}
+
+const average = (list: ContributionSum[]): Number => {
+  if (!list?.length) {
+    return 0
+  }
+  const numerator = list.length
+  const enumerator = list.map(e => e.getSum()).reduce(
+    (prev, curr) => prev + curr, 0
+  )
+  return enumerator / numerator
+}
+const sum = (list: ContributionSum[]): Number => {
+  return  list.map(e => e.getSum()).reduce(
+    (prev, curr) => prev + curr, 0
   )
 }
