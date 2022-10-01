@@ -14,21 +14,16 @@ import {
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, BarElement, BarController);
 
-export const Graph = ({ list, startDate, endDate }: { list: ContributionSum[], startDate: Date, endDate: Date }) => {
-
-  const filteredList = list.filter(e => {
-    const targetDate = new Date(e.getDate())
-    return startDate <= targetDate && targetDate <= endDate
-  })
+export const Graph = ({ list }: { list: ContributionSum[] }) => {
 
   const data = {
     // x 軸のラベル
-    labels: filteredList.map(e => e.getDate()),
+    labels: list.map(e => e.getDate()),
     datasets: [
       {
         label: 'TODO さまりー',
         // データの値
-        data: filteredList.map(e => e.getSum()),
+        data: list.map(e => e.getSum()),
         // グラフの背景色
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
