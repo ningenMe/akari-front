@@ -14,7 +14,7 @@ import {
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, BarElement, BarController);
 
-export const Graph = ({ list }: { list: ContributionSum[] }) => {
+export const Graph = ({ list, yMax }: { list: ContributionSum[], yMax: number }) => {
 
   const data = {
     // x 軸のラベル
@@ -39,7 +39,15 @@ export const Graph = ({ list }: { list: ContributionSum[] }) => {
       },
     ],
   };
+  const options = {
+    scales : {
+      y: {
+        suggestedMin: 0,
+        suggestedMax: yMax
+      }
+    }
+  }
   return (
-    <Chart type='bar' data={data} />
+    <Chart type='bar' data={data} options={options} />
   );
 }

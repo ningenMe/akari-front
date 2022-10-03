@@ -74,18 +74,18 @@ export const Contribution = () => {
         datePeriod={datePeriod}
         setDatePeriod={setDatePeriod}
       />
-      <StatusModule title='Create PullRequest' list={filteredCreatedPullRequestList} />
-      <StatusModule title='Give Approve' list={filteredApprovedList} />
-      <StatusModule title='Give Comment' list={filteredCommentedList} />
+      <StatusModule title='Create PullRequest' list={filteredCreatedPullRequestList} yMax={50} />
+      <StatusModule title='Give Approve' list={filteredApprovedList} yMax={60} />
+      <StatusModule title='Give Comment' list={filteredCommentedList} yMax={250} />
     </Container>
   )
 }
-const StatusModule = ({ title,list }: { title: string, list: ContributionSum[] }) => {
+const StatusModule = ({ title,list,yMax }: { title: string, list: ContributionSum[], yMax: number }) => {
   return (
     <div className={styles.statusTitle}>
       <SubTitle title={title} />
       <Accumulation list={list} />
-      <Graph list={list} />
+      <Graph list={list} yMax={yMax} />
     </div>
   )
 }
