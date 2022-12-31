@@ -4,7 +4,7 @@ import { UrlConst } from './Const'
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
     year: 2022,
-    body: 'LINE KYOTO Meetup 発表「出前館 マイクロサービスにおける加盟店管理画面のBFFアーキテクチャ」',
+    body: 'LINE KYOTO Meetup「出前館 マイクロサービスにおける加盟店管理画面のBFFアーキテクチャ」',
     href: UrlConst.LINE_KYOTO_MEETUP_20221027,
   },
   {
