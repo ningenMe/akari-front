@@ -39,6 +39,7 @@ export class UrlConst {
   static readonly WORK: string = 'https://indies.mangabox.me/amp/author/10633/'
   static readonly OUPC_2020: string = 'https://onlinejudge.u-aizu.ac.jp/beta/room.html#OUPC2020/info'
   static readonly YUKICODER_NINGENME: string = 'https://yukicoder.me/contests/241'
+  static readonly LINE_KYOTO_MEETUP_20221027: string = 'https://line.connpass.com/event/262391/'
 }
 
 export class LinkConst {
