@@ -3,13 +3,18 @@ import { UrlConst } from './Const'
 
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
+    year: 2022,
+    body: 'LINE KYOTO Meetup「出前館 マイクロサービスにおける加盟店管理画面のBFFアーキテクチャ」',
+    href: UrlConst.LINE_KYOTO_MEETUP_20221027,
+  },
+  {
     year: 2021,
     body: '応用情報技術者試験合格',
     href: null,
   },
   {
     year: 2021,
-    body: 'Google Code jam　Round2 進出',
+    body: 'Google Code jam Round2 進出',
     href: null,
   },
   {
@@ -19,7 +24,7 @@ export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   },
   {
     year: 2020,
-    body: 'Google Code jam　Round2 進出',
+    body: 'Google Code jam Round2 進出',
     href: null,
   },
   {
