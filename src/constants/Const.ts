@@ -9,6 +9,7 @@ export class PathConst {
   static readonly DIARIES: string = '/diaries'
   static readonly CONTRIBUTION: string = '/contribution'
   static readonly COMPRO_CATEGORY_CATEGORY: string = '/compro-category/category'
+  static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = '/compro-category/category/manage'
   static readonly SYSTEM: string = '/system'
 }
 

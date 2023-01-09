@@ -2863,7 +2863,7 @@ lru-cache@^6.0.0:
 
 "mami-interface@https://github.com/ningenMe/mami-interface.git#master":
   version "0.3.0"
-  resolved "https://github.com/ningenMe/mami-interface.git#86483f54bdc070e5edf74eef83b79825a4d28339"
+  resolved "https://github.com/ningenMe/mami-interface.git#7bc2bfdd67ec6360e7d40697a3deda796baf53ce"
   dependencies:
     ts-protoc-gen "^0.15.0"
 

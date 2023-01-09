@@ -35,6 +35,7 @@ export const ComproCategory = () => {
   return (
     <Container>
       <Title title='ComproCategory' />
+
       {/* TODO ここの説明文にcssを当てる */}
       <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴</Typography>
       <div className={styles.grid}>
