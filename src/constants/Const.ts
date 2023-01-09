@@ -57,6 +57,7 @@ export class LinkConst {
   static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'Ameba' }
   static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'Qiita' }
   static readonly ZENN: Link = { href: UrlConst.ZENN, name: 'Zenn'}
+  static readonly COMPRO_CATEGORY: Link = { href: PathConst.COMPRO_CATEGORY_CATEGORY, name: 'compro-category' }
   static readonly DIARIES: Link = { href: PathConst.DIARIES, name: '今日のITドカタ' }
   static readonly BLOGS_GRAPHS: Link = { href: PathConst.BLOGS_GRAPHS, name: 'blogの投稿数グラフ'}
   static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.TOKI, LinkConst.CSACADEMY] as const

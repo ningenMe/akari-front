@@ -1,9 +1,23 @@
-import { Navbar } from 'react-bootstrap'
 import styles from './Footer.module.scss'
-export const Footer = () => {
+import { AppBar } from '@mui/material'
+
+const Copy = () => {
   return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
-      <span className={styles.text}>&copy; 2022 Furuta Taishi</span>
-    </Navbar>
+    <span className={styles.text}>&copy; 2023 Furuta Taishi</span>
+  )
+}
+
+export const NingenmeNetFooter = () => {
+  return (
+    <AppBar position='static' className={styles.ningenmeNetAppbar}>
+      <Copy />
+    </AppBar>
+  )
+}
+export const ComproCategoryFooter = () => {
+  return (
+    <AppBar position='static' className={styles.comproCategoryAppbar}>
+      <Copy />
+    </AppBar>
   )
 }

@@ -56,7 +56,7 @@ const DropdownElement = ({ title, links, className, icon}: { title: string, link
   );
 }
 
-export const Header = () => {
+export const NingenmeNetHeader = () => {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const onOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -67,7 +67,7 @@ export const Header = () => {
   };
 
   return (
-    <AppBar position="static" className={styles.appbar}>
+    <AppBar position="static" className={styles.ningenmeNetAppbar}>
       <Toolbar disableGutters>
         <a href={LinkConst.NINGENME_NET.href} className={styles.brand}>
           {LinkConst.NINGENME_NET.name}
@@ -75,6 +75,7 @@ export const Header = () => {
 
         {/*pc*/}
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          {/* pc/sp 両方編集すること */}
           <NormalElement link={LinkConst.GITHUB} className={styles.buttonPc} icon={<GitHubIcon />} />
           <NormalElement link={LinkConst.TWITTER} className={styles.buttonPc} icon={<TwitterIcon />} />
           <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonPc} icon={<ComputerIcon />}/>
@@ -105,10 +106,72 @@ export const Header = () => {
             onClose={onClose}
             sx={{ display: { xs: 'block', md: 'none' }, }}
           >
+            {/* pc/sp 両方編集すること */}
             <NormalElement link={LinkConst.GITHUB} className={styles.buttonSp} icon={<GitHubIcon />} />
             <NormalElement link={LinkConst.TWITTER} className={styles.buttonSp} icon={<TwitterIcon />} />
             <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonSp} icon={<ComputerIcon />}/>
             <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonSp} icon={<ArticleIcon />}/>
+          </Menu>
+        </Box>
+
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export const ComproCategoryHeader = () => {
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const onOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const onClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <AppBar position="static" className={styles.comproCategoryAppbar}>
+      <Toolbar disableGutters>
+        <a href={LinkConst.COMPRO_CATEGORY.href} className={styles.brand}>
+          {LinkConst.COMPRO_CATEGORY.name}
+        </a>
+
+        {/*pc*/}
+        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          {/* pc/sp 両方編集すること */}
+          <NormalElement link={LinkConst.GITHUB} className={styles.buttonPc} icon={<GitHubIcon />} />
+          <NormalElement link={LinkConst.TWITTER} className={styles.buttonPc} icon={<TwitterIcon />} />
+          <NormalElement link={LinkConst.NINGENME_NET} className={styles.buttonPc} icon={<></>} />
+        </Box>
+
+        {/*sp*/}
+        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <IconButton
+            aria-haspopup="true"
+            onClick={onOpen}
+            color="inherit"
+            className={styles.hamburger}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorEl)}
+            onClose={onClose}
+            sx={{ display: { xs: 'block', md: 'none' }, }}
+          >
+            {/* pc/sp 両方編集すること */}
+            <NormalElement link={LinkConst.GITHUB} className={styles.buttonSp} icon={<GitHubIcon />} />
+            <NormalElement link={LinkConst.TWITTER} className={styles.buttonSp} icon={<TwitterIcon />} />
+            <NormalElement link={LinkConst.NINGENME_NET} className={styles.buttonSp} icon={<></>} />
           </Menu>
         </Box>
 

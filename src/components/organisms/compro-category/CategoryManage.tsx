@@ -7,9 +7,8 @@ import { ninaApiComproCategoryClient } from 'repository/NinaApiRepository'
 import { GetCategoryResponse } from 'mami-interface/mami-generated-client/nina-api-grpc/compro_category_pb'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { PathConst } from 'constants/Const'
-import { ManageButton } from 'components/atoms/compro-category/ManageButton'
 
-export const ComproCategory = () => {
+export const CategoryManage = () => {
 
   const [categoryResponse, setCategoryResponse] = useState < GetCategoryResponse | undefined>()
 
@@ -25,7 +24,7 @@ export const ComproCategory = () => {
   const cardList = categoryResponse?.getCategorylistList().map((category) =>
     <CustomLinkCard href={PathConst.COMPRO_CATEGORY_CATEGORY + '/' + category.getCategorysystemname()} key={category.getCategorysystemname()}>
       <h5 className={styles.title}>
-        {category.getCategorydisplayname()}
+        {category.getCategorydisplayname()}:{category.getCategorysystemname()}
       </h5>
     </CustomLinkCard>
   )
@@ -33,9 +32,7 @@ export const ComproCategory = () => {
   return (
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴</Typography>
-
-      <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} />
+      <Typography variant='body2'>管理</Typography>
 
       <div className={styles.grid}>
         {cardList}

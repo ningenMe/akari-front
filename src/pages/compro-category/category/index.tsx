@@ -1,15 +1,15 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
-import { Footer } from 'components/organisms/Footer'
-import { Header } from 'components/organisms/Header'
+import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategory } from 'components/organisms/compro-category/ComproCategory'
+import { ComproCategoryHeader } from '../../../components/organisms/Header'
 
 export const Index = () => {
   return (
     <>
       <HtmlHead title='compro-category - ' />
-      <Header />
+      <ComproCategoryHeader />
       <ComproCategory />
-      <Footer />
+      <ComproCategoryFooter />
     </>
   )
 }
