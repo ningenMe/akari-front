@@ -13,6 +13,7 @@
 ローカルで動かすとき
 ```sh
 yarn install
+yarn upgrade mami-interface
 yarn next dev
 ```
 

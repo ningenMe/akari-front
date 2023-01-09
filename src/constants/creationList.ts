@@ -21,17 +21,23 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     isDone: true
   },
   {
-    href: PathConst.BLOG,
-    title: 'blog',
-    body: 'ブログ。webか競プロか漫画かアニメか私事の話。',
-    isDone: false
+    href: PathConst.COMPRO_CATEGORY_CATEGORY,
+    title: 'compro-category',
+    body: '開発中...',
+    isDone: true
   },
-  {
-    href: UrlConst.WORK,
-    title: 'work',
-    body: '描いた漫画一覧。大学時代に漫研で活動していました。',
-    isDone: false
-  },
+  // {
+  //   href: PathConst.BLOG,
+  //   title: 'blog',
+  //   body: 'ブログ。webか競プロか漫画かアニメか私事の話。',
+  //   isDone: false
+  // },
+  // {
+  //   href: UrlConst.WORK,
+  //   title: 'work',
+  //   body: '描いた漫画一覧。大学時代に漫研で活動していました。',
+  //   isDone: false
+  // },
   {
     href: PathConst.SYSTEM,
     title: 'system',
