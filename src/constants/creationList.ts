@@ -21,7 +21,7 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     isDone: true
   },
   {
-    href: PathConst.COMPRO_CATEGORY_CATEGORY,
+    href: PathConst.COMPRO_CATEGORY,
     title: 'compro-category',
     body: '開発中...',
     isDone: true

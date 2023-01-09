@@ -7,7 +7,7 @@ import { ninaApiComproCategoryClient } from 'repository/NinaApiRepository'
 import { GetCategoryResponse } from 'mami-interface/mami-generated-client/nina-api-grpc/compro_category_pb'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { PathConst } from 'constants/Const'
-import { ManageButton } from 'components/atoms/compro-category/ManageButton'
+import { ManageButton } from 'components/atoms/compro-category/Button'
 
 export const ComproCategory = () => {
 
@@ -23,7 +23,7 @@ export const ComproCategory = () => {
   }, [])
 
   const cardList = categoryResponse?.getCategorylistList().map((category) =>
-    <CustomLinkCard href={PathConst.COMPRO_CATEGORY_CATEGORY + '/' + category.getCategorysystemname()} key={category.getCategorysystemname()}>
+    <CustomLinkCard href={PathConst.COMPRO_CATEGORY + '/' + category.getCategorysystemname()} key={category.getCategoryid()}>
       <h5 className={styles.title}>
         {category.getCategorydisplayname()}
       </h5>

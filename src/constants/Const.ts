@@ -8,7 +8,7 @@ export class PathConst {
   static readonly BLOGS_GRAPHS: string = '/blogs/graphs'
   static readonly DIARIES: string = '/diaries'
   static readonly CONTRIBUTION: string = '/contribution'
-  static readonly COMPRO_CATEGORY_CATEGORY: string = '/compro-category/category'
+  static readonly COMPRO_CATEGORY: string = '/compro-category'
   static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = '/compro-category/category/manage'
   static readonly SYSTEM: string = '/system'
 }
@@ -57,7 +57,7 @@ export class LinkConst {
   static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'Ameba' }
   static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'Qiita' }
   static readonly ZENN: Link = { href: UrlConst.ZENN, name: 'Zenn'}
-  static readonly COMPRO_CATEGORY: Link = { href: PathConst.COMPRO_CATEGORY_CATEGORY, name: 'compro-category' }
+  static readonly COMPRO_CATEGORY: Link = { href: PathConst.COMPRO_CATEGORY, name: 'compro-category' }
   static readonly DIARIES: Link = { href: PathConst.DIARIES, name: '今日のITドカタ' }
   static readonly BLOGS_GRAPHS: Link = { href: PathConst.BLOGS_GRAPHS, name: 'blogの投稿数グラフ'}
   static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.TOKI, LinkConst.CSACADEMY] as const

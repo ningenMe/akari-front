@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+.buttongrid {
+  display: flex;
+}
+
+.title {
+  text-align: center;
+}
+
+.body {
+  text-align: center;
+}
+.wrapper {
+  margin: 10px;
+}
+.idtextfield {
+  @extend .wrapper;
+  background-color: #c6d7c6;
+}
+.textfield {
+  @extend .wrapper
+}

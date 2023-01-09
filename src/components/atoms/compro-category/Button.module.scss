@@ -18,6 +18,27 @@
     color: #000a28 !important;
   }
 }
+.manageButtonBody {
+  @extend .body;
+  background-color: #eefcee;
+  &:hover {
+    background-color: #c6d7c6;
+  }
+}
+.upsertButtonBody {
+  @extend .body;
+  background-color: #ffe27b;
+  &:hover {
+    background-color: #c2a75e;
+  }
+}
+.deleteButtonBody {
+  @extend .body;
+  background-color: #ff3232;
+  &:hover {
+    background-color: #c02525;
+  }
+}
 .href {
   display: block;
   position: absolute;
