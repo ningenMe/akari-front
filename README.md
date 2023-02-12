@@ -1,6 +1,6 @@
-# net-front
-[![ci](https://github.com/ningenMe/net-front/actions/workflows/ci.yml/badge.svg)](https://github.com/ningenMe/net-front/actions/workflows/ci.yml)
-[![deploy](https://github.com/ningenMe/net-front/actions/workflows/deploy.yml/badge.svg)](https://github.com/ningenMe/net-front/actions/workflows/deploy.yml)
+# akari-front
+[![ci](https://github.com/ningenMe/akari-front/actions/workflows/ci.yml/badge.svg)](https://github.com/ningenMe/akari-front/actions/workflows/ci.yml)
+[![deploy](https://github.com/ningenMe/akari-front/actions/workflows/deploy.yml/badge.svg)](https://github.com/ningenMe/akari-front/actions/workflows/deploy.yml)
 
 趣味開発のフロントエンド。
 
@@ -18,13 +18,11 @@ yarn next dev
 ```
 
 ## architecture
-[system diagrms](https://ningenme.net/systems)
-
 
 |             |                                 |
 | ----------- | ------------------------------- |
-| routing     | CloudFront + auto load balancer |
-| hosting     | ecs                             |
+| routing     | CloudFront + k8s                |
+| hosting     | ec2                             |
 | ci/cd       | github actions, aws codedeploy  |
 | application | Next.js + TypeScript            |
 
@@ -32,7 +30,8 @@ yarn next dev
 
 | version  | repository                                                                   | architecture               |
 | -------- | ---------------------------------------------------------------------------- | -------------------------- |
-| v4(this) | [net-front](https://github.com/ningenMe/net-front)                           | Next.js + TypeScript + ECS |
+| v5(this) | [akari-front](https://github.com/ningenMe/akari-front)                       | Next.js + TypeScript + K8S |
+| v4       | [net-front](https://github.com/ningenMe/net-front) (renamed to akari-front)  | Next.js + TypeScript + ECS |
 | v3       | [ningenme-net-front](https://github.com/ningenMe/ningenme-net-front)         | react + s3                 |
 | v2       | [ningenMe.net.UI](https://github.com/ningenMe/ningenMe.net.UI)               | vue + s3                   |
 | v1       | [old-ningenme-net-front](https://github.com/ningenMe/old-ningenme-net-front) | html + github pages        |

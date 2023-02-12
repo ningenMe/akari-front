@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       aws-region: ${{ steps.constant.outputs.aws-region }}
-      aws-ecr-repository: net-front-repository
+      aws-ecr-repository: akari-front-repository
     steps:
       - id: checkout
         name: checkout

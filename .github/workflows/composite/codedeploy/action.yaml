@@ -32,16 +32,16 @@ runs:
     - id: appspec-s3-upload
       name: appspec s3 upload
       run: |
-        zip -r net-front.zip codedeploy
-        aws s3 cp net-front.zip s3://${{inputs.aws-s3-bucket}}/
+        zip -r akari-front.zip codedeploy
+        aws s3 cp akari-front.zip s3://${{inputs.aws-s3-bucket}}/
       shell: bash
     - id: codedeploy
       name: codedeploy
       run: |
         aws deploy create-deployment \
-          --application-name net-front-codedeploy-app \
-          --deployment-group-name net-front-deployment-group \
-          --s3-location bucket=${{inputs.aws-s3-bucket}},key=net-front.zip,bundleType=zip \
-          --deployment-config-name net-front-deployment-config \
+          --application-name akari-front-codedeploy-app \
+          --deployment-group-name akari-front-deployment-group \
+          --s3-location bucket=${{inputs.aws-s3-bucket}},key=akari-front.zip,bundleType=zip \
+          --deployment-config-name akari-front-deployment-config \
           --region ${{inputs.aws-region}}
       shell: bash
