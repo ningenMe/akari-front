@@ -17,7 +17,7 @@ export class PathConst {
 export class HostConst {
   static readonly NINGENME_NET: string = 'ningenme.net'
   static readonly NINA_API: string = 'nina-api.ningenme.net'
-  static readonly NINA_ENVOY: string = 'nina-envoy-api.ningenme.net'
+  static readonly NINA_ENVOY: string = 'nina-envoy.ningenme.net'
   static readonly ZEUS_API: string = 'zeus-api.ningenme.net'
 }
 
