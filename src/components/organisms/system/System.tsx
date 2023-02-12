@@ -25,7 +25,7 @@ export const System = () => {
     <CustomNormalCard>
       <div>
         <h5 className={styles.title}>
-          {HostConst.NINA_ENVOY_API}
+          {HostConst.NINA_ENVOY}
         </h5>
         <p className={fontStyles.body}>
           healthcheck: {message}

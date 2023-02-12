@@ -17,14 +17,14 @@ export class PathConst {
 export class HostConst {
   static readonly NINGENME_NET: string = 'ningenme.net'
   static readonly NINA_API: string = 'nina-api.ningenme.net'
-  static readonly NINA_ENVOY_API: string = 'nina-envoy-api.ningenme.net'
+  static readonly NINA_ENVOY: string = 'nina-envoy-api.ningenme.net'
   static readonly ZEUS_API: string = 'zeus-api.ningenme.net'
 }
 
 export class UrlConst {
   static readonly NINGENME_NET: string = 'https://' + HostConst.NINGENME_NET
   static readonly NINA_API: string = 'https://' + HostConst.NINA_API
-  static readonly NINA_ENVOY_API: string = 'https://' + HostConst.NINA_ENVOY_API
+  static readonly NINA_ENVOY: string = 'https://' + HostConst.NINA_ENVOY
   static readonly ZEUS_API: string = 'https://' + HostConst.ZEUS_API
   static readonly GITHUB: string = 'https://github.com/ningenMe'
   static readonly TWITTER: string = 'https://twitter.com/ningenMe'
