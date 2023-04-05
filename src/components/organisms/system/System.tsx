@@ -7,37 +7,52 @@ import { ninaApiHealthClient } from '../../../repository/NinaApiRepository'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { HostConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
+import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
 
 export const System = () => {
 
-  const [message, setMessage] = useState < string>('')
+  const [ninaApiHealth, setNinaApiHealth] = useState('')
+  const [kiwaApiHealth, setKiwaApiHealth] = useState('')
 
   useEffect(() => {
     ninaApiHealthClient.get(new Empty(), null)
-      .then(res => setMessage(res.getMessage()))
+      .then(res => setNinaApiHealth(res.getMessage()))
       .catch(err => {
         console.log(err)
-        setMessage('not found')
+        setNinaApiHealth('not found')
+      })
+    kiwaApiHealthcheckClient.healthGet()
+      .then(res => setKiwaApiHealth(res.data.message))
+      .catch(err => {
+        console.log(err)
+        setKiwaApiHealth('not found')
       })
   }, [])
-
-  const ninaApiCard = () => (
-    <CustomNormalCard>
-      <div>
-        <h5 className={styles.title}>
-          {HostConst.NINA_ENVOY}
-        </h5>
-        <p className={fontStyles.body}>
-          healthcheck: {message}
-        </p>
-      </div>
-    </CustomNormalCard>)
 
   return (
     <Container>
       <Title title='API Health Check Page' />
       <div className={styles.grid}>
-        {ninaApiCard()}
+        <CustomNormalCard>
+          <div>
+            <h5 className={styles.title}>
+              {HostConst.NINA_ENVOY}
+            </h5>
+            <p className={fontStyles.body}>
+              healthcheck: {ninaApiHealth}
+            </p>
+          </div>
+        </CustomNormalCard>
+        <CustomNormalCard>
+          <div>
+            <h5 className={styles.title}>
+              {HostConst.KIWA_API}
+            </h5>
+            <p className={fontStyles.body}>
+              healthcheck: {kiwaApiHealth}
+            </p>
+          </div>
+        </CustomNormalCard>
       </div>
     </Container>
   )
