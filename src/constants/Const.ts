@@ -43,7 +43,9 @@ export class UrlConst {
   static readonly WORK: string = 'https://indies.mangabox.me/amp/author/10633/'
   static readonly OUPC_2020: string = 'https://onlinejudge.u-aizu.ac.jp/beta/room.html#OUPC2020/info'
   static readonly YUKICODER_NINGENME: string = 'https://yukicoder.me/contests/241'
-  static readonly LINE_KYOTO_MEETUP_20221027: string = 'https://line.connpass.com/event/262391/'
+  static readonly LINE_KYOTO_MEETUP_20221027: string = 'https://logmi.jp/tech/articles/328130'
+  static readonly LINE_INTERNSHIP_2022: string = 'https://engineering.linecorp.com/ja/blog/internship-2022-hackathon-report'
+  static readonly LINE_KYOTO_MEETUP_20230316: string = 'https://line.connpass.com/event/275745/'
 }
 
 export class LinkConst {

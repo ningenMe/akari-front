@@ -3,9 +3,19 @@ import { UrlConst } from './Const'
 
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
+    year: 2023,
+    body: 'LINE KYOTO Meetup「Spring Securityを使った認証認可」',
+    href: UrlConst.LINE_KYOTO_MEETUP_20230316,
+  },
+  {
     year: 2022,
     body: 'LINE KYOTO Meetup「出前館 マイクロサービスにおける加盟店管理画面のBFFアーキテクチャ」',
     href: UrlConst.LINE_KYOTO_MEETUP_20221027,
+  },
+  {
+    year: 2022,
+    body: '2022 LINEインターンシップ メンター',
+    href: UrlConst.LINE_INTERNSHIP_2022,
   },
   {
     year: 2021,
