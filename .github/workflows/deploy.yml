@@ -45,7 +45,7 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v3.5.0
-      - id: kick deploy
+      - id: kick-deploy
         name: kick deploy
         run: |
           TOKEN=${{ secrets.DEPLOY_TOKEN }}
