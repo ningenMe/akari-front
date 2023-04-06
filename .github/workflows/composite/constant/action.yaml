@@ -8,5 +8,5 @@ runs:
   steps:
     - id: constant
       run: |
-        echo "::set-output name=aws-region::ap-northeast-1"
+        echo "aws-region=ap-northeast-1" >> $GITHUB_OUTPUT
       shell: bash
