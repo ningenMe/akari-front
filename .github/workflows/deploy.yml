@@ -38,38 +38,17 @@ jobs:
           aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
           aws-ecr-repository: ${{ needs.constant.outputs.aws-ecr-repository }}
 
-#  deploy:
-#    needs: build-and-ecr-push
-#    runs-on: ubuntu-latest
-#    env:
-#      AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-#      AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#      AWS_REGION: ${{ secrets.AWS_REGION }}
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Configure AWS Credentials
-#        uses: aws-actions/configure-aws-credentials@v1
-#        with:
-#          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-#          aws-region: ${{ env.AWS_REGION }}
-#
-#      - name: Download task definition
-#        run: |
-#          aws ecs describe-task-definition --task-definition net-front --query taskDefinition > task-definition.json
-#
-#      - name: Deploy to Amazon ECS
-#        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-#        with:
-#          task-definition: task-definition.json
-#          service: net-front-ecs-service
-#          cluster: ningenme-cluster
-#          wait-for-service-stability: true
-#          codedeploy-appspec: appspec.yaml
-#          codedeploy-application: net-front-codedeploy-app
-#          codedeploy-deployment-group: net-front-deployment-group
-#
+  reusable-deploy:
+    needs: [ build-and-push-image, constant ]
+    permissions:
+      id-token: write
+      contents: read
+    uses: ningenMe/chiyuki-k8s-config/.github/workflows/reusable-deploy.yaml@main
+    with:
+      application-name: akari-front
+      aws-region: ${{ needs.constant.outputs.aws-region }}
+    secrets: inherit
+
 #  application-meta-push:
 #    needs: deploy
 #    runs-on: ubuntu-latest
