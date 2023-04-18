@@ -41,7 +41,7 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
   {
     href: PathConst.SYSTEM,
     title: 'system',
-    body: 'システム詳細。',
+    body: 'システム管理ページ。',
     isDone: true
   },
   // {

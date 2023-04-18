@@ -10,6 +10,7 @@ export class PathConst {
   static readonly CONTRIBUTION: string = '/contribution'
   static readonly COMPRO_CATEGORY: string = '/compro-category'
   static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = '/compro-category/category/manage'
+  static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'
 }
 

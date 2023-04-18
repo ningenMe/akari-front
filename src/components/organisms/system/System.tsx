@@ -2,10 +2,10 @@ import { Container } from '@mui/material'
 import { Title } from '../../atoms/Title'
 import React, { useEffect, useState } from 'react'
 import styles from './System.module.scss'
-import { CustomNormalCard } from '../CustomCard'
+import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 import { ninaApiHealthClient } from '../../../repository/NinaApiRepository'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
-import { HostConst } from '../../../constants/Const'
+import { HostConst, PathConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
 
@@ -21,7 +21,7 @@ export const System = () => {
         console.log(err)
         setNinaApiHealth('not found')
       })
-    kiwaApiHealthcheckClient.healthGet()
+    kiwaApiHealthcheckClient.healthcheckGet()
       .then(res => setKiwaApiHealth(res.data.message))
       .catch(err => {
         console.log(err)
@@ -31,7 +31,7 @@ export const System = () => {
 
   return (
     <Container>
-      <Title title='API Health Check Page' />
+      <Title title='システム管理ページ' />
       <div className={styles.grid}>
         <CustomNormalCard>
           <div>
@@ -53,6 +53,14 @@ export const System = () => {
             </p>
           </div>
         </CustomNormalCard>
+        <CustomLinkCard href={PathConst.USER_LOGIN} >
+          <h5 className={styles.title}>
+            ログイン
+          </h5>
+          <p className={fontStyles.body}>
+            ログイン機能
+          </p>
+        </CustomLinkCard>
       </div>
     </Container>
   )
