@@ -6,7 +6,7 @@ import { UserLogin } from '../../../components/organisms/user/UserLogin'
 export const Index = () => {
   return (
     <>
-      <HtmlHead title='user/me - ' />
+      <HtmlHead title='user/login - ' />
       <NingenmeNetHeader />
       <UserLogin />
       <NingenmeNetFooter />

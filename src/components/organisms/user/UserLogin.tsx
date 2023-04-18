@@ -1,15 +1,28 @@
 import { Container, FormControl, TextField } from '@mui/material'
 import { Typography } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './UserLogin.module.scss'
 import { LoginButton } from '../../atoms/Button'
-import { kiwaApiLoginClient } from '../../../repository/KiwaApiRepository'
-import { LoginPostRequest } from 'kiwa-api/typescript-axios-client/api'
+import { kiwaApiLoginClient, kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
+import { LoginPostRequest, UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
+import fontStyles from '../../../styles/Font.module.scss'
+import { CustomNormalCard } from '../CustomCard'
+import { Title } from '../../atoms/Title'
 
 export const UserLogin = () => {
 
   const [userId, setUserId] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [user, setUser] = useState < UsersMeGetResponse | undefined > (undefined)
+
+  useEffect(() => {
+    kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
+      .then((res: { data: any }) => setUser(res.data))
+      .catch((err: any) => {
+        console.log(err)
+        setUser(undefined)
+      })
+  }, [])
 
   const loginClick = () => {
     const request: LoginPostRequest = {
@@ -23,10 +36,27 @@ export const UserLogin = () => {
       })
   }
 
+  const loggedIn = (loginUser: UsersMeGetResponse) => {
+    return (
+      <div>
+        <p className={fontStyles.body}>ユーザー名: {loginUser.userId}</p>
+        <p className={fontStyles.body}>compro-category認可: {loginUser.authority.comproCategory ? 'あり' : 'なし'}</p>
+      </div>
+    )
+  }
+
+  const notLoggedIn = () => {
+    return (
+      <div>
+        <p className={fontStyles.body}>未ログインです</p>
+      </div>
+    )
+  }
+
   return (
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>ログイン画面</Typography>
+      <Title title='ログイン' />
 
       <FormControl fullWidth className={styles.wrapper}>
         <TextField
@@ -44,6 +74,12 @@ export const UserLogin = () => {
       </FormControl>
       <div className={styles.buttongrid}>
         <LoginButton onClick={loginClick} />
+      </div>
+
+      <div className={styles.grid}>
+        <CustomNormalCard>
+          {user ? loggedIn(user) : notLoggedIn()}
+        </CustomNormalCard>
       </div>
 
     </Container>
