@@ -2,7 +2,7 @@ import { Container, FormControl, TextField } from '@mui/material'
 import { Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import styles from './UserLogin.module.scss'
-import { LoginButton } from '../../atoms/compro-category/Button'
+import { LoginButton } from '../../atoms/Button'
 import { kiwaApiLoginClient } from '../../../repository/KiwaApiRepository'
 import { LoginPostRequest } from 'kiwa-api/typescript-axios-client/api'
 

@@ -9,7 +9,7 @@ import {
   PostCategoryRequest,
 } from 'mami-interface/mami-generated-client/nina-api-grpc/compro_category_pb'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
-import { DeleteButton, UpsertButton } from '../../atoms/compro-category/Button'
+import { DeleteButton, UpsertButton } from '../../atoms/Button'
 import { CustomNormalCard } from '../CustomCard'
 
 export const CategoryManage = () => {

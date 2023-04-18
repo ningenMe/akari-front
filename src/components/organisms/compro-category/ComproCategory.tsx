@@ -7,7 +7,7 @@ import { ninaApiComproCategoryClient } from 'repository/NinaApiRepository'
 import { GetCategoryResponse } from 'mami-interface/mami-generated-client/nina-api-grpc/compro_category_pb'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { PathConst } from 'constants/Const'
-import { ManageButton } from 'components/atoms/compro-category/Button'
+import { ManageButton } from 'components/atoms/Button'
 
 export const ComproCategory = () => {
 
