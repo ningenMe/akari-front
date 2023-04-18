@@ -15,15 +15,6 @@ export const UserLogin = () => {
   const [password, setPassword] = useState<string>('')
   const [user, setUser] = useState < UsersMeGetResponse | undefined > (undefined)
 
-  useEffect(() => {
-    kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
-      .then((res: { data: any }) => setUser(res.data))
-      .catch((err: any) => {
-        console.log(err)
-        setUser(undefined)
-      })
-  }, [])
-
   const loginClick = () => {
     const request: LoginPostRequest = {
       userId: userId,
@@ -52,6 +43,15 @@ export const UserLogin = () => {
       </div>
     )
   }
+
+  useEffect(() => {
+    kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
+      .then((res: { data: any }) => setUser(res.data))
+      .catch((err: any) => {
+        console.log(err)
+        setUser(undefined)
+      })
+  }, [kiwaApiLoginClient])
 
   return (
     <Container>
