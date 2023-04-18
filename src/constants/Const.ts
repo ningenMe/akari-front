@@ -30,6 +30,7 @@ export class UrlConst {
   static readonly ZEUS_API: string = 'https://' + HostConst.ZEUS_API
   static readonly KIWA_API: string = 'https://' + HostConst.KIWA_API
   static readonly GITHUB: string = 'https://github.com/ningenMe'
+  static readonly GITHUB_SPONSOR: string = 'https://github.com/sponsors/ningenMe'
   static readonly TWITTER: string = 'https://twitter.com/ningenMe'
   static readonly ATCODER: string = 'https://atcoder.jp/users/ningenMe'
   static readonly CODEFORCES: string = 'https://codeforces.com/profile/ningenMe'
@@ -52,6 +53,7 @@ export class UrlConst {
 export class LinkConst {
   static readonly NINGENME_NET: Link = { href: UrlConst.NINGENME_NET, name: 'ningenMe.net' }
   static readonly GITHUB: Link = { href: UrlConst.GITHUB, name: 'GitHub' }
+  static readonly GITHUB_SPONSOR: Link = { href: UrlConst.GITHUB_SPONSOR, name: 'Become a sponsor' }
   static readonly TWITTER: Link = { href: UrlConst.TWITTER, name: '@ningenMe' }
   static readonly ATCODER: Link = { href: UrlConst.ATCODER, name: 'AtCoder' }
   static readonly CODEFORCES: Link = { href: UrlConst.CODEFORCES, name: 'Codeforces' }

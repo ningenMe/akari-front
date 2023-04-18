@@ -5,6 +5,7 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import ArticleIcon from '@mui/icons-material/Article'
 import ComputerIcon from '@mui/icons-material/Computer'
+import PaidIcon from '@mui/icons-material/Paid';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
@@ -80,6 +81,7 @@ export const NingenmeNetHeader = () => {
           <NormalElement link={LinkConst.TWITTER} className={styles.buttonPc} icon={<TwitterIcon />} />
           <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonPc} icon={<ComputerIcon />}/>
           <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonPc} icon={<ArticleIcon />}/>
+          <NormalElement link={LinkConst.GITHUB_SPONSOR} className={styles.buttonPc} icon={<PaidIcon />} />
         </Box>
 
         {/*sp*/}
@@ -111,6 +113,7 @@ export const NingenmeNetHeader = () => {
             <NormalElement link={LinkConst.TWITTER} className={styles.buttonSp} icon={<TwitterIcon />} />
             <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonSp} icon={<ComputerIcon />}/>
             <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonSp} icon={<ArticleIcon />}/>
+            <NormalElement link={LinkConst.GITHUB_SPONSOR} className={styles.buttonSp} icon={<PaidIcon />} />
           </Menu>
         </Box>
 
