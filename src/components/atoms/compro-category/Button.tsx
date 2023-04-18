@@ -29,3 +29,12 @@ export const DeleteButton = ({ onClick }: { onClick: MouseEventHandler | undefin
     </div>
   )
 }
+export const LoginButton = ({ onClick }: { onClick: MouseEventHandler | undefined }) => {
+  return (
+    <div className={styles.wrapper}>
+        <span className={styles.loginButtonBody} onClick={onClick}>
+          LOGIN
+        </span>
+    </div>
+  )
+}

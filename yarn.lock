@@ -2758,9 +2758,9 @@ kind-of@^3.2.2:
   dependencies:
     is-buffer "^1.1.5"
 
-"kiwa-api@https://github.com/ningenMe/kiwa-api.git#ddc612c":
+"kiwa-api@https://github.com/ningenMe/kiwa-api.git#b773216":
   version "0.0.0"
-  resolved "https://github.com/ningenMe/kiwa-api.git#ddc612c2c55d9c48600f98476271ed2dbaaae013"
+  resolved "https://github.com/ningenMe/kiwa-api.git#b773216c1c329547def90dc23b02f16c51a40867"
 
 lazy-cache@^0.2.3:
   version "0.2.7"

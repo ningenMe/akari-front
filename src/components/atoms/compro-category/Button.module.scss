@@ -40,6 +40,13 @@
     background-color: #c02525;
   }
 }
+.loginButtonBody {
+  @extend .body;
+  background-color: #3292ff;
+  &:hover {
+    background-color: #324dff;
+  }
+}
 .href {
   display: block;
   position: absolute;

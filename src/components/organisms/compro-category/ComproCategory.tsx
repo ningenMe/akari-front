@@ -33,7 +33,7 @@ export const ComproCategory = () => {
   return (
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴</Typography>
+      <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴 今は改装中...</Typography>
 
       <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} />
 
