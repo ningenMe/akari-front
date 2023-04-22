@@ -51,7 +51,7 @@ export const UserLogin = () => {
         console.log(err)
         setUser(undefined)
       })
-  }, [kiwaApiLoginClient])
+  }, [])
 
   return (
     <Container>

@@ -8,11 +8,18 @@ import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { HostConst, PathConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
+import { miikoApiClient } from '../../../repository/MiikoApiRepository'
 
 export const System = () => {
 
   const [ninaApiHealth, setNinaApiHealth] = useState('')
   const [kiwaApiHealth, setKiwaApiHealth] = useState('')
+  const [miikoApiHealth, setMiikoApiHealth] = useState('')
+
+  const miikoApiCategoryGet = async () => {
+    const res = await miikoApiClient.categoryGet({})
+    setMiikoApiHealth(res.categoryList[0].categoryId)
+  }
 
   useEffect(() => {
     ninaApiHealthClient.get(new Empty(), null)
@@ -27,6 +34,7 @@ export const System = () => {
         console.log(err)
         setKiwaApiHealth('not found')
       })
+    miikoApiCategoryGet()
   }, [])
 
   return (
@@ -50,6 +58,13 @@ export const System = () => {
             </h5>
             <p className={fontStyles.body}>
               healthcheck: {kiwaApiHealth}
+            </p>
+          </div>
+        </CustomNormalCard>
+        <CustomNormalCard>
+          <div>
+            <p className={fontStyles.body}>
+              healthcheck: {miikoApiHealth}
             </p>
           </div>
         </CustomNormalCard>

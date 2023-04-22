@@ -11,6 +11,9 @@
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,mdx,css,html,yml,yaml,scss,sass}\" && yarn lint:fix"
   },
   "dependencies": {
+    "@bufbuild/connect": "^0.8.6",
+    "@bufbuild/connect-web": "^0.8.6",
+    "@bufbuild/protobuf": "^1.2.0",
     "@emotion/react": "^11.9.0",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.8.1",
@@ -28,6 +31,7 @@
     "grpc-web": "^1.3.1",
     "kiwa-api": "https://github.com/ningenMe/kiwa-api.git#b773216",
     "mami-interface": "https://github.com/ningenMe/mami-interface.git#master",
+    "miiko-api": "https://github.com/ningenMe/miiko-api.git#026ef5f",
     "next": "^12.0.0",
     "next-transpile-modules": "^9.0.0",
     "react": "^18.0.21",
