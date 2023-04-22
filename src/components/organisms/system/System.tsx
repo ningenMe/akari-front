@@ -9,6 +9,7 @@ import { HostConst, PathConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
 import { miikoApiClient } from '../../../repository/MiikoApiRepository'
+import { CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 
 export const System = () => {
 
@@ -17,8 +18,7 @@ export const System = () => {
   const [miikoApiHealth, setMiikoApiHealth] = useState('')
 
   const miikoApiCategoryGet = async () => {
-    const res = await miikoApiClient.categoryGet({})
-    // @ts-ignore
+    const res = await miikoApiClient.categoryGet({}) as CategoryGetResponse
     setMiikoApiHealth(res.categoryList[0].categoryId)
   }
 
