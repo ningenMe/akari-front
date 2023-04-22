@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v3.5.0
       - id: constant
         name: constant
-        uses: ./.github/workflows/composite/constant
+        uses: ningenMe/chiyuki-k8s-config/.github/workflows/composite/constant@main
 
   build-and-push-image:
     runs-on: ubuntu-latest
