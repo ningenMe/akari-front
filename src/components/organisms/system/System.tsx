@@ -18,6 +18,7 @@ export const System = () => {
 
   const miikoApiCategoryGet = async () => {
     const res = await miikoApiClient.categoryGet({})
+    // @ts-ignore
     setMiikoApiHealth(res.categoryList[0].categoryId)
   }
 
