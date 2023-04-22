@@ -13,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       aws-region: ${{ steps.constant.outputs.aws-region }}
-      aws-ecr-repository: akari-front-repository
+      aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
+      docker-image-name: akari-front-repository:${{ github.sha }}
+      node-version: ${{ steps.constant.outputs.node-version }}
     steps:
       - id: checkout
         name: checkout
@@ -21,12 +23,6 @@ jobs:
       - id: constant
         name: constant
         uses: ningenMe/chiyuki-k8s-config/action/constant@main
-      - id: docker-image-build-yarn
-        name: docker-image-build-yarn
-        uses: ningenMe/chiyuki-k8s-config/action/docker-image-build-yarn@main
-        with:
-          docker-image-name: ${{ secrets.AWS_ECR_REGISTRY }}/akari-front-repository:${{ github.sha }}
-          node-version: ${{ steps.constant.outputs.node-version }}
 
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -35,14 +31,30 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v3.5.0
-      - id: build-and-push-image
-        name: build and push image
-        uses: ./.github/workflows/composite/build-and-push-image
+      - id: docker-image-build-yarn
+        name: docker-image-build-yarn
+        uses: ningenMe/chiyuki-k8s-config/action/docker-image-build-yarn@main
+        with:
+          aws-ecr-registry: ${{ needs.constant.outputs.aws-ecr-registry }}
+          docker-image-name: ${{ needs.constant.outputs.docker-image-name }}
+          node-version: ${{ needs.constant.outputs.node-version }}
+      - id: docker-image-push
+        name: docker-image-push
+        uses: ningenMe/chiyuki-k8s-config/action/docker-image-push@main
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           aws-region: ${{ needs.constant.outputs.aws-region }}
-          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
-          aws-ecr-repository: ${{ needs.constant.outputs.aws-ecr-repository }}
+          aws-ecr-registry: ${{ needs.constant.outputs.aws-ecr-registry }}
+          docker-image-name: ${{ needs.constant.outputs.docker-image-name }}
+
+#      - id: build-and-push-image
+#        name: build and push image
+#        uses: ./.github/workflows/composite/build-and-push-image
+#        with:
+#          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+#          aws-region: ${{ needs.constant.outputs.aws-region }}
+#          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
+#          aws-ecr-repository: ${{ needs.constant.outputs.aws-ecr-repository }}
 
   deploy:
     runs-on: ubuntu-latest
