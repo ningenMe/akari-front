@@ -21,6 +21,12 @@ jobs:
       - id: constant
         name: constant
         uses: ningenMe/chiyuki-k8s-config/action/constant@main
+      - id: docker-image-build-yarn
+        name: docker-image-build-yarn
+        uses: ningenMe/chiyuki-k8s-config/action/docker-image-build-yarn@main
+        with:
+          docker-image-name: ${{ secrets.AWS_ECR_REGISTRY }}/akari-front-repository:${{ github.sha }}
+          node-version: ${{ steps.constant.outputs.node-version }}
 
   build-and-push-image:
     runs-on: ubuntu-latest
