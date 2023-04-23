@@ -15,8 +15,8 @@ jobs:
       aws-region: ${{ steps.constant.outputs.aws-region }}
       aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
       docker-image-name: akari-front-repository:${{ github.sha }}
-      aws-account-id: ${{ steps.aws-config.outputs.aws-account-id }}
-      deploy-key: ${{ steps.aws-config.outputs.deploy-key }}
+      aws-account-id: ${{ env.aws-account-id }}
+      deploy-key: ${{ env.deploy-key }}
       node-version: ${{ steps.constant.outputs.node-version }}
     steps:
       - id: checkout
