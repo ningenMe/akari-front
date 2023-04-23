@@ -15,8 +15,6 @@ jobs:
       aws-region: ${{ steps.constant.outputs.aws-region }}
       aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
       docker-image-name: akari-front-repository:${{ github.sha }}
-      aws-account-id: ${{ env.aws-account-id }}
-      deploy-key: ${{ env.deploy-key }}
       node-version: ${{ steps.constant.outputs.node-version }}
     steps:
       - id: checkout
@@ -25,17 +23,6 @@ jobs:
       - id: constant
         name: constant
         uses: ningenMe/chiyuki-k8s-config/action/constant@main
-      - id: configure-aws-credentials
-        name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v2.0.0
-        with:
-          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-          role-session-name: github-actions-role
-          aws-region: ${{ steps.constant.outputs.aws-region }}
-      - id: aws-config
-        name: aws-config
-        uses: ningenMe/chiyuki-k8s-config/action/aws-config@main
-
   build-and-push-image:
     runs-on: ubuntu-latest
     needs: [ constant ]
@@ -43,18 +30,11 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v3.5.0
-      - id: hoge
-        name: hoge
-        run: |
-          echo aws-account-id
-          echo ${{ needs.constant.outputs.aws-account-id }}
-          echo deploy-key
-          echo ${{ needs.constant.outputs.deploy-key }}
       - id: docker-image-build-yarn
         name: docker-image-build-yarn
         uses: ningenMe/chiyuki-k8s-config/action/docker-image-build-yarn@main
         with:
-          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }} # TODO
+          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
           docker-image-name: ${{ needs.constant.outputs.docker-image-name }}
           node-version: ${{ needs.constant.outputs.node-version }}
       - id: docker-image-push
@@ -63,18 +43,8 @@ jobs:
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           aws-region: ${{ needs.constant.outputs.aws-region }}
-          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }} # TODO
+          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
           docker-image-name: ${{ needs.constant.outputs.docker-image-name }}
-
-#      - id: build-and-push-image
-#        name: build and push image
-#        uses: ./.github/workflows/composite/build-and-push-image
-#        with:
-#          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-#          aws-region: ${{ needs.constant.outputs.aws-region }}
-#          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
-#          aws-ecr-repository: ${{ needs.constant.outputs.aws-ecr-repository }}
-
   deploy:
     runs-on: ubuntu-latest
     needs: [ constant, build-and-push-image ]
