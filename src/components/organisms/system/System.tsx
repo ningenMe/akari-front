@@ -8,19 +8,15 @@ import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { HostConst, PathConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
-import { miikoApiClient } from '../../../repository/MiikoApiRepository'
+import { miikoApiHealthServiceClient } from '../../../repository/MiikoApiRepository'
 import { CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { HealthServiceCheckResponse } from 'miiko-api/proto/gen_ts/v1/health_pb'
 
 export const System = () => {
 
   const [ninaApiHealth, setNinaApiHealth] = useState('')
   const [kiwaApiHealth, setKiwaApiHealth] = useState('')
   const [miikoApiHealth, setMiikoApiHealth] = useState('')
-
-  const miikoApiCategoryGet = async () => {
-    const res = await miikoApiClient.categoryGet({}) as CategoryGetResponse
-    setMiikoApiHealth(res.categoryList[0].categoryId)
-  }
 
   useEffect(() => {
     ninaApiHealthClient.get(new Empty(), null)
@@ -35,7 +31,12 @@ export const System = () => {
         console.log(err)
         setKiwaApiHealth('not found')
       })
-    miikoApiCategoryGet()
+    miikoApiHealthServiceClient.check({})
+      .then(res => setMiikoApiHealth('ok'))
+      .catch(err => {
+        console.log(err)
+        setMiikoApiHealth('not found')
+      })
   }, [])
 
   return (
@@ -64,12 +65,15 @@ export const System = () => {
         </CustomNormalCard>
         <CustomNormalCard>
           <div>
+            <h5 className={styles.title}>
+              {HostConst.MIIKO_API}
+            </h5>
             <p className={fontStyles.body}>
               healthcheck: {miikoApiHealth}
             </p>
           </div>
         </CustomNormalCard>
-        <CustomLinkCard href={PathConst.USER_LOGIN} >
+        <CustomLinkCard href={PathConst.USER_LOGIN}>
           <h5 className={styles.title}>
             ログイン
           </h5>

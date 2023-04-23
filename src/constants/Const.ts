@@ -21,6 +21,7 @@ export class HostConst {
   static readonly NINA_ENVOY: string = 'nina-envoy.ningenme.net'
   static readonly ZEUS_API: string = 'zeus-api.ningenme.net'
   static readonly KIWA_API: string = 'kiwa-api.ningenme.net'
+  static readonly MIIKO_API: string = 'miiko-api.ningenme.net'
 }
 
 export class UrlConst {
@@ -29,6 +30,7 @@ export class UrlConst {
   static readonly NINA_ENVOY: string = 'https://' + HostConst.NINA_ENVOY
   static readonly ZEUS_API: string = 'https://' + HostConst.ZEUS_API
   static readonly KIWA_API: string = 'https://' + HostConst.KIWA_API
+  static readonly MIIKO_API: string = 'https://' + HostConst.MIIKO_API
   static readonly GITHUB: string = 'https://github.com/ningenMe'
   static readonly GITHUB_SPONSOR: string = 'https://github.com/sponsors/ningenMe'
   static readonly TWITTER: string = 'https://twitter.com/ningenMe'
