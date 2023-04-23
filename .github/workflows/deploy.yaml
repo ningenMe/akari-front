@@ -15,6 +15,8 @@ jobs:
       aws-region: ${{ steps.constant.outputs.aws-region }}
       aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
       docker-image-name: akari-front-repository:${{ github.sha }}
+      aws-account-id: ${{ steps.aws-config.outputs.aws-account-id }}
+      deploy-key: ${{ steps.aws-config.outputs.deploy-key }}
       node-version: ${{ steps.constant.outputs.node-version }}
     steps:
       - id: checkout
@@ -32,11 +34,7 @@ jobs:
           aws-region: ${{ steps.constant.outputs.aws-region }}
       - id: aws-config
         name: aws-config
-        run: |
-          DEPLOY_KEY=`aws ssm get-parameter --name /ACTIONS/DEPLOY_KEY | jq .Parameter | jq .Value -r`
-          AWS_ACCOUNT_ID=`aws ssm get-parameter --name /ACTIONS/AWS_ACCOUNT_ID | jq .Parameter | jq .Value -r`
-          echo "deploy-key=$DEPLOY_KEY" >> $GITHUB_OUTPUT
-          echo "aws-account-id=$AWS_ACCOUNT_ID" >> $GITHUB_OUTPUT
+        uses: ningenMe/chiyuki-k8s-config/action/aws-config@main
 
   build-and-push-image:
     runs-on: ubuntu-latest
