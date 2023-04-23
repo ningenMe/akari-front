@@ -30,12 +30,10 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v3.5.0
-      - id: docker-image-build-yarn
-        name: docker-image-build-yarn
-        uses: ningenMe/chiyuki-k8s-config/action/docker-image-build-yarn@main
+      - id: build-yarn
+        name: build-yarn
+        uses: ningenMe/chiyuki-k8s-config/action/build-yarn@main
         with:
-          aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
-          docker-image-name: ${{ needs.constant.outputs.docker-image-name }}
           node-version: ${{ needs.constant.outputs.node-version }}
       - id: docker-image-push
         name: docker-image-push
