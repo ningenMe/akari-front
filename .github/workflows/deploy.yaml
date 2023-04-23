@@ -23,6 +23,20 @@ jobs:
       - id: constant
         name: constant
         uses: ningenMe/chiyuki-k8s-config/action/constant@main
+      - id: configure-aws-credentials
+        name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v2.0.0
+        with:
+          role-to-assume: ${{inputs.role-to-assume}}
+          role-session-name: github-actions-role
+          aws-region: ${{ steps.constant.outputs.aws-region }}
+      - id: aws-config
+        name: aws-config
+        run: |
+          DEPLOY_KEY=`aws ssm get-parameter --name /ACTIONS/DEPLOY_KEY | jq .Parameter | jq .Value -r`
+          AWS_ACCOUNT_ID=`aws ssm get-parameter --name /ACTIONS/AWS_ACCOUNT_ID | jq .Parameter | jq .Value -r`
+          echo "deploy-key=$DEPLOY_KEY" >> $GITHUB_OUTPUT
+          echo "aws-account-id=$AWS_ACCOUNT_ID" >> $GITHUB_OUTPUT
 
   build-and-push-image:
     runs-on: ubuntu-latest
