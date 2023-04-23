@@ -15,8 +15,6 @@ jobs:
       aws-region: ${{ steps.constant.outputs.aws-region }}
       aws-ecr-registry: ${{ secrets.AWS_ECR_REGISTRY }}
       docker-image-name: akari-front-repository:${{ github.sha }}
-      aws-account-id: ${{ env.aws-account-id }}
-      deploy-key: ${{ env.deploy-key }}
       node-version: ${{ steps.constant.outputs.node-version }}
     steps:
       - id: checkout
@@ -43,6 +41,13 @@ jobs:
       - id: checkout
         name: checkout
         uses: actions/checkout@v3.5.0
+      - id: hoge
+        name: hoge
+        run: |
+          echo aws-account-id
+          echo ${{ env.aws-account-id }}
+          echo deploy-key
+          echo ${{ env.deploy-key }}
       - id: docker-image-build-yarn
         name: docker-image-build-yarn
         uses: ningenMe/chiyuki-k8s-config/action/docker-image-build-yarn@main
