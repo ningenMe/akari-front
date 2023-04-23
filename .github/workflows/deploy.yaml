@@ -54,14 +54,10 @@ jobs:
         uses: actions/checkout@v3.5.0
       - id: kick-deploy
         name: kick deploy
-        run: |
-          TOKEN=${{ secrets.DEPLOY_TOKEN }}
-          curl \
-            -X POST \
-            -H "Authorization: token $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/ningenMe/chiyuki-k8s-config/actions/workflows/single-deploy.yaml/dispatches \
-            -d '{"ref":"main", "inputs":{"application-name": "akari-front"}}'
+        uses: ningenMe/chiyuki-k8s-config/action/kick-deploy@main
+        with:
+          deploy-token: ${{ secrets.DEPLOY_TOKEN }}
+          application-name: akari-front
 
 #  application-meta-push:
 #    needs: deploy
