@@ -7,10 +7,13 @@ import { PathConst } from 'constants/Const'
 import { ManageButton } from 'components/atoms/Button'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
+import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 
 export const ComproCategory = () => {
 
   const [categoryList, setCategoryList] = useState < Category[]>([])
+  const [isAuthorizedComproCategory, setIsAuthorizedComproCategory] = useState<boolean>(false)
 
   const categoryGet = async () => {
     const categoryGetResponse = await miikoApiMiikoServiceClient.categoryGet({}) as CategoryGetResponse
@@ -18,6 +21,11 @@ export const ComproCategory = () => {
   }
 
   useEffect(() => {
+    kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
+      .then((res: { data: UsersMeGetResponse }) => setIsAuthorizedComproCategory(res.data.authority.comproCategory))
+      .catch((err: any) => {
+        console.log(err)
+      })
     categoryGet()
   }, [])
 
@@ -34,7 +42,7 @@ export const ComproCategory = () => {
       {/* TODO ここの説明文にcssを当てる */}
       <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴 今は改装中...</Typography>
 
-      <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} />
+      {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} /> : <></> }
 
       <div className={styles.grid}>
         {cardList}
