@@ -8,24 +8,27 @@ import { GetCategoryResponse } from 'mami-interface/mami-generated-client/nina-a
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { PathConst } from 'constants/Const'
 import { ManageButton } from 'components/atoms/Button'
+import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
+import { Category, CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { Any, Message } from '@bufbuild/protobuf'
 
 export const ComproCategory = () => {
 
-  const [categoryResponse, setCategoryResponse] = useState < GetCategoryResponse | undefined>()
+  const [categoryList, setCategoryList] = useState < Category[]>([])
+
+  const categoryGet = async () => {
+    const categoryGetResponse = await miikoApiMiikoServiceClient.categoryGet({}) as CategoryGetResponse
+    setCategoryList(categoryGetResponse.categoryList)
+  }
 
   useEffect(() => {
-
-    ninaApiComproCategoryClient.get(new Empty(), null)
-      .then(res => setCategoryResponse(res))
-      .catch(err => {
-        console.log(err)
-      })
+    categoryGet()
   }, [])
 
-  const cardList = categoryResponse?.getCategorylistList().map((category) =>
-    <CustomLinkCard href={PathConst.COMPRO_CATEGORY + '/' + category.getCategorysystemname()} key={category.getCategoryid()}>
+  const cardList = categoryList.map((category) =>
+    <CustomLinkCard href={PathConst.COMPRO_CATEGORY + '/' + category.categorySystemName} key={category.categoryId}>
       <h5 className={styles.title}>
-        {category.getCategorydisplayname()}
+        {category.categoryDisplayName}
       </h5>
     </CustomLinkCard>
   )

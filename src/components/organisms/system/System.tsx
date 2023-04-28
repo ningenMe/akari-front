@@ -9,8 +9,6 @@ import { HostConst, PathConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
 import { miikoApiHealthServiceClient } from '../../../repository/MiikoApiRepository'
-import { CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { HealthServiceCheckResponse } from 'miiko-api/proto/gen_ts/v1/health_pb'
 
 export const System = () => {
 
