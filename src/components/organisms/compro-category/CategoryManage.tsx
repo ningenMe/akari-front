@@ -2,80 +2,75 @@ import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField 
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styles from './CategoryManage.module.scss'
-import { ninaApiComproCategoryClient } from 'repository/NinaApiRepository'
-import {
-  Category,
-  GetCategoryResponse,
-  PostCategoryRequest,
-} from 'mami-interface/mami-generated-client/nina-api-grpc/compro_category_pb'
-import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 import { DeleteButton, UpsertButton } from '../../atoms/Button'
 import { CustomNormalCard } from '../CustomCard'
+import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
+import { Category, CategoryGetResponse, CategoryPostRequest } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 
 export const CategoryManage = () => {
 
-  const [categoryResponse, setCategoryResponse] = useState < GetCategoryResponse | undefined>()
+  const [categoryList, setCategoryList] = useState < Category[]>([])
   const [selectedCategory, setSelectedCategory] = useState<Category>()
   const [categoryId, setCategoryId] = useState<string>('')
   const [categoryDisplayName, setCategoryDisplayName] = useState<string>('')
   const [categorySystemName, setCategorySystemName] = useState<string>('')
   const [categoryOrder, setCategoryOrder] = useState<number>(0)
   const DUMMY_CATEGORY_ID = 'NEW CREATE'
-  const DUMMY_CATEGORY = new Category()
-  DUMMY_CATEGORY.setCategoryid(DUMMY_CATEGORY_ID)
+  const DUMMY_CATEGORY = new Category({categoryId: DUMMY_CATEGORY_ID})
 
   const setAllState = (category: Category) => {
     setSelectedCategory(category);
-    setCategoryId(category?.getCategoryid() as string)
-    setCategoryDisplayName(category?.getCategorydisplayname() as string)
-    setCategorySystemName(category?.getCategorysystemname() as string)
-    setCategoryOrder(category?.getCategoryorder() as number)
+    setCategoryId(category.categoryId)
+    setCategoryDisplayName(category.categoryDisplayName)
+    setCategorySystemName(category.categorySystemName)
+    setCategoryOrder(category.categoryOrder)
   }
 
-  const upsertClick = () => {
-    const request = new PostCategoryRequest()
+  const categoryGet = async () => {
+    const categoryGetResponse = await miikoApiMiikoServiceClient.categoryGet({}) as CategoryGetResponse
+    setCategoryList(categoryGetResponse.categoryList)
+  }
+
+  const upsertClick = async () => {
+    const request = new CategoryPostRequest()
     {
       if (categoryId != DUMMY_CATEGORY_ID) {
-        request.setCategoryid(categoryId)
+        request.categoryId = categoryId
       }
-      const requestCategory = new Category();
-      {
-        requestCategory.setCategoryid(categoryId)
-        requestCategory.setCategorydisplayname(categoryDisplayName)
-        requestCategory.setCategorysystemname(categorySystemName)
-        requestCategory.setCategoryorder(categoryOrder)
-      }
-      request.setCategory(requestCategory)
+      request.category = new Category({
+        categoryId: categoryId,
+        categoryDisplayName: categoryDisplayName,
+        categorySystemName: categorySystemName,
+        categoryOrder: categoryOrder
+      })
     }
-    ninaApiComproCategoryClient.post(request,null)
+    await miikoApiMiikoServiceClient.categoryPost(request)
     setAllState(DUMMY_CATEGORY)
+    await categoryGet()
   }
-  const deleteClick = () => {
+  const deleteClick = async () => {
     if (categoryId === '') {
       return
     }
 
-    const request = new PostCategoryRequest()
+    const request = new CategoryPostRequest()
     {
-      request.setCategoryid(categoryId)
+      request.categoryId = categoryId
     }
-    ninaApiComproCategoryClient.post(request,null)
+    await miikoApiMiikoServiceClient.categoryPost(request)
     setAllState(DUMMY_CATEGORY)
+    await categoryGet()
   }
 
   useEffect(() => {
-    ninaApiComproCategoryClient.get(new Empty(), null)
-      .then(res => setCategoryResponse(res))
-      .catch(err => {
-        console.log(err)
-      })
-  }, [upsertClick,deleteClick])
+    categoryGet()
+  }, [])
 
-  const cardList = categoryResponse?.getCategorylistList().map((it) =>
-    <CustomNormalCard key={it.getCategoryid()}>
-      <div>{"displayName: " + it.getCategorydisplayname()}</div>
-      <div>{"systemName: " + it.getCategorysystemname()}</div>
-      <div>{"order: " + it.getCategoryorder()}</div>
+  const cardList = categoryList.map((it) =>
+    <CustomNormalCard key={it.categoryId}>
+      <div>{"displayName: " + it.categoryDisplayName}</div>
+      <div>{"systemName: " + it.categorySystemName}</div>
+      <div>{"order: " + it.categoryOrder}</div>
     </CustomNormalCard>
   )
 
@@ -95,28 +90,25 @@ export const CategoryManage = () => {
           onChange={handleChange}
           className={styles.wrapper}
         >
-          {[DUMMY_CATEGORY].concat(categoryResponse?.getCategorylistList()??[]).map((it) =>
-            <MenuItem key={it.getCategoryid()} value={it as any}>
-              {it.getCategoryid() === DUMMY_CATEGORY_ID ? '新規作成' : it.getCategorydisplayname()}
+          {[DUMMY_CATEGORY].concat(categoryList).map((it) =>
+            <MenuItem key={it.categoryId} value={it as any}>
+              {it.categoryId === DUMMY_CATEGORY_ID ? '新規作成' : it.categoryDisplayName}
             </MenuItem>
           )}
         </Select>
         <TextField
           disabled={true}
-          defaultValue={categoryId}
           label='categoryId'
           value={categoryId}
           className={styles.idtextfield}
         />
         <TextField
-          defaultValue={categoryDisplayName}
           label='categoryDisplayName'
           onChange={(event) => {setCategoryDisplayName(event.target.value)}}
           value={categoryDisplayName}
           className={styles.textfield}
         />
         <TextField
-          defaultValue={categorySystemName}
           label='categorySystemName'
           onChange={(event) => {setCategorySystemName(event.target.value)}}
           value={categorySystemName}
@@ -125,7 +117,6 @@ export const CategoryManage = () => {
         <TextField
           type="number"
           inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-          defaultValue={categoryOrder}
           label='categoryOrder'
           onChange={(event) => {setCategoryOrder(parseInt(event.target.value))}}
           value={categoryOrder}
