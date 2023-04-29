@@ -1,4 +1,3 @@
-import { ContributionSum } from 'mami-interface/mami-generated-client/nina-api-grpc/github_contribution_pb'
 import { Chart } from 'react-chartjs-2'
 import React from 'react'
 import {
@@ -11,6 +10,7 @@ import {
   PointElement,
   Title,
 } from 'chart.js'
+import { ContributionSum } from 'nina-api/proto/gen_ts/v1/nina_pb'
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, BarElement, BarController);
 
@@ -18,12 +18,12 @@ export const Graph = ({ list, yMax }: { list: ContributionSum[], yMax: number })
 
   const data = {
     // x 軸のラベル
-    labels: list.map(e => e.getDate()),
+    labels: list.map(e => e.date),
     datasets: [
       {
         label: 'TODO さまりー',
         // データの値
-        data: list.map(e => e.getSum()),
+        data: list.map(e => e.sum),
         // グラフの背景色
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

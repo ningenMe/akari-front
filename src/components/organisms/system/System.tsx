@@ -3,8 +3,7 @@ import { Title } from '../../atoms/Title'
 import React, { useEffect, useState } from 'react'
 import styles from './System.module.scss'
 import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
-import { ninaApiHealthClient } from '../../../repository/NinaApiRepository'
-import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
+import { ninaApiHealthServiceClient } from '../../../repository/NinaApiRepository'
 import { HostConst, PathConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
@@ -17,8 +16,8 @@ export const System = () => {
   const [miikoApiHealth, setMiikoApiHealth] = useState('')
 
   useEffect(() => {
-    ninaApiHealthClient.get(new Empty(), null)
-      .then(res => setNinaApiHealth(res.getMessage()))
+    ninaApiHealthServiceClient.check({})
+      .then(res => setNinaApiHealth('ok'))
       .catch(err => {
         console.log(err)
         setNinaApiHealth('not found')
@@ -44,7 +43,7 @@ export const System = () => {
         <CustomNormalCard>
           <div>
             <h5 className={styles.title}>
-              {HostConst.NINA_ENVOY}
+              {HostConst.NINA_API}
             </h5>
             <p className={fontStyles.body}>
               healthcheck: {ninaApiHealth}

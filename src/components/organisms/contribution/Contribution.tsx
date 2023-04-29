@@ -1,39 +1,38 @@
 import { Container } from '@mui/material'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { ninaApiGithubContributionClient } from '../../../repository/NinaApiRepository'
+import { ninaApiNinaServiceClient } from '../../../repository/NinaApiRepository'
 import { Graph } from './Graph'
 import { DatePeriod, getEndDate, getFormatDate, getInitDatePeriod } from './DatePeriod'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import dayjs from 'dayjs'
-import {
-  ContributionSum,
-  GetStatisticsRequest,
-  GetStatisticsResponse,
-} from 'mami-interface/mami-generated-client/nina-api-grpc/github_contribution_pb'
 import { SubTitle, Title } from '../../atoms/Title'
 import { Typography } from '@material-ui/core'
 import styles from './Contribution.module.scss'
+import {
+  ContributionStatisticsGetRequest,
+  ContributionStatisticsGetResponse,
+  ContributionSum,
+} from 'nina-api/proto/gen_ts/v1/nina_pb'
 
 export const Contribution = () => {
   const initDatePeriod = getInitDatePeriod()
 
-  const [statistics, setStatistics] = useState < GetStatisticsResponse | undefined>()
+  const [statistics, setStatistics] = useState < ContributionStatisticsGetResponse | undefined>()
+
+  const contributionStatisticsGet = async () => {
+    const request = new ContributionStatisticsGetRequest({user: "ningenMe"})
+    const response = await ninaApiNinaServiceClient.contributionStatisticsGet(request) as ContributionStatisticsGetResponse
+    setStatistics(response)
+  }
 
   useEffect(() => {
-    const request = new GetStatisticsRequest()
-    request.setUser("ningenMe")
-
-    ninaApiGithubContributionClient.getStatistics(request, null)
-      .then(res => setStatistics(res))
-      .catch(err => {
-        console.log(err)
-      })
+    contributionStatisticsGet()
   }, [])
 
-  const createdPullRequestList = statistics?.getCreatedpullrequeststatistics()?.getContributionsumlistList() ?? []
-  const approvedList = statistics?.getApprovedstatistics()?.getContributionsumlistList() ?? []
-  const commentedList = statistics?.getCommentedstatistics()?.getContributionsumlistList() ?? []
+  const createdPullRequestList = statistics?.createdPullRequestStatistics?.contributionSumList ?? []
+  const approvedList = statistics?.approvedStatistics?.contributionSumList ?? []
+  const commentedList = statistics?.commentedStatistics?.contributionSumList ?? []
 
   const [datePeriod, setDatePeriod] = useState <DatePeriod>(initDatePeriod)
   const [filteredCreatedPullRequestList, setFilteredCreatedPullRequestList] = useState(createdPullRequestList)
@@ -44,19 +43,19 @@ export const Contribution = () => {
     () => {
       setFilteredCreatedPullRequestList(
         createdPullRequestList.filter(e => {
-          const targetDate = new Date(e.getDate())
+          const targetDate = new Date(e.date)
           return datePeriod.startDate <= targetDate && targetDate <= datePeriod.endDate
         })
       )
       setFilteredApprovedList(
         approvedList.filter(e => {
-          const targetDate = new Date(e.getDate())
+          const targetDate = new Date(e.date)
           return datePeriod.startDate <= targetDate && targetDate <= datePeriod.endDate
         })
       )
       setFilteredCommentedList(
         commentedList.filter(e => {
-          const targetDate = new Date(e.getDate())
+          const targetDate = new Date(e.date)
           return datePeriod.startDate <= targetDate && targetDate <= datePeriod.endDate
         })
       )
@@ -133,14 +132,14 @@ const average = (list: ContributionSum[]): string => {
     return '0.00'
   }
   const numerator = list.length
-  const enumerator = list.map(e => e.getSum()).reduce(
+  const enumerator = list.map(e => e.sum).reduce(
     (prev, curr) => prev + curr, 0
   )
   const res = enumerator / numerator
   return res.toFixed(2)
 }
 const sum = (list: ContributionSum[]): number => {
-  return  list.map(e => e.getSum()).reduce(
+  return  list.map(e => e.sum).reduce(
     (prev, curr) => prev + curr, 0
   )
 }
