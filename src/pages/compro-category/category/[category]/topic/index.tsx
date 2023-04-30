@@ -1,15 +1,18 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
-import { CategoryManage } from 'components/organisms/compro-category/CategoryManage'
 import { ComproCategoryHeader } from 'components/organisms/Header'
+import { useRouter } from 'next/router'
 
 export const Manage = () => {
 
+  const router = useRouter()
+  const { category } = router.query
+  const categorySystemName = (typeof category === 'string') ? category : ''
+
   return (
     <>
-      <HtmlHead title='compro-category - ' />
+      <HtmlHead title={'compro-category ' + categorySystemName + ' - '} />
       <ComproCategoryHeader />
-      <CategoryManage />
       <ComproCategoryFooter />
     </>
   )

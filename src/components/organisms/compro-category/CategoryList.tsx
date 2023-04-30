@@ -2,7 +2,7 @@ import { Container } from '@mui/material'
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { CustomLinkCard } from 'components/organisms/CustomCard'
-import styles from './ComproCategory.module.scss'
+import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
 import { ManageButton } from 'components/atoms/Button'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
@@ -10,7 +10,7 @@ import { Category, CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_p
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 
-export const ComproCategory = () => {
+export const CategoryList = () => {
 
   const [categoryList, setCategoryList] = useState < Category[]>([])
   const [isAuthorizedComproCategory, setIsAuthorizedComproCategory] = useState<boolean>(false)
@@ -30,7 +30,7 @@ export const ComproCategory = () => {
   }, [])
 
   const cardList = categoryList.map((category) =>
-    <CustomLinkCard href={PathConst.COMPRO_CATEGORY + '/' + category.categorySystemName} key={category.categoryId}>
+    <CustomLinkCard href={PathConst.COMPRO_CATEGORY + '/category/' + category.categorySystemName + '/topic'} key={category.categoryId}>
       <h5 className={styles.title}>
         {category.categoryDisplayName}
       </h5>
