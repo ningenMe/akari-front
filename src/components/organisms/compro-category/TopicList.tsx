@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, Problem, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CustomNormalCard } from '../CustomCard'
+import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 
 export const TopicList = ({categorySystemName} : {categorySystemName: string}) => {
 
@@ -22,18 +22,20 @@ export const TopicList = ({categorySystemName} : {categorySystemName: string}) =
   }, [])
 
   const getProblemCardList = (problemList: Problem[]) => {
-    return problemList.map((it) =>
-      <CustomNormalCard key={it.problemId}>
-        <div>{"displayName: " + it.problemDisplayName}</div>
-        <div>{"url: " + it.url}</div>
-      </CustomNormalCard>
+    return problemList
+      .sort((l,r) => l.estimation - r.estimation)
+      .map((it) =>
+      <CustomLinkCard href={it.url} key={it.problemId}>
+        <div>{it.problemDisplayName}</div>
+      </CustomLinkCard>
     )
   }
 
-  const cardList = topicList.map((it) =>
+  const cardList = topicList
+    .sort((l,r) => l.topicOrder-r.topicOrder)
+    .map((it) =>
     <CustomNormalCard key={it.topicId}>
-      <div>{"displayName: " + it.topicDisplayName}</div>
-      <div>{"order: " + it.topicOrder}</div>
+      <div>{it.topicDisplayName}</div>
       {getProblemCardList(it.problemList)}
     </CustomNormalCard>
   )
