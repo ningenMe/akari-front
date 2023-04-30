@@ -2950,9 +2950,9 @@ micromatch@^4.0.0, micromatch@^4.0.4:
     braces "^3.0.2"
     picomatch "^2.3.1"
 
-"miiko-api@https://github.com/ningenMe/miiko-api.git#d6355d9":
+"miiko-api@https://github.com/ningenMe/miiko-api.git#5d552bf":
   version "0.0.0"
-  resolved "https://github.com/ningenMe/miiko-api.git#d6355d9032a9a167d4be0f5584a147f700687d67"
+  resolved "https://github.com/ningenMe/miiko-api.git#5d552bf8bc3991bbaff284c45a3c70fba2a098ee"
 
 mime-db@1.52.0:
   version "1.52.0"

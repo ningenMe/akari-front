@@ -6,7 +6,7 @@ import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
 import { ManageButton } from 'components/atoms/Button'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
-import { Category, CategoryGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { Category, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 
@@ -16,7 +16,7 @@ export const CategoryList = () => {
   const [isAuthorizedComproCategory, setIsAuthorizedComproCategory] = useState<boolean>(false)
 
   const categoryGet = async () => {
-    const categoryGetResponse = await miikoApiMiikoServiceClient.categoryGet({}) as CategoryGetResponse
+    const categoryGetResponse = await miikoApiMiikoServiceClient.categoryListGet({}) as CategoryListGetResponse
     setCategoryList(categoryGetResponse.categoryList)
   }
 

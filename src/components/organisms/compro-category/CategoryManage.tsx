@@ -5,7 +5,7 @@ import styles from './CategoryManage.module.scss'
 import { DeleteButton, UpsertButton } from '../../atoms/Button'
 import { CustomNormalCard } from '../CustomCard'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
-import { Category, CategoryGetResponse, CategoryPostRequest } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { Category, CategoryListGetResponse, CategoryPostRequest } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 
 export const CategoryManage = () => {
 
@@ -27,7 +27,7 @@ export const CategoryManage = () => {
   }
 
   const categoryGet = async () => {
-    const categoryGetResponse = await miikoApiMiikoServiceClient.categoryGet({}) as CategoryGetResponse
+    const categoryGetResponse = await miikoApiMiikoServiceClient.categoryListGet({}) as CategoryListGetResponse
     setCategoryList(categoryGetResponse.categoryList)
   }
 

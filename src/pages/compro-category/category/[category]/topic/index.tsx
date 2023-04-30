@@ -1,23 +1,29 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
-import { useRouter } from 'next/router'
 import { TopicList } from 'components/organisms/compro-category/TopicList'
+import { GetServerSideProps } from 'next'
 
-export const Manage = () => {
+type Props = {
+  categorySystemName: string;
+};
 
-  const getCategorySystemName = ():string => {
-    const router = useRouter()
-    const { category } = router.query
-    return (typeof category === 'string') ? category : ''
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { category } = context.query
+  const categorySystemName = (typeof category === 'string') ? category : ''
+  const props: Props = {
+    categorySystemName: categorySystemName
   }
-  const categorySystemName = getCategorySystemName()
+  return { props }
+}
+
+export const Manage = (props: Props) => {
 
   return (
     <>
-      <HtmlHead title={'compro-category ' + categorySystemName + ' - '} />
+      <HtmlHead title={'compro-category ' + props.categorySystemName + ' - '} />
       <ComproCategoryHeader />
-      <TopicList categorySystemName={categorySystemName} />
+      <TopicList categorySystemName={props.categorySystemName} />
       <ComproCategoryFooter />
     </>
   )
