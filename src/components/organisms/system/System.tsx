@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './System.module.scss'
 import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 import { ninaApiHealthServiceClient } from '../../../repository/NinaApiRepository'
-import { HostConst, PathConst } from '../../../constants/Const'
+import { PathConst, UrlConst } from '../../../constants/Const'
 import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
 import { miikoApiHealthServiceClient } from '../../../repository/MiikoApiRepository'
@@ -43,7 +43,7 @@ export const System = () => {
         <CustomNormalCard>
           <div>
             <h5 className={styles.title}>
-              {HostConst.NINA_API}
+              {UrlConst.NINA_API}
             </h5>
             <p className={fontStyles.body}>
               healthcheck: {ninaApiHealth}
@@ -53,7 +53,7 @@ export const System = () => {
         <CustomNormalCard>
           <div>
             <h5 className={styles.title}>
-              {HostConst.KIWA_API}
+              {UrlConst.KIWA_API}
             </h5>
             <p className={fontStyles.body}>
               healthcheck: {kiwaApiHealth}
@@ -63,7 +63,7 @@ export const System = () => {
         <CustomNormalCard>
           <div>
             <h5 className={styles.title}>
-              {HostConst.MIIKO_API}
+              {UrlConst.MIIKO_API}
             </h5>
             <p className={fontStyles.body}>
               healthcheck: {miikoApiHealth}
