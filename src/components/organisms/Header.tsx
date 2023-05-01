@@ -67,6 +67,18 @@ export const NingenmeNetHeader = () => {
     setAnchorEl(null);
   };
 
+  const getElementList = ({className}:{className: string}) => {
+    return (
+      <>
+        <NormalElement link={LinkConst.GITHUB} className={className} icon={<GitHubIcon />} />
+        <NormalElement link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />
+        <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={className} icon={<ComputerIcon />}/>
+        <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={className} icon={<ArticleIcon />}/>
+        <NormalElement link={LinkConst.GITHUB_SPONSOR} className={className} icon={<PaidIcon />} />
+      </>
+    )
+  }
+
   return (
     <AppBar position="static" className={styles.ningenmeNetAppbar}>
       <Toolbar disableGutters>
@@ -76,12 +88,7 @@ export const NingenmeNetHeader = () => {
 
         {/*pc*/}
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          {/* pc/sp 両方編集すること */}
-          <NormalElement link={LinkConst.GITHUB} className={styles.buttonPc} icon={<GitHubIcon />} />
-          <NormalElement link={LinkConst.TWITTER} className={styles.buttonPc} icon={<TwitterIcon />} />
-          <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonPc} icon={<ComputerIcon />}/>
-          <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonPc} icon={<ArticleIcon />}/>
-          <NormalElement link={LinkConst.GITHUB_SPONSOR} className={styles.buttonPc} icon={<PaidIcon />} />
+          {getElementList({className: styles.buttonPc})}
         </Box>
 
         {/*sp*/}
@@ -108,12 +115,7 @@ export const NingenmeNetHeader = () => {
             onClose={onClose}
             sx={{ display: { xs: 'block', md: 'none' }, }}
           >
-            {/* pc/sp 両方編集すること */}
-            <NormalElement link={LinkConst.GITHUB} className={styles.buttonSp} icon={<GitHubIcon />} />
-            <NormalElement link={LinkConst.TWITTER} className={styles.buttonSp} icon={<TwitterIcon />} />
-            <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={styles.buttonSp} icon={<ComputerIcon />}/>
-            <DropdownElement title={"blog"} links={LinkConst.BLOGS} className={styles.buttonSp} icon={<ArticleIcon />}/>
-            <NormalElement link={LinkConst.GITHUB_SPONSOR} className={styles.buttonSp} icon={<PaidIcon />} />
+            {getElementList({className: styles.buttonSp})}
           </Menu>
         </Box>
 
@@ -132,6 +134,17 @@ export const ComproCategoryHeader = () => {
     setAnchorEl(null);
   };
 
+  const getElementList = ({className}:{className: string}) => {
+    return (
+      <>
+        <NormalElement link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />
+        <NormalElement link={LinkConst.GITHUB_AKARI_FRONT} className={className} icon={<GitHubIcon />} />
+        <NormalElement link={LinkConst.GITHUB_MIIKO_API} className={className} icon={<GitHubIcon />} />
+        <NormalElement link={LinkConst.NINGENME_NET} className={className} icon={<></>} />
+      </>
+    )
+  }
+
   return (
     <AppBar position="static" className={styles.comproCategoryAppbar}>
       <Toolbar disableGutters>
@@ -141,10 +154,7 @@ export const ComproCategoryHeader = () => {
 
         {/*pc*/}
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          {/* pc/sp 両方編集すること */}
-          <NormalElement link={LinkConst.GITHUB} className={styles.buttonPc} icon={<GitHubIcon />} />
-          <NormalElement link={LinkConst.TWITTER} className={styles.buttonPc} icon={<TwitterIcon />} />
-          <NormalElement link={LinkConst.NINGENME_NET} className={styles.buttonPc} icon={<></>} />
+          {getElementList({className: styles.buttonPc})}
         </Box>
 
         {/*sp*/}
@@ -171,10 +181,7 @@ export const ComproCategoryHeader = () => {
             onClose={onClose}
             sx={{ display: { xs: 'block', md: 'none' }, }}
           >
-            {/* pc/sp 両方編集すること */}
-            <NormalElement link={LinkConst.GITHUB} className={styles.buttonSp} icon={<GitHubIcon />} />
-            <NormalElement link={LinkConst.TWITTER} className={styles.buttonSp} icon={<TwitterIcon />} />
-            <NormalElement link={LinkConst.NINGENME_NET} className={styles.buttonSp} icon={<></>} />
+            {getElementList({className: styles.buttonSp})}
           </Menu>
         </Box>
 

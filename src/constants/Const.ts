@@ -1,6 +1,5 @@
 import { Link } from '../interfaces/Link'
 
-//TODO privateにする
 export class PathConst {
   static readonly HOME: string = '/home'
   static readonly TASK: string = '/task'
@@ -14,25 +13,22 @@ export class PathConst {
   static readonly SYSTEM: string = '/system'
 }
 
-//TODO privateにする
-export class HostConst {
+class HostConst {
   static readonly NINGENME_NET: string = 'ningenme.net'
   static readonly NINA_API: string = 'nina-api.ningenme.net'
-  static readonly NINA_ENVOY: string = 'nina-envoy.ningenme.net'
-  static readonly ZEUS_API: string = 'zeus-api.ningenme.net'
   static readonly KIWA_API: string = 'kiwa-api.ningenme.net'
   static readonly MIIKO_API: string = 'miiko-api.ningenme.net'
 }
 
 export class UrlConst {
-  static readonly NINGENME_NET: string = 'https://' + HostConst.NINGENME_NET
+  static readonly NINGENME_NET: string = PathConst.HOME
   static readonly NINA_API: string = 'https://' + HostConst.NINA_API
-  static readonly NINA_ENVOY: string = 'https://' + HostConst.NINA_ENVOY
-  static readonly ZEUS_API: string = 'https://' + HostConst.ZEUS_API
   static readonly KIWA_API: string = 'https://' + HostConst.KIWA_API
   static readonly MIIKO_API: string = 'https://' + HostConst.MIIKO_API
   static readonly GITHUB: string = 'https://github.com/ningenMe'
   static readonly GITHUB_SPONSOR: string = 'https://github.com/sponsors/ningenMe'
+  static readonly GITHUB_AKARI_FRONT: string = 'https://github.com/ningenMe/akari-front'
+  static readonly GITHUB_MIIKO_API: string = 'https://github.com/ningenMe/miiko-api'
   static readonly TWITTER: string = 'https://twitter.com/ningenMe'
   static readonly ATCODER: string = 'https://atcoder.jp/users/ningenMe'
   static readonly CODEFORCES: string = 'https://codeforces.com/profile/ningenMe'
@@ -56,6 +52,8 @@ export class LinkConst {
   static readonly NINGENME_NET: Link = { href: UrlConst.NINGENME_NET, name: 'ningenMe.net' }
   static readonly GITHUB: Link = { href: UrlConst.GITHUB, name: 'GitHub' }
   static readonly GITHUB_SPONSOR: Link = { href: UrlConst.GITHUB_SPONSOR, name: 'Become a sponsor' }
+  static readonly GITHUB_AKARI_FRONT: Link = { href: UrlConst.GITHUB_AKARI_FRONT, name: 'frontend' }
+  static readonly GITHUB_MIIKO_API: Link = { href: UrlConst.GITHUB_MIIKO_API, name: 'backend' }
   static readonly TWITTER: Link = { href: UrlConst.TWITTER, name: '@ningenMe' }
   static readonly ATCODER: Link = { href: UrlConst.ATCODER, name: 'AtCoder' }
   static readonly CODEFORCES: Link = { href: UrlConst.CODEFORCES, name: 'Codeforces' }

@@ -1,9 +1,9 @@
 import { Container } from '@mui/material'
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
+import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import { Category, Problem, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
+import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
 
 export const TopicList = ({categorySystemName} : {categorySystemName: string}) => {
 
