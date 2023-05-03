@@ -140,6 +140,7 @@ export const ComproCategoryHeader = () => {
         <NormalElement link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />
         <NormalElement link={LinkConst.GITHUB_AKARI_FRONT} className={className} icon={<GitHubIcon />} />
         <NormalElement link={LinkConst.GITHUB_MIIKO_API} className={className} icon={<GitHubIcon />} />
+        <DropdownElement title={"compro"} links={LinkConst.COMPROS} className={className} icon={<ComputerIcon />}/>
         <NormalElement link={LinkConst.NINGENME_NET} className={className} icon={<></>} />
       </>
     )
