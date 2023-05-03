@@ -5,7 +5,7 @@ import { HealthService } from 'miiko-api/proto/gen_ts/v1/health_connect'
 import { UrlConst } from '../constants/Const'
 
 const transport = createConnectTransport({
-  baseUrl: UrlConst.MIIKO_API
+  baseUrl: UrlConst.MIIKO_API, credentials: 'include'
 })
 
 export const miikoApiMiikoServiceClient = createPromiseClient < typeof MiikoService > (
