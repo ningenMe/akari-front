@@ -55,7 +55,7 @@ export const TopicList = ({categorySystemName} : {categorySystemName: string}) =
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
       <Typography variant='body2'>{category?.categoryDisplayName}</Typography>
-      {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE(category?.categorySystemName)} /> : <></> }
+      {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE(category?.categorySystemName ?? '')} /> : <></> }
       {cardList}
 
     </Container>

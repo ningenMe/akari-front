@@ -2,7 +2,7 @@ import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
 import { TopicList } from 'components/organisms/compro-category/TopicList'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 
 type Props = {
   categorySystemName: string;
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props }
 }
 
-export const Index = (props: Props) => {
+export const Index: NextPage<Props> = (props: Props) => {
 
   return (
     <>
