@@ -2,7 +2,13 @@ import { Container } from '@mui/material'
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
-import { Category, Problem, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import {
+  Category,
+  Problem,
+  Topic,
+  TopicListGetRequest,
+  TopicListGetResponse,
+} from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
