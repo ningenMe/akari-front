@@ -11,7 +11,7 @@ import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCar
 import styles from './ProblemList.module.scss'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton, TransitionButton } from 'components/atoms/Button'
+import { ManageButton, TagButton, TransitionButton } from 'components/atoms/Button'
 import { PathConst } from 'constants/Const'
 
 export const ProblemList = ({page}:{ page: number }): JSX.Element => {
@@ -43,9 +43,7 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
       .map((it) =>
-        <CustomNormalCard key={it.topicId}>
-          <div>{it.topicDisplayName}</div>
-        </CustomNormalCard>
+        <TagButton name={it.topicDisplayName} key={it.topicId} />
       )
   }
 
@@ -61,9 +59,9 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
   return (
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>problem list</Typography>
+      <Typography variant='body2'>problem list page = {page}</Typography>
       <div className={styles.buttonGrid}>
-        <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page+-1)} name='←'/>
+        <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page-1)} name='←'/>
         <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page+1)} name='→'/>
       </div>
 

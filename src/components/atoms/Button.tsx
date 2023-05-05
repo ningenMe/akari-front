@@ -14,9 +14,18 @@ export const ManageButton = ({ href }: { href: string }): JSX.Element => {
 export const TransitionButton = ({ href, name }: { href: string, name: string }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
-        <span className={styles.manageButtonBody}>
+        <span className={styles.transitionButtonBody}>
           {name}
           <a href={href} className={styles.href} />
+        </span>
+    </div>
+  )
+}
+export const TagButton = ({ name }: { name: string }): JSX.Element => {
+  return (
+    <div className={styles.wrapper}>
+        <span className={styles.tagButtonBody}>
+          {name}
         </span>
     </div>
   )
