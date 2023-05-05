@@ -2,9 +2,16 @@ import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField 
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
-import { Category, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import {
+  Category,
+  CategoryPostRequest,
+  Topic,
+  TopicListGetRequest,
+  TopicListGetResponse, TopicPostRequest,
+} from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { CustomNormalCard } from 'components/organisms/CustomCard'
 import styles from './TopicManage.module.scss'
+import { DeleteButton, UpsertButton } from '../../atoms/Button'
 
 export const TopicManage = ({categorySystemName} : {categorySystemName: string}): JSX.Element => {
 
@@ -24,6 +31,25 @@ export const TopicManage = ({categorySystemName} : {categorySystemName: string})
     const topicListGetResponse = await miikoApiMiikoServiceClient.topicListGet(topicListGetRequest) as TopicListGetResponse
     setCategory(topicListGetResponse.category)
     setTopicList(topicListGetResponse.topicList?? [])
+  }
+
+
+  const upsertClick = async () => {
+    const request = new TopicPostRequest()
+    {
+      if (topicId != DUMMY_TOPIC_ID) {
+        request.topicId = topicId
+      }
+      request.topic = new Topic({
+        topicId: topicId,
+        topicDisplayName: topicDisplayName,
+        topicOrder: topicOrder
+      })
+      request.categoryId = category?.categoryId ?? ''
+    }
+    await miikoApiMiikoServiceClient.topicPost(request)
+    setAllState(DUMMY_TOPIC)
+    await topicListGet()
   }
 
   useEffect(() => {
@@ -94,8 +120,13 @@ export const TopicManage = ({categorySystemName} : {categorySystemName: string})
           className={styles.textfield}
         />
       </FormControl>
+      <div className={styles.buttongrid}>
+        <UpsertButton onClick={upsertClick} />
+      </div>
 
-      {cardList}
+      <div className={styles.grid}>
+        {cardList}
+      </div>
 
     </Container>
   )
