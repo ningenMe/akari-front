@@ -11,6 +11,16 @@ export const ManageButton = ({ href }: { href: string }): JSX.Element => {
     </div>
   )
 }
+export const TransitionButton = ({ href, name }: { href: string, name: string }): JSX.Element => {
+  return (
+    <div className={styles.wrapper}>
+        <span className={styles.manageButtonBody}>
+          {name}
+          <a href={href} className={styles.href} />
+        </span>
+    </div>
+  )
+}
 export const UpsertButton = ({ onClick }: { onClick: MouseEventHandler | undefined }): JSX.Element => {
   return (
     <div className={styles.wrapper}>

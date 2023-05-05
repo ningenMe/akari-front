@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
 import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
-import { ManageButton } from 'components/atoms/Button'
+import { ManageButton, TransitionButton } from 'components/atoms/Button'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
@@ -45,6 +45,7 @@ export const CategoryList = (): JSX.Element => {
       <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
 
       {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} /> : <></> }
+      <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST} name='problem list ▶️'/>
 
       <div className={styles.grid}>
         {cardList}
