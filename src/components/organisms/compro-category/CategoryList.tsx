@@ -30,7 +30,7 @@ export const CategoryList = () => {
   }, [])
 
   const cardList = categoryList.map((category) =>
-    <CustomLinkCard href={PathConst.COMPRO_CATEGORY + '/category/' + category.categorySystemName + '/topic'} key={category.categoryId}>
+    <CustomLinkCard href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(category.categorySystemName)} key={category.categoryId}>
       <h5 className={styles.title}>
         {category.categoryDisplayName}
       </h5>

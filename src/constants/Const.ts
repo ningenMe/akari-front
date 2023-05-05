@@ -8,7 +8,10 @@ export class PathConst {
   static readonly DIARIES: string = '/diaries'
   static readonly CONTRIBUTION: string = '/contribution'
   static readonly COMPRO_CATEGORY: string = '/compro-category'
-  static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = '/compro-category/category/manage'
+  static readonly COMPRO_CATEGORY_CATEGORY_LIST: string = PathConst.COMPRO_CATEGORY + '/category'
+  static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = PathConst.COMPRO_CATEGORY + '/category/manage'
+  static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_LIST = (categorySystemName: string) => {return PathConst.COMPRO_CATEGORY_CATEGORY_LIST + '/' + categorySystemName + '/topic' }
+  static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE = (categorySystemName: string) => {return this.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(categorySystemName) + '/manage' }
   static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'
 }

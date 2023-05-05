@@ -1,17 +1,16 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
-import { CategoryManage } from 'components/organisms/compro-category/CategoryManage'
+import { CategoryList } from 'components/organisms/compro-category/CategoryList'
 import { ComproCategoryHeader } from 'components/organisms/Header'
 
-export const Manage = () => {
-
+export const Index = () => {
   return (
     <>
-      <HtmlHead title='compro-category category manage - ' />
+      <HtmlHead title='compro-category category - ' />
       <ComproCategoryHeader />
-      <CategoryManage />
+      <CategoryList />
       <ComproCategoryFooter />
     </>
   )
 }
-export default Manage
+export default Index

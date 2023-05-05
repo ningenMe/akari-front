@@ -1,8 +1,8 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
-import { TopicList } from 'components/organisms/compro-category/TopicList'
 import { GetServerSideProps } from 'next'
+import { TopicManage } from 'components/organisms/compro-category/TopicManage'
 
 type Props = {
   categorySystemName: string;
@@ -17,15 +17,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props }
 }
 
-export const Index = (props: Props) => {
+export const Manage = (props: Props) => {
 
   return (
     <>
       <HtmlHead title={'compro-category category:' + props.categorySystemName + ' topic - '} />
       <ComproCategoryHeader />
-      <TopicList categorySystemName={props.categorySystemName} />
+      <TopicManage categorySystemName={props.categorySystemName} />
       <ComproCategoryFooter />
     </>
   )
 }
-export default Index
+export default Manage
