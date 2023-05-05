@@ -5,7 +5,7 @@ import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import { Category, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { CustomNormalCard } from 'components/organisms/CustomCard'
 
-export const TopicManage = ({categorySystemName} : {categorySystemName: string}) => {
+export const TopicManage = ({categorySystemName} : {categorySystemName: string}): JSX.Element => {
 
   const [category, setCategory] = useState < Category | undefined>()
   const [topicList, setTopicList] = useState <Topic[]>([])

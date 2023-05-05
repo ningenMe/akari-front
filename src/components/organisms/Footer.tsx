@@ -7,14 +7,14 @@ const Copy = () => {
   )
 }
 
-export const NingenmeNetFooter = () => {
+export const NingenmeNetFooter = (): JSX.Element => {
   return (
     <AppBar position='static' className={styles.ningenmeNetAppbar}>
       <Copy />
     </AppBar>
   )
 }
-export const ComproCategoryFooter = () => {
+export const ComproCategoryFooter = (): JSX.Element => {
   return (
     <AppBar position='static' className={styles.comproCategoryAppbar}>
       <Copy />

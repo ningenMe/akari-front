@@ -6,7 +6,7 @@ import { Activity } from '../organisms/home/Activity'
 import { Container } from '@mui/material'
 import { RecentBlog } from '../organisms/home/RecentBlog'
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
   return (
     <Container>
       <Profile />

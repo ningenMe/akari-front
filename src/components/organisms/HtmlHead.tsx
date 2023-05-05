@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { ImageConst, LinkConst, UrlConst } from '../../constants/Const'
 
-export const HtmlHead = ({title}:{title:string}) => {
+export const HtmlHead = ({title}:{title:string}): JSX.Element => {
   const router = useRouter()
 
   return (

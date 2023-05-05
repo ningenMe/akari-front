@@ -15,7 +15,7 @@ import {
   ContributionSum,
 } from 'nina-api/proto/gen_ts/v1/nina_pb'
 
-export const Contribution = () => {
+export const Contribution = (): JSX.Element => {
   const initDatePeriod = getInitDatePeriod()
 
   const [statistics, setStatistics] = useState < ContributionStatisticsGetResponse | undefined>()

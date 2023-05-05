@@ -1,6 +1,6 @@
 import styles from './Title.module.scss'
 
-export const Title = ({ title }: { title: string }) => {
+export const Title = ({ title }: { title: string }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <span className={styles.title}>
@@ -10,7 +10,7 @@ export const Title = ({ title }: { title: string }) => {
   )
 }
 
-export const SubTitle = ({ title }: { title: string }) => {
+export const SubTitle = ({ title }: { title: string }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <span className={styles.subtitle}>

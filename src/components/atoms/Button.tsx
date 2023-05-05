@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from 'react'
 import styles from './Button.module.scss'
 
-export const ManageButton = ({ href }: { href: string }) => {
+export const ManageButton = ({ href }: { href: string }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
         <span className={styles.manageButtonBody}>
@@ -11,7 +11,7 @@ export const ManageButton = ({ href }: { href: string }) => {
     </div>
   )
 }
-export const UpsertButton = ({ onClick }: { onClick: MouseEventHandler | undefined }) => {
+export const UpsertButton = ({ onClick }: { onClick: MouseEventHandler | undefined }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
         <span className={styles.upsertButtonBody} onClick={onClick}>
@@ -20,7 +20,7 @@ export const UpsertButton = ({ onClick }: { onClick: MouseEventHandler | undefin
     </div>
   )
 }
-export const DeleteButton = ({ onClick }: { onClick: MouseEventHandler | undefined }) => {
+export const DeleteButton = ({ onClick }: { onClick: MouseEventHandler | undefined }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
         <span className={styles.deleteButtonBody} onClick={onClick}>
@@ -29,7 +29,7 @@ export const DeleteButton = ({ onClick }: { onClick: MouseEventHandler | undefin
     </div>
   )
 }
-export const LoginButton = ({ onClick }: { onClick: MouseEventHandler | undefined }) => {
+export const LoginButton = ({ onClick }: { onClick: MouseEventHandler | undefined }): JSX.Element => {
   return (
     <div className={styles.wrapper}>
         <span className={styles.loginButtonBody} onClick={onClick}>

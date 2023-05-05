@@ -7,7 +7,7 @@ import { CustomNormalCard } from '../CustomCard'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, CategoryListGetResponse, CategoryPostRequest } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 
-export const CategoryManage = () => {
+export const CategoryManage = (): JSX.Element => {
 
   const [categoryList, setCategoryList] = useState < Category[]>([])
   const [selectedCategory, setSelectedCategory] = useState<Category>()

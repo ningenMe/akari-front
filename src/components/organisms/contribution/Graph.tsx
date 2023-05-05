@@ -14,7 +14,7 @@ import { ContributionSum } from 'nina-api/proto/gen_ts/v1/nina_pb'
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, BarElement, BarController);
 
-export const Graph = ({ list, yMax }: { list: ContributionSum[], yMax: number }) => {
+export const Graph = ({ list, yMax }: { list: ContributionSum[], yMax: number }): JSX.Element => {
 
   const data = {
     // x 軸のラベル

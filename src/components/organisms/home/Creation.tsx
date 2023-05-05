@@ -5,7 +5,7 @@ import styles from './Creation.module.scss'
 import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
 
-export const Creation = () => {
+export const Creation = (): JSX.Element => {
 
   const cards = CREATION_LIST.map((creation) =>
   {

@@ -1,7 +1,7 @@
 import { CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
 
-export const Profile = () => {
+export const Profile = (): JSX.Element => {
   return (
     <CustomNormalCard>
       <h4>

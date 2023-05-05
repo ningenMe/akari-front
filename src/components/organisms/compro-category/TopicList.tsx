@@ -9,7 +9,7 @@ import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 import { ManageButton } from '../../atoms/Button'
 import { PathConst } from '../../../constants/Const'
 
-export const TopicList = ({categorySystemName} : {categorySystemName: string}) => {
+export const TopicList = ({categorySystemName} : {categorySystemName: string}): JSX.Element => {
 
   const [category, setCategory] = useState < Category | undefined>()
   const [topicList, setTopicList] = useState <Topic[]>([])
@@ -20,7 +20,7 @@ export const TopicList = ({categorySystemName} : {categorySystemName: string}) =
     const topicListGetResponse = await miikoApiMiikoServiceClient.topicListGet(topicListGetRequest) as TopicListGetResponse
     kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
       .then((res: { data: UsersMeGetResponse }) => setIsAuthorizedComproCategory(res.data.authority.comproCategory))
-      .catch((err: any) => {
+      .catch((err: Error) => {
         console.log(err)
       })
 

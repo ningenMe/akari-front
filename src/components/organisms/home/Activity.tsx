@@ -6,7 +6,7 @@ import { CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
 import styles from './Activity.module.scss'
 
-export const Activity = () => {
+export const Activity = (): JSX.Element => {
   const contents = ACTIVITY_LIST.map((activity, idx) =>
     <div key={idx} className={fontStyles.body}>
       <span className={styles.year}>{activity.year}</span>

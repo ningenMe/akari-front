@@ -1,5 +1,4 @@
 import { Container, FormControl, TextField } from '@mui/material'
-import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styles from './UserLogin.module.scss'
 import { LoginButton } from '../../atoms/Button'
@@ -9,7 +8,7 @@ import fontStyles from '../../../styles/Font.module.scss'
 import { CustomNormalCard } from '../CustomCard'
 import { Title } from '../../atoms/Title'
 
-export const UserLogin = () => {
+export const UserLogin = (): JSX.Element => {
 
   const [userId, setUserId] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -22,9 +21,10 @@ export const UserLogin = () => {
     }
     kiwaApiLoginClient
       .loginPost(request, {method: 'POST', withCredentials: true})
-      .catch((err: any) => {
+      .catch((err: Error) => {
         console.log(err)
       })
+
   }
 
   const loggedIn = (loginUser: UsersMeGetResponse) => {
@@ -46,8 +46,8 @@ export const UserLogin = () => {
 
   useEffect(() => {
     kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
-      .then((res: { data: any }) => setUser(res.data))
-      .catch((err: any) => {
+      .then((res: { data: UsersMeGetResponse }) => setUser(res.data))
+      .catch((err: Error) => {
         console.log(err)
         setUser(undefined)
       })

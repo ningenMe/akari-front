@@ -10,7 +10,7 @@ import { Category, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/mii
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 
-export const CategoryList = () => {
+export const CategoryList = (): JSX.Element => {
 
   const [categoryList, setCategoryList] = useState < Category[]>([])
   const [isAuthorizedComproCategory, setIsAuthorizedComproCategory] = useState<boolean>(false)
@@ -23,7 +23,7 @@ export const CategoryList = () => {
   useEffect(() => {
     kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
       .then((res: { data: UsersMeGetResponse }) => setIsAuthorizedComproCategory(res.data.authority.comproCategory))
-      .catch((err: any) => {
+      .catch((err: Error) => {
         console.log(err)
       })
     categoryGet()

@@ -5,7 +5,7 @@ import Script from "next/script";
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-function MyApp ({ Component, pageProps }: AppProps) {
+function MyApp ({ Component, pageProps }: AppProps): JSX.Element {
   const GA_MEASUREMENT_ID='G-J4EFBSZ2D4'
   const pageview = (url: string): void => {
     window.gtag('config', GA_MEASUREMENT_ID, {

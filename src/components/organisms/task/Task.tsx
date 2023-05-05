@@ -7,7 +7,7 @@ import { CustomLinkCard } from '../CustomCard'
 import styles from './Task.module.scss'
 import { onlineJudgeIconPath } from '../../atoms/task/onlineJudgeIconPath'
 
-export const Task = () => {
+export const Task = (): JSX.Element => {
   const cardList = TASK_LIST.map((task) =>
     <CustomLinkCard href={task.href} key={task.href}>
       {/* TODO 画像と文字を横並びにする */}

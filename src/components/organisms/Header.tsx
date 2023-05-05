@@ -57,7 +57,7 @@ const DropdownElement = ({ title, links, className, icon}: { title: string, link
   );
 }
 
-export const NingenmeNetHeader = () => {
+export const NingenmeNetHeader = (): JSX.Element => {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const onOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -124,7 +124,7 @@ export const NingenmeNetHeader = () => {
   );
 };
 
-export const ComproCategoryHeader = () => {
+export const ComproCategoryHeader = (): JSX.Element => {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const onOpen = (event: React.MouseEvent<HTMLElement>) => {

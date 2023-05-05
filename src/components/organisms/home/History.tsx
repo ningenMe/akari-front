@@ -7,7 +7,7 @@ import { Title } from '../../atoms/Title'
 import fontStyles from 'styles/Font.module.scss'
 import styles from './History.module.scss'
 
-export const History = () => {
+export const History = (): JSX.Element => {
 
   const innerContents = (historyContentList: ReadonlyArray<HistoryContent>) => {
     return historyContentList.map((historyContent, idx) =>

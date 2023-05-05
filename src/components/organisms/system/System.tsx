@@ -9,7 +9,7 @@ import fontStyles from '../../../styles/Font.module.scss'
 import { kiwaApiHealthcheckClient } from '../../../repository/KiwaApiRepository'
 import { miikoApiHealthServiceClient } from '../../../repository/MiikoApiRepository'
 
-export const System = () => {
+export const System = (): JSX.Element => {
 
   const [ninaApiHealth, setNinaApiHealth] = useState('')
   const [kiwaApiHealth, setKiwaApiHealth] = useState('')
@@ -17,7 +17,7 @@ export const System = () => {
 
   useEffect(() => {
     ninaApiHealthServiceClient.check({})
-      .then(res => setNinaApiHealth('ok'))
+      .then(() => setNinaApiHealth('ok'))
       .catch(err => {
         console.log(err)
         setNinaApiHealth('not found')
@@ -29,7 +29,7 @@ export const System = () => {
         setKiwaApiHealth('not found')
       })
     miikoApiHealthServiceClient.check({})
-      .then(res => setMiikoApiHealth('ok'))
+      .then(() => setMiikoApiHealth('ok'))
       .catch(err => {
         console.log(err)
         setMiikoApiHealth('not found')
