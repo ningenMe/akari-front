@@ -2,21 +2,21 @@ import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField 
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styles from './CategoryManage.module.scss'
-import { DeleteButton, UpsertButton } from '../../atoms/Button'
-import { CustomNormalCard } from '../CustomCard'
-import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
+import { DeleteButton, UpsertButton } from 'components/atoms/Button'
+import { CustomNormalCard } from 'components/organisms/CustomCard'
+import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import { Category, CategoryListGetResponse, CategoryPostRequest } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 
 export const CategoryManage = (): JSX.Element => {
 
+  const DUMMY_CATEGORY_ID = 'A new categoryId will be created automatically'
+  const DUMMY_CATEGORY = new Category({categoryId: DUMMY_CATEGORY_ID, categoryDisplayName: '新規作成'})
   const [categoryList, setCategoryList] = useState < Category[]>([])
-  const [selectedCategory, setSelectedCategory] = useState<Category>()
-  const [categoryId, setCategoryId] = useState<string>('')
+  const [selectedCategory, setSelectedCategory] = useState<Category>(DUMMY_CATEGORY)
+  const [categoryId, setCategoryId] = useState<string>(DUMMY_CATEGORY_ID)
   const [categoryDisplayName, setCategoryDisplayName] = useState<string>('')
   const [categorySystemName, setCategorySystemName] = useState<string>('')
   const [categoryOrder, setCategoryOrder] = useState<number>(0)
-  const DUMMY_CATEGORY_ID = 'NEW CREATE'
-  const DUMMY_CATEGORY = new Category({categoryId: DUMMY_CATEGORY_ID})
 
   const setAllState = (category: Category) => {
     setSelectedCategory(category);
@@ -74,8 +74,8 @@ export const CategoryManage = (): JSX.Element => {
     </CustomNormalCard>
   )
 
-  const handleChange = (event: SelectChangeEvent<Category>) => {
-    const tmp = event.target.value as Category
+  const handleChange = (event: SelectChangeEvent) => {
+    const tmp = JSON.parse(event.target.value) as Category
     setAllState(tmp)
   };
 
@@ -86,13 +86,13 @@ export const CategoryManage = (): JSX.Element => {
 
       <FormControl fullWidth className={styles.wrapper}>
         <Select
-          value={selectedCategory}
+          value={JSON.stringify(selectedCategory)}
           onChange={handleChange}
           className={styles.wrapper}
         >
           {[DUMMY_CATEGORY].concat(categoryList).map((it) =>
-            <MenuItem key={it.categoryId} value={it as any}>
-              {it.categoryId === DUMMY_CATEGORY_ID ? '新規作成' : it.categoryDisplayName}
+            <MenuItem key={it.categoryId} value={JSON.stringify(it)}>
+              {it.categoryDisplayName}
             </MenuItem>
           )}
         </Select>
