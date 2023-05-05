@@ -45,7 +45,7 @@ export const CategoryList = (): JSX.Element => {
       <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
 
       {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} /> : <></> }
-      <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST} name='problem list ▶️'/>
+      <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(0)} name='problem list'/>
 
       <div className={styles.grid}>
         {cardList}

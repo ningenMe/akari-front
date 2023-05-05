@@ -6,25 +6,25 @@ import {
   Problem,
   ProblemListGetRequest,
   ProblemListGetRequest_SortType, ProblemListGetResponse, Tag,
-  Topic,
-  TopicListGetResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
-import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
+import styles from './ProblemList.module.scss'
+import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton } from '../../atoms/Button'
-import { PathConst } from '../../../constants/Const'
+import { ManageButton, TransitionButton } from 'components/atoms/Button'
+import { PathConst } from 'constants/Const'
 
-export const ProblemList = (): JSX.Element => {
+export const ProblemList = ({page}:{ page: number }): JSX.Element => {
 
   const [problemList, setProblemList] = useState <Problem[]>([])
   const [isAuthorizedComproCategory, setIsAuthorizedComproCategory] = useState<boolean>(false)
+  const LIMIT = 30;
 
   const problemListGet = async () => {
     const problemListGetRequest = new ProblemListGetRequest({
       sortType: ProblemListGetRequest_SortType.CREATED_TIME,
-      offset: 0,
-      limit: 30,
+      offset: page * LIMIT,
+      limit: LIMIT,
     })
     const problemListGetResponse = await miikoApiMiikoServiceClient.problemListGet(problemListGetRequest) as ProblemListGetResponse
     kiwaApiUsersClient.usersGet({method: 'GET', withCredentials: true})
@@ -62,6 +62,11 @@ export const ProblemList = (): JSX.Element => {
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
       <Typography variant='body2'>problem list</Typography>
+      <div className={styles.buttonGrid}>
+        <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page+-1)} name='←'/>
+        <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page+1)} name='→'/>
+      </div>
+
       {isAuthorizedComproCategory ? <ManageButton href={''} /> : <></> }
       {cardList}
 
