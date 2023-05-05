@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { CustomLinkCard } from 'components/organisms/CustomCard'
+import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
 import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
 import { ManageButton } from 'components/atoms/Button'
@@ -34,6 +34,7 @@ export const CategoryList = (): JSX.Element => {
       <h5 className={styles.title}>
         {category.categoryDisplayName}
       </h5>
+      <div>topic: {category.topicSize} , problem: {category.problemSize}</div>
     </CustomLinkCard>
   )
 
