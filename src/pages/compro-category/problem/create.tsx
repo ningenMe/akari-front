@@ -1,9 +1,8 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
-import { GetServerSideProps, NextPage } from 'next'
-import { ProblemList } from '../../../components/organisms/compro-category/ProblemList'
-import { ProblemCreate } from '../../../components/organisms/compro-category/ProblemCreate'
+import { ProblemCreate } from 'components/organisms/compro-category/ProblemCreate'
+import { NextPage } from 'next'
 
 export const Index: NextPage = () => {
 

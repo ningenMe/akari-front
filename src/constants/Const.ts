@@ -16,6 +16,7 @@ export class PathConst {
   static readonly COMPRO_CATEGORY_PROBLEM: string = PathConst.COMPRO_CATEGORY + '/problem'
   static readonly COMPRO_CATEGORY_PROBLEM_LIST = (page: number): string => {return PathConst.COMPRO_CATEGORY_PROBLEM + '?page=' + page}
   static readonly COMPRO_CATEGORY_PROBLEM_CREATE: string = PathConst.COMPRO_CATEGORY_PROBLEM + '/create'
+  static readonly COMPRO_CATEGORY_PROBLEM_EDIT = (problemId: string): string => {return PathConst.COMPRO_CATEGORY_PROBLEM + '/' + problemId + '/edit'}
   static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'
 }

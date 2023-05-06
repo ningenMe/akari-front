@@ -50,10 +50,13 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
   const cardList = problemList
     .sort((l,r) => l.estimation - r.estimation)
     .map((it) =>
-      <CustomLinkCard href={it.url} key={it.problemId}>
-        <div>{it.problemDisplayName}</div>
-        {getTagCardList(it.tagList)}
-      </CustomLinkCard>
+      <>
+        <CustomLinkCard href={it.url} key={it.problemId}>
+          <div>{it.problemDisplayName}</div>
+          {getTagCardList(it.tagList)}
+        </CustomLinkCard>
+        {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_PROBLEM_EDIT(it.problemId)} /> : <></> }
+      </>
     )
 
   return (
