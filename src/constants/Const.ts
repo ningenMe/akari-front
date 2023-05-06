@@ -13,7 +13,9 @@ export class PathConst {
   static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = PathConst.COMPRO_CATEGORY + '/category/manage'
   static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_LIST = (categorySystemName: string):string => {return PathConst.COMPRO_CATEGORY_CATEGORY_LIST + '/' + categorySystemName + '/topic' }
   static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE = (categorySystemName: string):string => {return this.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(categorySystemName) + '/manage' }
-  static readonly COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST = (page: number): string => {return PathConst.COMPRO_CATEGORY + '/problem?page=' + page}
+  static readonly COMPRO_CATEGORY_PROBLEM: string = PathConst.COMPRO_CATEGORY + '/problem'
+  static readonly COMPRO_CATEGORY_PROBLEM_LIST = (page: number): string => {return PathConst.COMPRO_CATEGORY_PROBLEM + '?page=' + page}
+  static readonly COMPRO_CATEGORY_PROBLEM_CREATE: string = PathConst.COMPRO_CATEGORY_PROBLEM + '/create'
   static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'
 }

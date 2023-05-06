@@ -8,9 +8,7 @@ import { ManageButton, TransitionButton } from 'components/atoms/Button'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import {
   Category, CategoryListGetRequest,
-  CategoryListGetResponse,
-  ProblemListGetRequest,
-  ProblemListGetRequest_SortType,
+  CategoryListGetResponse
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
@@ -54,7 +52,10 @@ export const CategoryList = (): JSX.Element => {
       <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
 
       {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} /> : <></> }
-      <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(0)} name='problem list'/>
+      {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_PROBLEM_CREATE} /> : <></> }
+      <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(0)} name='problem list'/>
+
+
 
       <div className={styles.grid}>
         {cardList}

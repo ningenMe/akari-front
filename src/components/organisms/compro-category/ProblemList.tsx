@@ -61,8 +61,8 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
       {/* TODO ここの説明文にcssを当てる */}
       <Typography variant='body2'>problem list page = {page}</Typography>
       <div className={styles.buttonGrid}>
-        <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page-1)} name='←'/>
-        <TransitionButton href={PathConst.COMPRO_CATEGORY_CATEGORY_PROBLEM_LIST(page+1)} name='→'/>
+        <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page-1)} name='←'/>
+        <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page+1)} name='→'/>
       </div>
 
       {isAuthorizedComproCategory ? <ManageButton href={''} /> : <></> }
