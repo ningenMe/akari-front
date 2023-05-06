@@ -76,7 +76,7 @@ export const ProblemEdit = (props: {problemId: string}): JSX.Element => {
   return (
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>problem 新規作成</Typography>
+      <Typography variant='body2'>problem 編集</Typography>
       <FormControl fullWidth className={styles.wrapper}>
         <TextField
           disabled={true}
