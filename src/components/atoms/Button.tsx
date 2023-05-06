@@ -21,9 +21,9 @@ export const TransitionButton = ({ href, name }: { href: string, name: string })
     </div>
   )
 }
-export const TagButton = ({ name }: { name: string }): JSX.Element => {
+export const TagButton = ({ name, onClick }: { name: string, onClick? : ()=>void }): JSX.Element => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={onClick}>
         <span className={styles.tagButtonBody}>
           {name}
         </span>
