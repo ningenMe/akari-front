@@ -15,15 +15,15 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     isDone: true
   },
   {
-    href: PathConst.CONTRIBUTION,
-    title: 'contribution',
-    body: '日々のgithubのcontribution。',
+    href: PathConst.COMPRO_CATEGORY,
+    title: 'compro-category',
+    body: 'ningenMeが解いた競技プログラミングの問題のまとめ',
     isDone: true
   },
   {
-    href: PathConst.COMPRO_CATEGORY,
-    title: 'compro-category',
-    body: '開発中...',
+    href: PathConst.CONTRIBUTION,
+    title: 'contribution',
+    body: '日々のgithubのcontribution。',
     isDone: true
   },
   // {

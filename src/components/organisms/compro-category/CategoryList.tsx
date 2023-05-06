@@ -41,7 +41,7 @@ export const CategoryList = (): JSX.Element => {
   return (
     <Container>
       {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴 今は改装中...</Typography>
+      <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴。日々改装中。UI色々直したい。</Typography>
       <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
 
       {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} /> : <></> }

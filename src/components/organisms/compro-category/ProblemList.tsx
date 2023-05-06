@@ -7,7 +7,7 @@ import {
   ProblemListGetRequest,
   ProblemListGetRequest_SortType, ProblemListGetResponse, Tag,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
+import { CustomLinkCard } from 'components/organisms/CustomCard'
 import styles from './ProblemList.module.scss'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
