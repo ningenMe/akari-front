@@ -13,10 +13,18 @@ import { Typography } from '@material-ui/core'
 import React, { MouseEventHandler, useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
-  Category, CategoryListGetRequest, CategoryListGetResponse, Problem, ProblemGetRequest, ProblemGetResponse, Tag, Topic,
+  Category,
+  CategoryListGetRequest,
+  CategoryListGetResponse,
+  CategoryPostRequest,
+  Problem,
+  ProblemGetRequest,
+  ProblemGetResponse, ProblemPostRequest,
+  Tag,
+  Topic,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './ProblemManage.module.scss'
-import { DeleteButton, TagButton } from '../../atoms/Button'
+import { DeleteButton, TagButton, UpsertButton } from '../../atoms/Button'
 import { CustomLinkCard } from '../CustomCard'
 
 export const ProblemEdit = (props: {problemId: string}): JSX.Element => {
@@ -72,6 +80,21 @@ export const ProblemEdit = (props: {problemId: string}): JSX.Element => {
   const handleClickSelectedTag = (tag: Tag) => {
     setTagList((list) => list.filter(it => (it.topicId != tag.topicId)))
   };
+
+  const upsertClick = async () => {
+    const request = new ProblemPostRequest()
+    {
+      request.problemId = props.problemId
+      request.problem = new Problem({
+        url: url,
+        problemDisplayName: problemDisplayName,
+        estimation: estimation,
+        tagList: tagList
+      })
+    }
+    await miikoApiMiikoServiceClient.problemPost(request)
+    await problemGet()
+  }
 
   return (
     <Container>
@@ -132,6 +155,9 @@ export const ProblemEdit = (props: {problemId: string}): JSX.Element => {
         <div>{estimation}</div>
       </CustomLinkCard>
       {getTagCardList(tagList)}
+      <div className={styles.buttongrid}>
+        <UpsertButton onClick={upsertClick} />
+      </div>
 
     </Container>
   )
