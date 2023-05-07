@@ -1,22 +1,18 @@
 import {
-  Box,
-  Chip,
   Container,
   FormControl,
   MenuItem,
-  OutlinedInput,
   Select,
   SelectChangeEvent,
   TextField,
 } from '@mui/material'
 import { Typography } from '@material-ui/core'
-import React, { MouseEventHandler, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
   Category,
   CategoryListGetRequest,
   CategoryListGetResponse,
-  CategoryPostRequest,
   Problem,
   ProblemGetRequest,
   ProblemGetResponse, ProblemPostRequest,
@@ -24,8 +20,8 @@ import {
   Topic,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './ProblemManage.module.scss'
-import { DeleteButton, TagButton, UpsertButton } from '../../atoms/Button'
-import { CustomLinkCard } from '../CustomCard'
+import { TagEditButton, UpsertButton } from 'components/atoms/Button'
+import { CustomLinkCard } from 'components/organisms/CustomCard'
 
 export const ProblemEdit = (props: {problemId: string}): JSX.Element => {
 
@@ -65,7 +61,7 @@ export const ProblemEdit = (props: {problemId: string}): JSX.Element => {
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
       .map((it) =>
-        <TagButton name={it.topicDisplayName} key={it.topicId} onClick={() => handleClickSelectedTag(it)}/>
+        <TagEditButton name={it.topicDisplayName} key={it.topicId} onClick={() => handleClickSelectedTag(it)}/>
       )
   }
 
