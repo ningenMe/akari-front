@@ -4,15 +4,12 @@ import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
   Category,
-  Problem,
-  ProblemListGetRequest,
-  ProblemListGetRequest_SortType, ProblemListGetResponse, Tag, Topic, TopicGetRequest, TopicGetResponse,
+  Problem,Tag, Topic, TopicGetRequest, TopicGetResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
-import styles from './ProblemList.module.scss'
+import { CustomLinkCard } from 'components/organisms/CustomCard'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton, TagButton, TransitionButton } from 'components/atoms/Button'
+import { TagViewButton, TransitionButton } from 'components/atoms/Button'
 import { PathConst } from 'constants/Const'
 
 export const TopicProblemList = ({topicId} : {topicId: string}): JSX.Element => {
@@ -41,30 +38,28 @@ export const TopicProblemList = ({topicId} : {topicId: string}): JSX.Element => 
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
       .map((it) =>
-        <TagButton name={it.topicDisplayName} key={it.topicId} />
+        <TagViewButton name={it.topicDisplayName} href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)} key={it.topicId} />
       )
   }
 
-  const cardList = topic?.problemList
-    .sort((l,r) => l.estimation - r.estimation)
-    .map((it) =>
-      <>
-        <CustomLinkCard href={it.url} key={it.problemId}>
-          <div>{it.problemDisplayName}</div>
+  const getProblemCardList = (problemList: Problem[]) => {
+    return problemList
+      .sort((l,r) => l.estimation - r.estimation)
+      .map((it) =>
+        <div key={it.problemId}>
+          <TransitionButton href={it.url} name={it.problemDisplayName} />
           {getTagCardList(it.tagList)}
-        </CustomLinkCard>
-        {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_PROBLEM_EDIT(it.problemId)} /> : <></> }
-      </>
-    )
+        </div>
+      )
+  }
 
   return (
     <Container>
       <Typography variant='body2'>{category?.categoryDisplayName}</Typography>
-      <CustomNormalCard key={topic?.topicId}>
+      <CustomLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(topic?.topicId ?? '')} key={topic?.topicId}>
         <div>{topic?.topicDisplayName}</div>
-        {cardList}
-      </CustomNormalCard>
-
+      </CustomLinkCard>
+      {getProblemCardList(topic?.problemList ?? [])}
     </Container>
   )
 }

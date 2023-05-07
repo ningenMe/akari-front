@@ -6,14 +6,12 @@ import {
   Category,
   CategoryListGetRequest,
   CategoryListGetResponse, Problem,
-  ProblemGetRequest,
-  ProblemGetResponse,
   ProblemPostRequest,
   Tag,
   Topic,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './ProblemManage.module.scss'
-import { TagButton, UpsertButton } from '../../atoms/Button'
+import { TagEditButton, UpsertButton } from '../../atoms/Button'
 import { CustomLinkCard } from '../CustomCard'
 
 export const ProblemCreate = (): JSX.Element => {
@@ -42,7 +40,7 @@ export const ProblemCreate = (): JSX.Element => {
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
       .map((it) =>
-        <TagButton name={it.topicDisplayName} key={it.topicId} onClick={() => handleClickSelectedTag(it)}/>
+        <TagEditButton name={it.topicDisplayName} key={it.topicId} onClick={() => handleClickSelectedTag(it)}/>
       )
   }
 

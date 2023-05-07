@@ -11,7 +11,7 @@ import { CustomLinkCard } from 'components/organisms/CustomCard'
 import styles from './ProblemList.module.scss'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton, TagButton, TransitionButton } from 'components/atoms/Button'
+import { ManageButton, TagViewButton, TransitionButton } from 'components/atoms/Button'
 import { PathConst } from 'constants/Const'
 
 export const ProblemList = ({page}:{ page: number }): JSX.Element => {
@@ -42,7 +42,7 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
       .map((it) =>
-        <TagButton name={it.topicDisplayName} key={it.topicId} />
+        <TagViewButton name={it.topicDisplayName} href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)} key={it.topicId} />
       )
   }
 

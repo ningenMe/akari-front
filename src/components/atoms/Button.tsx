@@ -21,11 +21,21 @@ export const TransitionButton = ({ href, name }: { href: string, name: string })
     </div>
   )
 }
-export const TagButton = ({ name, onClick }: { name: string, onClick? : ()=>void }): JSX.Element => {
+export const TagEditButton = ({ name, onClick }: { name: string, onClick? : ()=>void }): JSX.Element => {
   return (
     <div className={styles.wrapper} onClick={onClick}>
         <span className={styles.tagButtonBody}>
           {name}
+        </span>
+    </div>
+  )
+}
+export const TagViewButton = ({ href, name }: { href: string, name: string }): JSX.Element => {
+  return (
+    <div className={styles.wrapper}>
+        <span className={styles.tagButtonBody}>
+          {name}
+          <a href={href} className={styles.href} />
         </span>
     </div>
   )
