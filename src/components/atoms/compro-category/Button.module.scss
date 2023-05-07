@@ -1,0 +1,58 @@
+.wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.body {
+  padding: 10px 10px 10px 10px;
+  border-radius: 2px;
+  margin-left: 1px;
+  margin-right: 1px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  font-size: small;
+  position: relative;
+
+  border: 3px double #bbb9b9;
+
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.categoryButton {
+  @extend .body;
+  background-color: #eefcee;
+
+  &:hover {
+    background-color: #c6d7c6;
+  }
+}
+
+.topicButton {
+  @extend .body;
+  background-color: #ffcfd3;
+
+  &:hover {
+    background-color: #cba6a9;
+  }
+}
+
+.problemButton {
+  @extend .body;
+  background-color: #cfd9ff;
+
+  &:hover {
+    background-color: #7783b2;
+  }
+}
+
+.href {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

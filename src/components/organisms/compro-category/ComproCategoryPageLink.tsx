@@ -1,9 +1,10 @@
 import { Container } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { PathConst } from 'constants/Const'
-import { ManageButton, TransitionButton } from 'components/atoms/Button'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
+import { CategoryButton, ProblemButton, TopicButton } from '../../atoms/compro-category/Button'
+import styles from './ComproCategoryPageLink.module.scss'
 
 export const ComproCategoryPageLink = (): JSX.Element => {
 
@@ -19,9 +20,19 @@ export const ComproCategoryPageLink = (): JSX.Element => {
 
   return (
     <Container>
-      {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} /> : <></>}
-      {isAuthorizedComproCategory ? <ManageButton href={PathConst.COMPRO_CATEGORY_PROBLEM_CREATE} /> : <></>}
-      <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(0)} name='problem list' />
+      <div className={styles.buttonGrid}>
+        <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_LIST} name='category list' />
+        <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(0)} name='problem list' />
+        {isAuthorizedComproCategory ?
+          <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category create' /> : <></>}
+        {isAuthorizedComproCategory ?
+          <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category edit' /> : <></>}
+        {/*TODO */}
+        {isAuthorizedComproCategory ?
+          <TopicButton href={''} name='topic create' /> : <></>}
+        {isAuthorizedComproCategory ?
+          <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_CREATE} name='problem create' /> : <></>}
+      </div>
     </Container>
   )
 }
