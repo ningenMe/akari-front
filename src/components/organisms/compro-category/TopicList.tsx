@@ -12,7 +12,7 @@ import {
 import { CustomLinkCard, CustomNormalCard } from 'components/organisms/CustomCard'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton } from '../../atoms/Button'
+import { ManageButton, TransitionButton } from '../../atoms/Button'
 import { PathConst } from '../../../constants/Const'
 
 export const TopicList = ({categorySystemName} : {categorySystemName: string}): JSX.Element => {
@@ -42,19 +42,19 @@ export const TopicList = ({categorySystemName} : {categorySystemName: string}): 
     return problemList
       .sort((l,r) => l.estimation - r.estimation)
       .map((it) =>
-      <CustomLinkCard href={it.url} key={it.problemId}>
-        <div>{it.problemDisplayName}</div>
-      </CustomLinkCard>
+      <TransitionButton href={it.url} name={it.problemDisplayName} key={it.problemId} />
     )
   }
 
   const cardList = topicList
     .sort((l,r) => l.topicOrder-r.topicOrder)
     .map((it) =>
-    <CustomNormalCard key={it.topicId}>
-      <div>{it.topicDisplayName}</div>
-      {getProblemCardList(it.problemList)}
-    </CustomNormalCard>
+      <>
+        <CustomLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)} key={it.topicId}>
+          <div>{it.topicDisplayName}</div>
+        </CustomLinkCard>
+        {getProblemCardList(it.problemList)}
+      </>
   )
 
   return (

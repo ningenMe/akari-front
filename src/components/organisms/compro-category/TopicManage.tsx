@@ -4,14 +4,13 @@ import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
   Category,
-  CategoryPostRequest,
   Topic,
   TopicListGetRequest,
   TopicListGetResponse, TopicPostRequest,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { CustomNormalCard } from 'components/organisms/CustomCard'
 import styles from './TopicManage.module.scss'
-import { DeleteButton, UpsertButton } from '../../atoms/Button'
+import { UpsertButton } from 'components/atoms/Button'
 
 export const TopicManage = ({categorySystemName} : {categorySystemName: string}): JSX.Element => {
 
