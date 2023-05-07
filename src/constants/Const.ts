@@ -1,5 +1,4 @@
 import { Link } from '../interfaces/Link'
-import { number } from 'prop-types'
 
 export class PathConst {
   static readonly HOME: string = '/home'
@@ -11,13 +10,27 @@ export class PathConst {
   static readonly COMPRO_CATEGORY: string = '/compro-category'
   static readonly COMPRO_CATEGORY_CATEGORY_LIST: string = PathConst.COMPRO_CATEGORY + '/category'
   static readonly COMPRO_CATEGORY_CATEGORY_MANAGE: string = PathConst.COMPRO_CATEGORY + '/category/manage'
-  static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_LIST = (categorySystemName: string):string => {return PathConst.COMPRO_CATEGORY_CATEGORY_LIST + '/' + categorySystemName + '/topic' }
-  static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE = (categorySystemName: string):string => {return this.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(categorySystemName) + '/manage' }
+  static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_LIST = (categorySystemName: string): string => {
+    return PathConst.COMPRO_CATEGORY_CATEGORY_LIST + '/' + categorySystemName + '/topic'
+  }
+  static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE = (categorySystemName: string): string => {
+    return this.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(categorySystemName) + '/manage'
+  }
   static readonly COMPRO_CATEGORY_PROBLEM: string = PathConst.COMPRO_CATEGORY + '/problem'
-  static readonly COMPRO_CATEGORY_PROBLEM_LIST = (page: number): string => {return PathConst.COMPRO_CATEGORY_PROBLEM + '?page=' + page}
+  static readonly COMPRO_CATEGORY_PROBLEM_LIST = (page: number): string => {
+    return PathConst.COMPRO_CATEGORY_PROBLEM + '?page=' + page
+  }
   static readonly COMPRO_CATEGORY_PROBLEM_CREATE: string = PathConst.COMPRO_CATEGORY_PROBLEM + '/create'
-  static readonly COMPRO_CATEGORY_PROBLEM_EDIT = (problemId: string): string => {return PathConst.COMPRO_CATEGORY_PROBLEM + '/' + problemId + '/edit'}
-  static readonly COMPRO_CATEGORY_TOPIC_PROBLEM = (topicId: string):string => {return PathConst.COMPRO_CATEGORY + '/topic/' + topicId + '/problem' }
+  static readonly COMPRO_CATEGORY_PROBLEM_EDIT = (problemId: string): string => {
+    return PathConst.COMPRO_CATEGORY_PROBLEM + '/' + problemId + '/edit'
+  }
+  static readonly COMPRO_CATEGORY_TOPIC: string = PathConst.COMPRO_CATEGORY + '/topic'
+  static readonly COMPRO_CATEGORY_TOPIC_PROBLEM = (topicId: string): string => {
+    return PathConst.COMPRO_CATEGORY_TOPIC + '/' + topicId + '/problem'
+  }
+  static readonly COMPRO_CATEGORY_TOPIC_EDIT = (topicId: string): string => {
+    return PathConst.COMPRO_CATEGORY_TOPIC + '/' + topicId + '/edit'
+  }
   static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'
 }
@@ -72,10 +85,10 @@ export class LinkConst {
   static readonly HATENA: Link = { href: UrlConst.HATENA, name: 'Hatena' }
   static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'Ameba' }
   static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'Qiita' }
-  static readonly ZENN: Link = { href: UrlConst.ZENN, name: 'Zenn'}
+  static readonly ZENN: Link = { href: UrlConst.ZENN, name: 'Zenn' }
   static readonly COMPRO_CATEGORY: Link = { href: PathConst.COMPRO_CATEGORY, name: 'compro-category' }
   static readonly DIARIES: Link = { href: PathConst.DIARIES, name: '今日のITドカタ' }
-  static readonly BLOGS_GRAPHS: Link = { href: PathConst.BLOGS_GRAPHS, name: 'blogの投稿数グラフ'}
+  static readonly BLOGS_GRAPHS: Link = { href: PathConst.BLOGS_GRAPHS, name: 'blogの投稿数グラフ' }
   static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.TOKI, LinkConst.CSACADEMY] as const
   static readonly BLOGS: ReadonlyArray<Link> = [LinkConst.HATENA, LinkConst.AMEBA, LinkConst.QIITA, LinkConst.DIARIES, LinkConst.ZENN] as const
 }
