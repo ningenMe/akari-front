@@ -3,6 +3,7 @@ import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
 import { GetServerSideProps, NextPage } from 'next'
 import { ProblemList } from '../../../components/organisms/compro-category/ProblemList'
+import { ComproCategoryPageLink } from '../../../components/organisms/compro-category/ComproCategoryPageLink'
 
 type Props = {
   page: number;
@@ -22,6 +23,7 @@ export const Index: NextPage<Props> = (props: Props) => {
     <>
       <HtmlHead title={'compro-category category: problem - '} />
       <ComproCategoryHeader />
+      <ComproCategoryPageLink />
       <ProblemList page={props.page} />
       <ComproCategoryFooter />
     </>

@@ -3,6 +3,7 @@ import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
 import { GetServerSideProps, NextPage } from 'next'
 import { TopicEdit } from 'components/organisms/compro-category/TopicEdit'
+import { ComproCategoryPageLink } from '../../../../components/organisms/compro-category/ComproCategoryPageLink'
 
 type Props = {
   topicId: string;
@@ -24,6 +25,7 @@ export const Edit: NextPage<Props> = (props: Props) => {
     <>
       <HtmlHead title={'compro-category category: problem - '} />
       <ComproCategoryHeader />
+      <ComproCategoryPageLink />
       <TopicEdit topicId={props.topicId} />
       <ComproCategoryFooter />
     </>

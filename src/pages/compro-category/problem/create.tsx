@@ -3,6 +3,7 @@ import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
 import { ProblemCreate } from 'components/organisms/compro-category/ProblemCreate'
 import { NextPage } from 'next'
+import { ComproCategoryPageLink } from '../../../components/organisms/compro-category/ComproCategoryPageLink'
 
 export const Index: NextPage = () => {
 
@@ -10,6 +11,7 @@ export const Index: NextPage = () => {
     <>
       <HtmlHead title={'compro-category category: problem - '} />
       <ComproCategoryHeader />
+      <ComproCategoryPageLink />
       <ProblemCreate />
       <ComproCategoryFooter />
     </>
