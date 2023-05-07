@@ -22,7 +22,6 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
 
   const problemListGet = async () => {
     const problemListGetRequest = new ProblemListGetRequest({
-      sortType: ProblemListGetRequest_SortType.CREATED_TIME,
       offset: page * LIMIT,
       limit: LIMIT,
     })
@@ -68,7 +67,6 @@ export const ProblemList = ({page}:{ page: number }): JSX.Element => {
         <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page+1)} name='→'/>
       </div>
 
-      {isAuthorizedComproCategory ? <ManageButton href={''} /> : <></> }
       {cardList}
 
     </Container>
