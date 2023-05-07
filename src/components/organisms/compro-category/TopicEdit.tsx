@@ -11,7 +11,7 @@ import {
   TopicPostRequest,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
-import { UpsertButton } from 'components/atoms/Button'
+import { TagEditButton, UpsertButton } from 'components/atoms/Button'
 
 export const TopicEdit = (props: { topicId: string }): JSX.Element => {
 
@@ -19,6 +19,8 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
   const [topicOrder, setTopicOrder] = useState<number>(0)
   const [topicText, setTopicText] = useState<string>('')
   const [referenceList, setReferenceList] = useState<Reference[]>([])
+  const [url, setUrl] = useState<string>('')
+  const [referenceDisplayName, setReferenceDisplayName] = useState<string>('')
 
   const [category, setCategory] = useState<Category | undefined>()
 
@@ -50,6 +52,22 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
     await topicGet()
   }
 
+  const referenceInsertClick = async () => {
+    setReferenceList(list => list.concat([new Reference({ url: url, referenceDisplayName: referenceDisplayName })]))
+    setUrl('')
+    setReferenceDisplayName('')
+  }
+
+  const referenceDeleteClick = async ({ url, referenceDisplayName }: { url: string, referenceDisplayName: string }) => {
+    setReferenceList(list => list.filter(it => it.url != url || it.referenceDisplayName != referenceDisplayName))
+  }
+  const referenceCardList = referenceList.map(it => {
+    return (<TagEditButton
+      name={it.referenceDisplayName + ': ' + it.url}
+      key={it.referenceDisplayName + ': ' + it.url}
+      onClick={() => referenceDeleteClick({ url: it.url, referenceDisplayName: it.referenceDisplayName })}
+    />)
+  })
   useEffect(() => {
     topicGet()
   }, [])
@@ -99,9 +117,31 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
           className={styles.textfield}
         />
       </FormControl>
+
+      <div className={styles.buttongrid}>
+        <UpsertButton onClick={referenceInsertClick} />
+      </div>
+      <TextField
+        label='url'
+        onChange={(event) => {
+          setUrl(event.target.value)
+        }}
+        value={url}
+        className={styles.textfield}
+      />
+      <TextField
+        label='referenceDisplayName'
+        onChange={(event) => {
+          setReferenceDisplayName(event.target.value)
+        }}
+        value={referenceDisplayName}
+        className={styles.textfield}
+      />
+
       <div className={styles.buttongrid}>
         <UpsertButton onClick={upsertClick} />
       </div>
+      {referenceCardList}
 
     </Container>
   )
