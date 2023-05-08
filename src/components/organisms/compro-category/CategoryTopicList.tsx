@@ -8,7 +8,6 @@ import {
   TopicListGetRequest,
   TopicListGetResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CustomLinkCard } from 'components/organisms/CustomCard'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 import { TransitionButton } from '../../atoms/Button'
@@ -52,9 +51,7 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
     .sort((l, r) => l.topicOrder - r.topicOrder)
     .map((it) =>
         <TopicNormalCard topicDisplayName={it.topicDisplayName} key={it.topicId}>
-          <CustomLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)}>
-            <div>{it.topicDisplayName}</div>
-          </CustomLinkCard>
+          <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)} name='detail' />
           {getProblemCardList(it.problemList)}
         </TopicNormalCard>
       ,
