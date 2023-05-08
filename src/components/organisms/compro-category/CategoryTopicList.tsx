@@ -33,16 +33,18 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
   }, [])
 
   const getProblemList = (problemList: Problem[]) => {
-    return problemList.map(it => {
-      return (
-        <div key={it.problemId}>
-          <ProblemLinkCard href={it.url} problemDisplayName={it.problemDisplayName} key={it.problemId} />
-          {isAuthorizedComproCategory ?
-            <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_EDIT(it.problemId)} name={'edit'} /> : <></>}
-        </div>
+    return problemList
+      .sort((l, r) => l.estimation - r.estimation)
+      .map(it => {
+        return (
+          <div key={it.problemId}>
+            <ProblemLinkCard href={it.url} problemDisplayName={it.problemDisplayName} key={it.problemId} />
+            {isAuthorizedComproCategory ?
+              <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_EDIT(it.problemId)} name={'edit'} /> : <></>}
+          </div>
 
-      )
-    })
+        )
+      })
   }
 
   const cardList = topicList

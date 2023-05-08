@@ -16,6 +16,7 @@ import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 import { ManageButton, TagViewButton, TransitionButton } from 'components/atoms/Button'
 import { PathConst } from 'constants/Const'
+import { PageTextCard } from '../../atoms/compro-category/Card'
 
 export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element => {
 
@@ -69,7 +70,11 @@ export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element 
 
   return (
     <Container>
-      <Typography variant='body2'>{category?.categoryDisplayName}</Typography>
+      <PageTextCard>
+        <Typography variant='body2'>このページはいずれ修正</Typography>
+        <Typography variant='body2'>{category?.categoryDisplayName}</Typography>
+      </PageTextCard>
+
       <CustomLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(topic?.topicId ?? '')} key={topic?.topicId}>
         <div>{topic?.topicDisplayName}</div>
         <div>{topic?.topicText}</div>
