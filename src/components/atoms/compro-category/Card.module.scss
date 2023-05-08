@@ -40,6 +40,27 @@
   }
 }
 
+.problemNormalCard {
+  @extend .card;
+  padding: 1px 10px 1px 10px;
+  margin: 1px;
+  border: 3px double #7783b2;
+  border-radius: 3px;
+}
+
+.problemLinkCard {
+  @extend .problemNormalCard;
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &:hover {
+    background-color: #dedddd;
+    border: 5px double #6c7ab0;
+  }
+}
+
 .pageTextCard {
   @extend .card;
   border-radius: 2px;
@@ -53,6 +74,11 @@
 
 .topicTitle {
   text-align: left;
+}
+
+.problemTitle {
+  text-align: left;
+  font-size: small;
 }
 
 .href {
