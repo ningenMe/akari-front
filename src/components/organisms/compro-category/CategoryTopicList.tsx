@@ -1,20 +1,14 @@
 import { Container } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
-import {
-  Category,
-  Problem,
-  Topic,
-  TopicListGetRequest,
-  TopicListGetResponse,
-} from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { Category, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { TransitionButton } from '../../atoms/Button'
 import { PathConst } from '../../../constants/Const'
-import { CategoryNormalCard, TopicNormalCard } from '../../atoms/compro-category/Card'
+import { CategoryNormalCard, TopicLinkCard, TopicNormalCard } from '../../atoms/compro-category/Card'
 import styles from './ComproCategoryPageLink.module.scss'
 import { CategoryButton, TopicButton } from '../../atoms/compro-category/Button'
+import { ProblemTable } from './ProblemTable'
 
 export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: string }): JSX.Element => {
 
@@ -39,22 +33,17 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
     topicListGet()
   }, [])
 
-  const getProblemCardList = (problemList: Problem[]) => {
-    return problemList
-      .sort((l, r) => l.estimation - r.estimation)
-      .map((it) =>
-        <TransitionButton href={it.url} name={it.problemDisplayName} key={it.problemId} />,
-      )
-  }
-
   const cardList = topicList
     .sort((l, r) => l.topicOrder - r.topicOrder)
     .map((it) =>
-        <TopicNormalCard topicDisplayName={it.topicDisplayName} key={it.topicId}>
-          <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)} name='detail' />
-          {getProblemCardList(it.problemList)}
-        </TopicNormalCard>
-      ,
+      <TopicNormalCard key={it.topicId}>
+        <TopicLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)}
+                       topicDisplayName={it.topicDisplayName} />
+        {/*TODO 右寄せ*/}
+        {isAuthorizedComproCategory ?
+          <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_EDIT(it.topicId)} name='edit' /> : <></>}
+        <ProblemTable problemList={it.problemList} />
+      </TopicNormalCard>,
     )
 
   return (

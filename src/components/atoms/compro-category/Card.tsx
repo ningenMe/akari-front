@@ -23,11 +23,10 @@ export const CategoryLinkCard = ({
   )
 }
 export const TopicNormalCard = ({
-                                  topicDisplayName, children,
-                                }: { topicDisplayName: string, children?: ReactNode }): JSX.Element => {
+                                  children,
+                                }: { children?: ReactNode }): JSX.Element => {
   return (
     <div className={styles.topicNormalCard}>
-      <h5 className={styles.topicTitle}>{topicDisplayName}</h5>
       {children}
     </div>
   )
@@ -37,7 +36,7 @@ export const TopicLinkCard = ({
                               }: { href: string, topicDisplayName: string, children?: ReactNode }): JSX.Element => {
   return (
     <button className={styles.topicLinkCard}>
-      <h5 className={styles.topicTitle}>{topicDisplayName}</h5>
+      <h6 className={styles.topicTitle}>{topicDisplayName}</h6>
       {children}
       <a href={href} className={styles.href} />
     </button>
