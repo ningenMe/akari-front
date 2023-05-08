@@ -9,7 +9,7 @@ export const ProblemTable = ({ problemList }: { problemList: Problem[] }): JSX.E
       <tbody>
       {problemList.map(it => {
         return (
-          <tr>
+          <tr key={it.problemId}>
             <td className={styles.table}>
               <a href={it.url}>{it.problemDisplayName}</a>
             </td>
