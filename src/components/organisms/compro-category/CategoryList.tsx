@@ -5,7 +5,7 @@ import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, CategoryListGetRequest, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CategoryCard, PageTextCard } from '../../atoms/compro-category/Card'
+import { CategoryLinkCard, PageTextCard } from '../../atoms/compro-category/Card'
 
 export const CategoryList = (): JSX.Element => {
 
@@ -22,13 +22,15 @@ export const CategoryList = (): JSX.Element => {
   }, [])
 
   const cardList = categoryList.map((category) =>
-    <CategoryCard
+    <CategoryLinkCard
       key={category.categoryId}
       href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(category.categorySystemName)}
       categoryDisplayName={category.categoryDisplayName}
-      topicSize={category.topicSize}
-      problemSize={category.problemSize}
-    />,
+    >
+      {/*TODO 数字の見せ方は要検討*/}
+      <div>topic: {category.topicSize}</div>
+      <div>problem: {category.problemSize}</div>
+    </CategoryLinkCard>,
   )
 
   return (

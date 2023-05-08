@@ -1,5 +1,4 @@
 import { Container } from '@mui/material'
-import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
@@ -12,8 +11,11 @@ import {
 import { CustomLinkCard } from 'components/organisms/CustomCard'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton, TransitionButton } from '../../atoms/Button'
+import { TransitionButton } from '../../atoms/Button'
 import { PathConst } from '../../../constants/Const'
+import { CategoryNormalCard, TopicNormalCard } from '../../atoms/compro-category/Card'
+import styles from './ComproCategoryPageLink.module.scss'
+import { CategoryButton, TopicButton } from '../../atoms/compro-category/Button'
 
 export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: string }): JSX.Element => {
 
@@ -49,20 +51,29 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
   const cardList = topicList
     .sort((l, r) => l.topicOrder - r.topicOrder)
     .map((it) =>
-      <>
-        <CustomLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)} key={it.topicId}>
-          <div>{it.topicDisplayName}</div>
-        </CustomLinkCard>
-        {getProblemCardList(it.problemList)}
-      </>,
+        <TopicNormalCard topicDisplayName={it.topicDisplayName} key={it.topicId}>
+          <CustomLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)}>
+            <div>{it.topicDisplayName}</div>
+          </CustomLinkCard>
+          {getProblemCardList(it.problemList)}
+        </TopicNormalCard>
+      ,
     )
 
   return (
     <Container>
-      {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>{category?.categoryDisplayName}</Typography>
-      {isAuthorizedComproCategory ? <ManageButton
-        href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE(category?.categorySystemName ?? '')} /> : <></>}
+      <div className={styles.buttonGrid}>
+        {isAuthorizedComproCategory ?
+          <CategoryButton href={''} name='category edit' /> : <></>}
+        {isAuthorizedComproCategory ?
+          <TopicButton
+            href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE(category?.categorySystemName ?? '')}
+            name='topic edit' /> : <></>}
+      </div>
+
+      <CategoryNormalCard
+        categoryDisplayName={category?.categoryDisplayName ?? ''}
+      />
       {cardList}
 
     </Container>

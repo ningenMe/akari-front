@@ -6,13 +6,17 @@
   border-radius: 10px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
 
+  background-color: #ffffff;
   position: relative;
 }
 
-.categoryCard {
+.categoryNormalCard {
   @extend .card;
-  background-color: #ffffff;
   border: 5px double #c6d7c6;
+}
+
+.categoryLinkCard {
+  @extend .categoryNormalCard;
 
   &:hover {
     background-color: #dedddd;
@@ -20,16 +24,33 @@
   }
 }
 
+.topicNormalCard {
+  @extend .card;
+  border: 5px double #cba6a9;
+}
+
+.topicLinkCard {
+  @extend .topicNormalCard;
+
+  &:hover {
+    background-color: #dedddd;
+    border: 7px double #c08d91;
+  }
+}
+
 .pageTextCard {
   @extend .card;
   border-radius: 2px;
 
-  background-color: #ffffff;
   border: 2px solid #bbb9b9;
 }
 
-.title {
+.categoryTitle {
   text-align: center;
+}
+
+.topicTitle {
+  text-align: left;
 }
 
 .href {
