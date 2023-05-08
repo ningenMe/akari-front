@@ -1,9 +1,9 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
 import { ComproCategoryFooter } from 'components/organisms/Footer'
 import { ComproCategoryHeader } from 'components/organisms/Header'
-import { TopicList } from 'components/organisms/compro-category/TopicList'
+import { CategoryTopicList } from 'components/organisms/compro-category/CategoryTopicList'
 import { GetServerSideProps, NextPage } from 'next'
-import { ComproCategoryPageLink } from '../../../../../components/organisms/compro-category/ComproCategoryPageLink'
+import { ComproCategoryPageLink } from 'components/organisms/compro-category/ComproCategoryPageLink'
 
 type Props = {
   categorySystemName: string;
@@ -25,7 +25,7 @@ export const Index: NextPage<Props> = (props: Props) => {
       <HtmlHead title={'compro-category category:' + props.categorySystemName + ' topic - '} />
       <ComproCategoryHeader />
       <ComproCategoryPageLink />
-      <TopicList categorySystemName={props.categorySystemName} />
+      <CategoryTopicList categorySystemName={props.categorySystemName} />
       <ComproCategoryFooter />
     </>
   )
