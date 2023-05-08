@@ -3,13 +3,11 @@ import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import { Problem, ProblemListGetRequest, ProblemListGetResponse, Tag } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CustomLinkCard } from 'components/organisms/CustomCard'
-import styles from './ProblemList.module.scss'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { ManageButton, TagViewButton, TransitionButton } from 'components/atoms/Button'
 import { PathConst } from 'constants/Const'
-import { PageTextCard } from '../../atoms/compro-category/Card'
+import { PageTextCard, ProblemLinkCard, ProblemNormalCard, TagLinkCard } from '../../atoms/compro-category/Card'
+import { ProblemButton } from '../../atoms/compro-category/Button'
 
 export const ProblemList = ({ page }: { page: number }): JSX.Element => {
 
@@ -39,36 +37,45 @@ export const ProblemList = ({ page }: { page: number }): JSX.Element => {
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
       .map((it) =>
-        <TagViewButton name={it.topicDisplayName} href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)}
-                       key={it.topicId} />,
+        <TagLinkCard
+          href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)}
+          topicDisplayName={it.topicDisplayName}
+          key={it.topicId} />,
       )
   }
 
   const cardList = problemList
-    .sort((l, r) => l.estimation - r.estimation)
     .map((it) =>
-      <>
-        <CustomLinkCard href={it.url} key={it.problemId}>
-          <div>{it.problemDisplayName}</div>
-          {getTagCardList(it.tagList)}
-        </CustomLinkCard>
+      <ProblemNormalCard key={it.problemId}>
+        <ProblemLinkCard href={it.url} problemDisplayName={it.problemDisplayName} key={it.problemId} />
         {isAuthorizedComproCategory ?
-          <ManageButton href={PathConst.COMPRO_CATEGORY_PROBLEM_EDIT(it.problemId)} /> : <></>}
-      </>,
+          <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_EDIT(it.problemId)} name={'edit'} /> : <></>}
+        <div>
+          {getTagCardList(it.tagList)}
+        </div>
+      </ProblemNormalCard>,
     )
 
   return (
     <Container>
       <PageTextCard>
-        <Typography variant='body2'>このページはいずれ修正</Typography>
-        <Typography variant='body2'>problem list page = {page}</Typography>
+        <Typography variant='body2'>{page}ページ目</Typography>
       </PageTextCard>
-      <div className={styles.buttonGrid}>
-        <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page - 1)} name='←' />
-        <TransitionButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page + 1)} name='→' />
-      </div>
+      <ProblemButton
+        href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page - 1)}
+        name='←' />
+      <ProblemButton
+        href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page + 1)}
+        name='→' />
 
       {cardList}
+
+      <ProblemButton
+        href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page - 1)}
+        name='←' />
+      <ProblemButton
+        href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page + 1)}
+        name='→' />
 
     </Container>
   )

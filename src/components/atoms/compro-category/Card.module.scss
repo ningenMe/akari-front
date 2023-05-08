@@ -45,7 +45,6 @@
   padding: 1px 10px 1px 10px;
   margin: 1px;
   border: 3px double #7783b2;
-  border-radius: 3px;
 }
 
 .problemLinkCard {
@@ -54,11 +53,27 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-radius: 3px;
 
   &:hover {
     background-color: #dedddd;
     border: 5px double #6c7ab0;
   }
+}
+
+.tagLinkCard {
+  @extend .card;
+  padding: 1px 10px 1px 10px;
+  margin: 1px;
+
+  background-color: #ffcfd3;
+  border: 2px solid #f8acb2;
+
+  &:hover {
+    background-color: #cba6a9;
+    border: 3px solid #d7858c;
+  }
+
 }
 
 .pageTextCard {
@@ -78,6 +93,11 @@
 
 .problemTitle {
   text-align: left;
+  font-size: small;
+}
+
+.tagTitle {
+  text-align: center;
   font-size: small;
 }
 

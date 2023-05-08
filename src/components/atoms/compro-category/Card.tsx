@@ -58,6 +58,16 @@ export const ProblemLinkCard = ({
     </button>
   )
 }
+export const TagLinkCard = ({
+                              href, topicDisplayName,
+                            }: { href: string, topicDisplayName: string, children?: ReactNode }): JSX.Element => {
+  return (
+    <button className={styles.tagLinkCard}>
+      <h6 className={styles.tagTitle}>{topicDisplayName}</h6>
+      <a href={href} className={styles.href} />
+    </button>
+  )
+}
 export const PageTextCard = ({ children }: { children: ReactNode }): JSX.Element => {
   return (
     <div className={styles.pageTextCard}>
