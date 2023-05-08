@@ -7,15 +7,25 @@
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
 
   position: relative;
+}
 
+.categoryCard {
+  @extend .card;
   background-color: #ffffff;
   border: 5px double #c6d7c6;
 
   &:hover {
     background-color: #dedddd;
     border: 7px double #aeceae;
-    //color: #003dff !important;
   }
+}
+
+.pageTextCard {
+  @extend .card;
+  border-radius: 2px;
+
+  background-color: #ffffff;
+  border: 2px solid #bbb9b9;
 }
 
 .title {

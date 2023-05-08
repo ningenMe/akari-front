@@ -5,7 +5,7 @@ import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, CategoryListGetRequest, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
-import { CategoryCard } from '../../atoms/compro-category/Card'
+import { CategoryCard, PageTextCard } from '../../atoms/compro-category/Card'
 
 export const CategoryList = (): JSX.Element => {
 
@@ -33,9 +33,10 @@ export const CategoryList = (): JSX.Element => {
 
   return (
     <Container>
-      {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴。日々改装中。UI色々直したい。</Typography>
-      <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
+      <PageTextCard>
+        <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴。日々改装中。UI色々直したい。</Typography>
+        <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
+      </PageTextCard>
 
       <div className={styles.grid}>
         {cardList}
