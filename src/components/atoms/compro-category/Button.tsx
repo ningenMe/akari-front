@@ -14,11 +14,9 @@ export const ProblemButton = ({ href, name }: { href: string, name: string }): J
 
 const Button = ({ href, name, buttonStyle }: { href: string, name: string, buttonStyle: string }): JSX.Element => {
   return (
-    <div className={styles.wrapper}>
-        <span className={buttonStyle}>
-          {name}
-          <a href={href} className={styles.href} />
-        </span>
-    </div>
+    <button className={buttonStyle}>
+      {name}
+      <a href={href} className={styles.href} />
+    </button>
   )
 }
