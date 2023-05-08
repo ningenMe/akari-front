@@ -32,7 +32,7 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
     topicListGet()
   }, [])
 
-  const getProblemList = (problemList: Problem[]) => {
+  const getProblemCardList = (problemList: Problem[]) => {
     return problemList
       .sort((l, r) => l.estimation - r.estimation)
       .map(it => {
@@ -56,7 +56,7 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
         {/*TODO 右寄せ*/}
         {isAuthorizedComproCategory ?
           <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_EDIT(it.topicId)} name='edit' /> : <></>}
-        {getProblemList(it.problemList)}
+        {getProblemCardList(it.problemList)}
       </TopicNormalCard>,
     )
 
