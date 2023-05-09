@@ -11,6 +11,8 @@ import {
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { PageTextCard } from '../../atoms/compro-category/Card'
 import { UpsertButton } from '../../atoms/compro-category/Button'
+import { PathConst } from '../../../constants/Const'
+import { useRouter } from 'next/router'
 
 export const CategoryManage = (): JSX.Element => {
 
@@ -22,6 +24,7 @@ export const CategoryManage = (): JSX.Element => {
   const [categoryDisplayName, setCategoryDisplayName] = useState<string>('')
   const [categorySystemName, setCategorySystemName] = useState<string>('')
   const [categoryOrder, setCategoryOrder] = useState<number>(0)
+  const router = useRouter()
 
   const setAllState = (category: Category) => {
     setSelectedCategory(category)
@@ -59,7 +62,7 @@ export const CategoryManage = (): JSX.Element => {
     }
     await miikoApiMiikoServiceClient.categoryPost(request)
     setAllState(DUMMY_CATEGORY)
-    await categoryGet()
+    await router.push(PathConst.COMPRO_CATEGORY_PROBLEM)
   }
 
   const handleChange = (event: SelectChangeEvent) => {

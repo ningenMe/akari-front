@@ -9,10 +9,13 @@ import {
   TopicGetRequest,
   TopicGetResponse,
   TopicPostRequest,
+  TopicPostResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
 import { DeleteButton, UpsertButton } from '../../atoms/compro-category/Button'
 import { PageTextCard } from '../../atoms/compro-category/Card'
+import { PathConst } from '../../../constants/Const'
+import { useRouter } from 'next/router'
 
 export const TopicEdit = (props: { topicId: string }): JSX.Element => {
 
@@ -24,6 +27,7 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
   const [referenceDisplayName, setReferenceDisplayName] = useState<string>('')
 
   const [category, setCategory] = useState<Category | undefined>()
+  const router = useRouter()
 
   const topicGet = async () => {
     const request = new TopicGetRequest({ topicId: props.topicId })
@@ -53,8 +57,8 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
       })
       request.categoryId = category?.categoryId ?? ''
     }
-    await miikoApiMiikoServiceClient.topicPost(request)
-    await topicGet()
+    const response = await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
+    await router.push(PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(response.topicId))
   }
 
   const referenceInsertClick = async () => {

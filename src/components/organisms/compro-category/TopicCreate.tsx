@@ -14,6 +14,8 @@ import {
 import styles from './TopicManage.module.scss'
 import { PageTextCard } from 'components/atoms/compro-category/Card'
 import { DeleteButton, UpsertButton } from 'components/atoms/compro-category/Button'
+import { PathConst } from '../../../constants/Const'
+import { useRouter } from 'next/router'
 
 export const TopicCreate = (): JSX.Element => {
 
@@ -26,6 +28,7 @@ export const TopicCreate = (): JSX.Element => {
 
   const [categoryList, setCategoryList] = useState<Category[]>([])
   const [selectedCategory, setSelectedCategory] = useState<Category>()
+  const router = useRouter()
 
   const categoryGet = async () => {
     const categoryListGetRequest = new CategoryListGetRequest({
@@ -56,7 +59,8 @@ export const TopicCreate = (): JSX.Element => {
       })
       request.categoryId = selectedCategory?.categoryId ?? ''
     }
-    await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
+    const response = await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
+    await router.push(PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(response.topicId))
   }
 
   const referenceInsertClick = async () => {

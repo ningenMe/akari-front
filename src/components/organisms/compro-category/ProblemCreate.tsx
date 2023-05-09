@@ -15,6 +15,7 @@ import styles from './ProblemManage.module.scss'
 import { PageTextCard, TagLinkCard } from '../../atoms/compro-category/Card'
 import { PathConst } from '../../../constants/Const'
 import { DeleteButton, UpsertButton } from '../../atoms/compro-category/Button'
+import { useRouter } from 'next/router'
 
 export const ProblemCreate = (): JSX.Element => {
 
@@ -25,6 +26,7 @@ export const ProblemCreate = (): JSX.Element => {
 
   const [categoryList, setCategoryList] = useState<Category[]>([])
   const [selectedCategory, setSelectedCategory] = useState<Category>()
+  const router = useRouter()
 
   const categoryGet = async () => {
     const categoryListGetRequest = new CategoryListGetRequest({
@@ -51,6 +53,7 @@ export const ProblemCreate = (): JSX.Element => {
       })
     }
     await miikoApiMiikoServiceClient.problemPost(request)
+    await router.push(PathConst.COMPRO_CATEGORY_PROBLEM)
   }
 
   const handleChangeSelectedCategory = (event: SelectChangeEvent) => {
