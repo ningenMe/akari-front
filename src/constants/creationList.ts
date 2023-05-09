@@ -4,27 +4,27 @@ import { PathConst, UrlConst } from './Const'
 export const CREATION_LIST: ReadonlyArray<Creation> = [
   {
     href: PathConst.TASK,
-    title: 'task',
+    title: 'compro-task',
     body: '競技プログラミングの作問リスト。',
-    isDone: true
+    isDone: true,
   },
   {
     href: UrlConst.COMPRO_LIBRARY,
     title: 'compro-library',
     body: '競技プログラミングのライブラリ。',
-    isDone: true
+    isDone: true,
   },
   {
     href: PathConst.COMPRO_CATEGORY,
     title: 'compro-category',
     body: 'ningenMeが解いた競技プログラミングの問題のまとめ',
-    isDone: true
+    isDone: true,
   },
   {
     href: PathConst.CONTRIBUTION,
     title: 'contribution',
     body: '日々のgithubのcontribution。',
-    isDone: true
+    isDone: true,
   },
   // {
   //   href: PathConst.BLOG,
@@ -42,7 +42,7 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     href: PathConst.SYSTEM,
     title: 'system',
     body: 'システム管理ページ。',
-    isDone: true
+    isDone: true,
   },
   // {
   //   href: PathConst.DIARIES,
