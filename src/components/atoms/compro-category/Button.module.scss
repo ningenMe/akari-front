@@ -42,6 +42,24 @@
   }
 }
 
+.upsertButton {
+  @extend .body;
+  background-color: #ffe27b;
+
+  &:hover {
+    background-color: #c2a75e;
+  }
+}
+
+.deleteButton {
+  @extend .body;
+  background-color: #ff3232;
+
+  &:hover {
+    background-color: #c02525;
+  }
+}
+
 .href {
   display: block;
   position: absolute;

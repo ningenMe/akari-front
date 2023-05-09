@@ -12,10 +12,10 @@ import {
   TopicPostResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
-import { TagEditButton, UpsertButton } from 'components/atoms/Button'
 import { useRouter } from 'next/router'
 import { PathConst } from 'constants/Const'
 import { PageTextCard } from 'components/atoms/compro-category/Card'
+import { DeleteButton, UpsertButton } from 'components/atoms/compro-category/Button'
 
 export const TopicCreate = (): JSX.Element => {
 
@@ -78,7 +78,7 @@ export const TopicCreate = (): JSX.Element => {
           <p>
             ・<a href={it.url} rel='noreferrer noopener' target='_blank'>{it.referenceDisplayName}</a>
           </p>
-          <TagEditButton
+          <DeleteButton
             name='delete'
             onClick={() => referenceDeleteClick({ url: it.url, referenceDisplayName: it.referenceDisplayName })}
           />
@@ -157,10 +157,8 @@ export const TopicCreate = (): JSX.Element => {
 
 
       <div className={styles.buttongrid}>
-        <UpsertButton onClick={referenceInsertClick} />
-      </div>
-      <div className={styles.buttongrid}>
-        <UpsertButton onClick={upsertClick} />
+        <UpsertButton name='reference insert' onClick={referenceInsertClick} />
+        <UpsertButton name='topic upsert' onClick={upsertClick} />
       </div>
 
     </Container>

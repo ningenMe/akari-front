@@ -4,62 +4,59 @@
   margin-bottom: 20px;
   text-align: left;
 }
+
 .body {
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   margin-left: 1px;
   margin-right: 1px;
-  box-shadow: 2px 2px 6px rgba(0,0,0,.4);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
   font-size: small;
-  position:relative;
+  position: relative;
+
   &:hover {
     cursor: pointer;
     color: #000a28 !important;
   }
 }
-.manageButtonBody {
-  @extend .body;
-  background-color: #eefcee;
-  &:hover {
-    background-color: #c6d7c6;
-  }
-}
-.transitionButtonBody {
-  @extend .body;
-  background-color: #70d6ff;
-  &:hover {
-    background-color: #c8edff;
-  }
-}
+
 .tagButtonBody {
   @extend .body;
   background-color: #6b84ff;
   color: #F8F8FF;
+
   &:hover {
     background-color: #5669cb;
   }
 }
+
 .upsertButtonBody {
   @extend .body;
   background-color: #ffe27b;
+
   &:hover {
     background-color: #c2a75e;
   }
 }
+
 .deleteButtonBody {
   @extend .body;
   background-color: #ff3232;
+
   &:hover {
     background-color: #c02525;
   }
 }
+
 .loginButtonBody {
   @extend .body;
   background-color: #3292ff;
+
   &:hover {
     background-color: #324dff;
   }
 }
+
 .href {
   display: block;
   position: absolute;
