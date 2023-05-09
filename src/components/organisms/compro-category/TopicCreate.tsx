@@ -12,8 +12,6 @@ import {
   TopicPostResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
-import { useRouter } from 'next/router'
-import { PathConst } from 'constants/Const'
 import { PageTextCard } from 'components/atoms/compro-category/Card'
 import { DeleteButton, UpsertButton } from 'components/atoms/compro-category/Button'
 
@@ -58,8 +56,7 @@ export const TopicCreate = (): JSX.Element => {
       })
       request.categoryId = selectedCategory?.categoryId ?? ''
     }
-    const response = await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
-    await useRouter().replace(PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(response.topicId))
+    await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
   }
 
   const referenceInsertClick = async () => {
