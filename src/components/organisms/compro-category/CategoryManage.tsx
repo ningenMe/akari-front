@@ -2,8 +2,6 @@ import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField 
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styles from './CategoryManage.module.scss'
-import { DeleteButton, UpsertButton } from 'components/atoms/Button'
-import { CustomNormalCard } from 'components/organisms/CustomCard'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
   Category,
@@ -11,12 +9,14 @@ import {
   CategoryListGetResponse,
   CategoryPostRequest,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import { PageTextCard } from '../../atoms/compro-category/Card'
+import { UpsertButton } from '../../atoms/compro-category/Button'
 
 export const CategoryManage = (): JSX.Element => {
 
   const DUMMY_CATEGORY_ID = 'A new categoryId will be created automatically'
-  const DUMMY_CATEGORY = new Category({categoryId: DUMMY_CATEGORY_ID, categoryDisplayName: '新規作成'})
-  const [categoryList, setCategoryList] = useState < Category[]>([])
+  const DUMMY_CATEGORY = new Category({ categoryId: DUMMY_CATEGORY_ID, categoryDisplayName: '新規作成' })
+  const [categoryList, setCategoryList] = useState<Category[]>([])
   const [selectedCategory, setSelectedCategory] = useState<Category>(DUMMY_CATEGORY)
   const [categoryId, setCategoryId] = useState<string>(DUMMY_CATEGORY_ID)
   const [categoryDisplayName, setCategoryDisplayName] = useState<string>('')
@@ -24,7 +24,7 @@ export const CategoryManage = (): JSX.Element => {
   const [categoryOrder, setCategoryOrder] = useState<number>(0)
 
   const setAllState = (category: Category) => {
-    setSelectedCategory(category);
+    setSelectedCategory(category)
     setCategoryId(category.categoryId)
     setCategoryDisplayName(category.categoryDisplayName)
     setCategorySystemName(category.categorySystemName)
@@ -33,12 +33,16 @@ export const CategoryManage = (): JSX.Element => {
 
   const categoryGet = async () => {
     const categoryListGetRequest = new CategoryListGetRequest({
-      isRequiredTopic: false
+      isRequiredTopic: false,
     })
 
     const categoryListGetResponse = await miikoApiMiikoServiceClient.categoryListGet(categoryListGetRequest) as CategoryListGetResponse
     setCategoryList(categoryListGetResponse.categoryList)
   }
+
+  useEffect(() => {
+    categoryGet()
+  }, [])
 
   const upsertClick = async () => {
     const request = new CategoryPostRequest()
@@ -50,48 +54,24 @@ export const CategoryManage = (): JSX.Element => {
         categoryId: categoryId,
         categoryDisplayName: categoryDisplayName,
         categorySystemName: categorySystemName,
-        categoryOrder: categoryOrder
+        categoryOrder: categoryOrder,
       })
     }
     await miikoApiMiikoServiceClient.categoryPost(request)
     setAllState(DUMMY_CATEGORY)
     await categoryGet()
   }
-  const deleteClick = async () => {
-    if (categoryId === '') {
-      return
-    }
-
-    const request = new CategoryPostRequest()
-    {
-      request.categoryId = categoryId
-    }
-    await miikoApiMiikoServiceClient.categoryPost(request)
-    setAllState(DUMMY_CATEGORY)
-    await categoryGet()
-  }
-
-  useEffect(() => {
-    categoryGet()
-  }, [])
-
-  const cardList = categoryList.map((it) =>
-    <CustomNormalCard key={it.categoryId}>
-      <div>{"displayName: " + it.categoryDisplayName}</div>
-      <div>{"systemName: " + it.categorySystemName}</div>
-      <div>{"order: " + it.categoryOrder}</div>
-    </CustomNormalCard>
-  )
 
   const handleChange = (event: SelectChangeEvent) => {
     const tmp = JSON.parse(event.target.value) as Category
     setAllState(tmp)
-  };
+  }
 
   return (
     <Container>
-      {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>category 管理画面</Typography>
+      <PageTextCard>
+        <Typography variant='body2'>category manage(create/edit)</Typography>
+      </PageTextCard>
 
       <FormControl fullWidth className={styles.wrapper}>
         <Select
@@ -102,7 +82,7 @@ export const CategoryManage = (): JSX.Element => {
           {[DUMMY_CATEGORY].concat(categoryList).map((it) =>
             <MenuItem key={it.categoryId} value={JSON.stringify(it)}>
               {it.categoryDisplayName}
-            </MenuItem>
+            </MenuItem>,
           )}
         </Select>
         <TextField
@@ -113,32 +93,33 @@ export const CategoryManage = (): JSX.Element => {
         />
         <TextField
           label='categoryDisplayName'
-          onChange={(event) => {setCategoryDisplayName(event.target.value)}}
+          onChange={(event) => {
+            setCategoryDisplayName(event.target.value)
+          }}
           value={categoryDisplayName}
           className={styles.textfield}
         />
         <TextField
           label='categorySystemName'
-          onChange={(event) => {setCategorySystemName(event.target.value)}}
+          onChange={(event) => {
+            setCategorySystemName(event.target.value)
+          }}
           value={categorySystemName}
           className={styles.textfield}
         />
         <TextField
-          type="number"
+          type='number'
           inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
           label='categoryOrder'
-          onChange={(event) => {setCategoryOrder(parseInt(event.target.value))}}
+          onChange={(event) => {
+            setCategoryOrder(parseInt(event.target.value))
+          }}
           value={categoryOrder}
           className={styles.textfield}
         />
       </FormControl>
       <div className={styles.buttongrid}>
-        <UpsertButton onClick={upsertClick} />
-        <DeleteButton onClick={deleteClick} />
-      </div>
-
-      <div className={styles.grid}>
-        {cardList}
+        <UpsertButton name='problem upsert' onClick={upsertClick} />
       </div>
     </Container>
   )

@@ -10,8 +10,8 @@ type Props = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { category } = context.query
-  const categorySystemName = (typeof category === 'string') ? category : ''
+  const categorySystemName = (typeof context.query.categorySystemName === 'string') ? context.query.categorySystemName : ''
+
   const props: Props = {
     categorySystemName: categorySystemName,
   }
