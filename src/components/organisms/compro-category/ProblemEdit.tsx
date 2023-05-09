@@ -14,9 +14,9 @@ import {
   Topic,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './ProblemManage.module.scss'
-import { TagEditButton, UpsertButton } from 'components/atoms/Button'
-import { CustomLinkCard } from 'components/organisms/CustomCard'
-import { PageTextCard } from '../../atoms/compro-category/Card'
+import { PageTextCard, TagLinkCard } from '../../atoms/compro-category/Card'
+import { PathConst } from '../../../constants/Const'
+import { DeleteButton, UpsertButton } from '../../atoms/compro-category/Button'
 
 export const ProblemEdit = (props: { problemId: string }): JSX.Element => {
 
@@ -53,11 +53,19 @@ export const ProblemEdit = (props: { problemId: string }): JSX.Element => {
     problemGet()
   }, [])
 
-  const getTagCardList = (tagList: Tag[]) => {
-    return tagList
-      .map((it) =>
-        <TagEditButton name={it.topicDisplayName} key={it.topicId} onClick={() => handleClickSelectedTag(it)} />,
-      )
+  const upsertClick = async () => {
+    const request = new ProblemPostRequest()
+    {
+      request.problemId = props.problemId
+      request.problem = new Problem({
+        url: url,
+        problemDisplayName: problemDisplayName,
+        estimation: estimation,
+        tagList: tagList,
+      })
+    }
+    await miikoApiMiikoServiceClient.problemPost(request)
+    await problemGet()
   }
 
   const handleChangeSelectedCategory = (event: SelectChangeEvent) => {
@@ -72,19 +80,21 @@ export const ProblemEdit = (props: { problemId: string }): JSX.Element => {
     setTagList((list) => list.filter(it => (it.topicId != tag.topicId)))
   }
 
-  const upsertClick = async () => {
-    const request = new ProblemPostRequest()
-    {
-      request.problemId = props.problemId
-      request.problem = new Problem({
-        url: url,
-        problemDisplayName: problemDisplayName,
-        estimation: estimation,
-        tagList: tagList,
-      })
-    }
-    await miikoApiMiikoServiceClient.problemPost(request)
-    await problemGet()
+
+  const getTagCardList = (tagList: Tag[]) => {
+    return tagList
+      .map((it) =>
+        <div key={it.topicId}>
+          <TagLinkCard
+            href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(it.topicId)}
+            topicDisplayName={it.topicDisplayName}
+          />
+          <DeleteButton
+            name='delete'
+            onClick={() => handleClickSelectedTag(it)}
+          />
+        </div>,
+      )
   }
 
   return (
@@ -147,14 +157,9 @@ export const ProblemEdit = (props: { problemId: string }): JSX.Element => {
           )}
         </Select>
       </FormControl>
-      <CustomLinkCard href={url}>
-        <div>{problemDisplayName}</div>
-        <div>{url}</div>
-        <div>{estimation}</div>
-      </CustomLinkCard>
       {getTagCardList(tagList)}
       <div className={styles.buttongrid}>
-        <UpsertButton onClick={upsertClick} />
+        <UpsertButton name='problem upsert' onClick={upsertClick} />
       </div>
 
     </Container>

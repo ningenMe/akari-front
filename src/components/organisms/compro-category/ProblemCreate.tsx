@@ -89,6 +89,12 @@ export const ProblemCreate = (): JSX.Element => {
 
       <FormControl fullWidth className={styles.wrapper}>
         <TextField
+          disabled={true}
+          label='problemId'
+          value={'A new problemId will be created automatically'}
+          className={styles.idtextfield}
+        />
+        <TextField
           label='url'
           onChange={(event) => {
             setUrl(event.target.value)
