@@ -78,7 +78,7 @@ export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element 
     return referenceList
       .map((it) =>
         <p key={it.referenceId}>
-          ・<a href={it.url}>{it.referenceDisplayName}</a>
+          ・<a href={it.url} rel='noreferrer noopener' target='_blank'>{it.referenceDisplayName}</a>
         </p>,
       )
   }
