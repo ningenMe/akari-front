@@ -12,17 +12,17 @@ import {
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
-import { TransitionButton } from 'components/atoms/Button'
 import { PathConst } from 'constants/Const'
 import {
+  CategoryNormalCard,
   PageTextCard,
   ProblemLinkCard,
   ProblemNormalCard,
   TagLinkCard,
-  TopicLinkCard,
   TopicNormalCard,
 } from '../../atoms/compro-category/Card'
-import { ProblemButton, TopicButton } from '../../atoms/compro-category/Button'
+import { CategoryButton, ProblemButton, TopicButton } from '../../atoms/compro-category/Button'
+import styles from './ComproCategoryPageLink.module.scss'
 
 export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element => {
 
@@ -77,25 +77,35 @@ export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element 
   const getReferenceCardList = (referenceList: Reference[]) => {
     return referenceList
       .map((it) =>
-        <div key={it.referenceId}>
-          <TransitionButton href={it.url} name={it.referenceDisplayName} />
-        </div>,
+        <p key={it.referenceId}>
+          ・<a href={it.url}>{it.referenceDisplayName}</a>
+        </p>,
       )
   }
 
   return (
     <Container>
+      <div className={styles.buttonGrid}>
+        {isAuthorizedComproCategory ?
+          <CategoryButton href={''} name='category edit' /> : <></>}
+        {isAuthorizedComproCategory ?
+          <TopicButton
+            href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE(category?.categorySystemName ?? '')}
+            name='topic edit' /> : <></>}
+      </div>
+      <CategoryNormalCard
+        categoryDisplayName={category?.categoryDisplayName ?? ''}
+      />
+      <TopicNormalCard>
+        <h5> {topic?.topicDisplayName ?? ''} </h5>
+      </TopicNormalCard>
       <PageTextCard>
-        {topic?.topicText}
+        <p>{topic?.topicText}</p>
+        <h6>{(topic?.referenceList ?? []).length > 0 ? 'Reference:' : ''}</h6>
         {getReferenceCardList(topic?.referenceList ?? [])}
       </PageTextCard>
       <TopicNormalCard>
         <>
-          <TopicLinkCard href={PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(topic?.topicId ?? '')}
-                         topicDisplayName={topic?.topicDisplayName ?? ''} />
-          {/*TODO 右寄せ*/}
-          {isAuthorizedComproCategory ?
-            <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_EDIT(topic?.topicId ?? '')} name='edit' /> : <></>}
           {getProblemCardList(topic?.problemList ?? [])}
         </>
       </TopicNormalCard>
