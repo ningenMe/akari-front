@@ -13,7 +13,7 @@ export class PathConst {
   static readonly COMPRO_CATEGORY_CATEGORY_TOPIC_LIST = (categorySystemName: string): string => {
     return PathConst.COMPRO_CATEGORY_CATEGORY_LIST + '/' + categorySystemName + '/topic'
   }
-  static readonly COMPRO_CATEGORY_PROBLEM: string = PathConst.COMPRO_CATEGORY + '/problem'
+  private static readonly COMPRO_CATEGORY_PROBLEM: string = PathConst.COMPRO_CATEGORY + '/problem'
   static readonly COMPRO_CATEGORY_PROBLEM_LIST = (page: number): string => {
     return PathConst.COMPRO_CATEGORY_PROBLEM + '?page=' + page
   }
@@ -21,7 +21,7 @@ export class PathConst {
   static readonly COMPRO_CATEGORY_PROBLEM_EDIT = (problemId: string): string => {
     return PathConst.COMPRO_CATEGORY_PROBLEM + '/' + problemId + '/edit'
   }
-  static readonly COMPRO_CATEGORY_TOPIC: string = PathConst.COMPRO_CATEGORY + '/topic'
+  private static readonly COMPRO_CATEGORY_TOPIC: string = PathConst.COMPRO_CATEGORY + '/topic'
   static readonly COMPRO_CATEGORY_TOPIC_CREATE: string = PathConst.COMPRO_CATEGORY_TOPIC + '/create'
   static readonly COMPRO_CATEGORY_TOPIC_PROBLEM = (topicId: string): string => {
     return PathConst.COMPRO_CATEGORY_TOPIC + '/' + topicId + '/problem'

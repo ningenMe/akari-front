@@ -53,7 +53,7 @@ export const ProblemCreate = (): JSX.Element => {
       })
     }
     await miikoApiMiikoServiceClient.problemPost(request)
-    await router.push(PathConst.COMPRO_CATEGORY_PROBLEM)
+    await router.push(PathConst.COMPRO_CATEGORY_PROBLEM_LIST(0))
   }
 
   const handleChangeSelectedCategory = (event: SelectChangeEvent) => {

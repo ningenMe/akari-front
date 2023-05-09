@@ -67,7 +67,7 @@ export const ProblemEdit = (props: { problemId: string }): JSX.Element => {
       })
     }
     await miikoApiMiikoServiceClient.problemPost(request)
-    await router.push(PathConst.COMPRO_CATEGORY_CATEGORY_LIST)
+    await router.push(PathConst.COMPRO_CATEGORY_PROBLEM_LIST(0))
   }
 
   const handleChangeSelectedCategory = (event: SelectChangeEvent) => {

@@ -62,7 +62,7 @@ export const CategoryManage = (): JSX.Element => {
     }
     await miikoApiMiikoServiceClient.categoryPost(request)
     setAllState(DUMMY_CATEGORY)
-    await router.push(PathConst.COMPRO_CATEGORY_PROBLEM)
+    await router.push(PathConst.COMPRO_CATEGORY_CATEGORY_LIST)
   }
 
   const handleChange = (event: SelectChangeEvent) => {
