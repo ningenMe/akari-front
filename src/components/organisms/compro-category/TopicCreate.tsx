@@ -1,0 +1,168 @@
+import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material'
+import { Typography } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
+import {
+  Category,
+  CategoryListGetRequest,
+  CategoryListGetResponse,
+  Reference,
+  Topic,
+  TopicPostRequest,
+  TopicPostResponse,
+} from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import styles from './TopicManage.module.scss'
+import { TagEditButton, UpsertButton } from 'components/atoms/Button'
+import { useRouter } from 'next/router'
+import { PathConst } from 'constants/Const'
+import { PageTextCard } from 'components/atoms/compro-category/Card'
+
+export const TopicCreate = (): JSX.Element => {
+
+  const [topicDisplayName, setTopicDisplayName] = useState<string>('')
+  const [topicOrder, setTopicOrder] = useState<number>(0)
+  const [topicText, setTopicText] = useState<string>('')
+  const [referenceList, setReferenceList] = useState<Reference[]>([])
+  const [url, setUrl] = useState<string>('')
+  const [referenceDisplayName, setReferenceDisplayName] = useState<string>('')
+
+  const [categoryList, setCategoryList] = useState<Category[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<Category>()
+
+  const categoryGet = async () => {
+    const categoryListGetRequest = new CategoryListGetRequest({
+      isRequiredTopic: false,
+    })
+
+    const categoryListGetResponse = await miikoApiMiikoServiceClient.categoryListGet(categoryListGetRequest) as CategoryListGetResponse
+    setCategoryList(categoryListGetResponse.categoryList)
+  }
+
+  useEffect(() => {
+    categoryGet()
+  }, [])
+
+  const handleChangeSelectedCategory = (event: SelectChangeEvent) => {
+    const tmp = JSON.parse(event.target.value) as Category
+    setSelectedCategory(tmp)
+  }
+
+  const upsertClick = async () => {
+    const request = new TopicPostRequest()
+    {
+      request.topic = new Topic({
+        topicDisplayName: topicDisplayName,
+        topicOrder: topicOrder,
+        topicText: topicText,
+        referenceList: referenceList,
+      })
+      request.categoryId = selectedCategory?.categoryId ?? ''
+    }
+    const response = await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
+    await useRouter().replace(PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(response.topicId))
+  }
+
+  const referenceInsertClick = async () => {
+    setReferenceList(list => list.concat([new Reference({ url: url, referenceDisplayName: referenceDisplayName })]))
+    setUrl('')
+    setReferenceDisplayName('')
+  }
+  const referenceDeleteClick = async ({ url, referenceDisplayName }: { url: string, referenceDisplayName: string }) => {
+    setReferenceList(list => list.filter(it => it.url != url || it.referenceDisplayName != referenceDisplayName))
+  }
+
+  const getReferenceCardList = (referenceList: Reference[]) => {
+    return referenceList
+      .map((it) =>
+        <div key={it.referenceId}>
+          <p>
+            ・<a href={it.url} rel='noreferrer noopener' target='_blank'>{it.referenceDisplayName}</a>
+          </p>
+          <TagEditButton
+            name='delete'
+            onClick={() => referenceDeleteClick({ url: it.url, referenceDisplayName: it.referenceDisplayName })}
+          />
+        </div>,
+      )
+  }
+
+  return (
+    <Container>
+      <PageTextCard>
+        <Typography variant='body2'>topic create</Typography>
+      </PageTextCard>
+
+      <FormControl fullWidth className={styles.wrapper}>
+        <Select
+          value={JSON.stringify(selectedCategory)}
+          onChange={handleChangeSelectedCategory}
+          className={styles.wrapper}
+        >
+          {categoryList.map((it) =>
+            <MenuItem key={it.categoryId} value={JSON.stringify(it)}>
+              {it.categoryDisplayName}
+            </MenuItem>,
+          )}
+        </Select>
+        <TextField
+          disabled={true}
+          label='topicId'
+          value='A new topicId will be created automatically'
+          className={styles.idtextfield}
+        />
+        <TextField
+          label='topicDisplayName'
+          onChange={(event) => {
+            setTopicDisplayName(event.target.value)
+          }}
+          value={topicDisplayName}
+          className={styles.textfield}
+        />
+        <TextField
+          type='number'
+          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          label='topicOrder'
+          onChange={(event) => {
+            setTopicOrder(parseInt(event.target.value))
+          }}
+          value={topicOrder}
+          className={styles.textfield}
+        />
+        <TextField
+          label='topicText'
+          onChange={(event) => {
+            setTopicText(event.target.value)
+          }}
+          value={topicText}
+          className={styles.textfield}
+        />
+        {getReferenceCardList(referenceList)}
+        <TextField
+          label='referenceUrl (optional)'
+          onChange={(event) => {
+            setUrl(event.target.value)
+          }}
+          value={url}
+          className={styles.textfield}
+        />
+        <TextField
+          label='referenceDisplayName (optional)'
+          onChange={(event) => {
+            setReferenceDisplayName(event.target.value)
+          }}
+          value={referenceDisplayName}
+          className={styles.textfield}
+        />
+      </FormControl>
+
+
+      <div className={styles.buttongrid}>
+        <UpsertButton onClick={referenceInsertClick} />
+      </div>
+      <div className={styles.buttongrid}>
+        <UpsertButton onClick={upsertClick} />
+      </div>
+
+    </Container>
+  )
+}

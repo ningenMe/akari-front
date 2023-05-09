@@ -27,9 +27,8 @@ export const ComproCategoryPageLink = (): JSX.Element => {
           <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category create' /> : <></>}
         {isAuthorizedComproCategory ?
           <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category edit' /> : <></>}
-        {/*TODO */}
         {isAuthorizedComproCategory ?
-          <TopicButton href={''} name='topic create' /> : <></>}
+          <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_CREATE} name='topic create' /> : <></>}
         {isAuthorizedComproCategory ?
           <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_CREATE} name='problem create' /> : <></>}
       </div>

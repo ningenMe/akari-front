@@ -25,6 +25,7 @@ export class PathConst {
     return PathConst.COMPRO_CATEGORY_PROBLEM + '/' + problemId + '/edit'
   }
   static readonly COMPRO_CATEGORY_TOPIC: string = PathConst.COMPRO_CATEGORY + '/topic'
+  static readonly COMPRO_CATEGORY_TOPIC_CREATE: string = PathConst.COMPRO_CATEGORY_TOPIC + '/create'
   static readonly COMPRO_CATEGORY_TOPIC_PROBLEM = (topicId: string): string => {
     return PathConst.COMPRO_CATEGORY_TOPIC + '/' + topicId + '/problem'
   }

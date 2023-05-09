@@ -90,7 +90,7 @@ export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element 
           <CategoryButton href={''} name='category edit' /> : <></>}
         {isAuthorizedComproCategory ?
           <TopicButton
-            href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_MANAGE(category?.categorySystemName ?? '')}
+            href={PathConst.COMPRO_CATEGORY_TOPIC_EDIT(topicId)}
             name='topic edit' /> : <></>}
       </div>
       <CategoryNormalCard
