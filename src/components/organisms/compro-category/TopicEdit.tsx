@@ -11,7 +11,8 @@ import {
   TopicPostRequest,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
-import { TagEditButton, UpsertButton } from 'components/atoms/Button'
+import { DeleteButton, UpsertButton } from '../../atoms/compro-category/Button'
+import { PageTextCard } from '../../atoms/compro-category/Card'
 
 export const TopicEdit = (props: { topicId: string }): JSX.Element => {
 
@@ -34,6 +35,10 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
     setReferenceList(response.topic?.referenceList ?? [])
     setCategory(response.category)
   }
+
+  useEffect(() => {
+    topicGet()
+  }, [])
 
   const upsertClick = async () => {
     const request = new TopicPostRequest()
@@ -61,21 +66,27 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
   const referenceDeleteClick = async ({ url, referenceDisplayName }: { url: string, referenceDisplayName: string }) => {
     setReferenceList(list => list.filter(it => it.url != url || it.referenceDisplayName != referenceDisplayName))
   }
-  const referenceCardList = referenceList.map(it => {
-    return (<TagEditButton
-      name={it.referenceDisplayName + ': ' + it.url}
-      key={it.referenceDisplayName + ': ' + it.url}
-      onClick={() => referenceDeleteClick({ url: it.url, referenceDisplayName: it.referenceDisplayName })}
-    />)
-  })
-  useEffect(() => {
-    topicGet()
-  }, [])
+
+  const getReferenceCardList = (referenceList: Reference[]) => {
+    return referenceList
+      .map((it) =>
+        <div key={it.referenceId}>
+          <p>
+            ・<a href={it.url} rel='noreferrer noopener' target='_blank'>{it.referenceDisplayName}</a>
+          </p>
+          <DeleteButton
+            name='delete'
+            onClick={() => referenceDeleteClick({ url: it.url, referenceDisplayName: it.referenceDisplayName })}
+          />
+        </div>,
+      )
+  }
 
   return (
     <Container>
-      {/* TODO ここの説明文にcssを当てる */}
-      <Typography variant='body2'>{category?.categoryDisplayName}</Typography>
+      <PageTextCard>
+        <Typography variant='body2'>topic edit</Typography>
+      </PageTextCard>
 
       <FormControl fullWidth className={styles.wrapper}>
         <TextField
@@ -116,32 +127,30 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
           value={topicText}
           className={styles.textfield}
         />
+        {getReferenceCardList(referenceList)}
+        <TextField
+          label='referenceUrl (optional)'
+          onChange={(event) => {
+            setUrl(event.target.value)
+          }}
+          value={url}
+          className={styles.textfield}
+        />
+        <TextField
+          label='referenceDisplayName (optional)'
+          onChange={(event) => {
+            setReferenceDisplayName(event.target.value)
+          }}
+          value={referenceDisplayName}
+          className={styles.textfield}
+        />
       </FormControl>
 
-      <div className={styles.buttongrid}>
-        <UpsertButton onClick={referenceInsertClick} />
-      </div>
-      <TextField
-        label='url'
-        onChange={(event) => {
-          setUrl(event.target.value)
-        }}
-        value={url}
-        className={styles.textfield}
-      />
-      <TextField
-        label='referenceDisplayName'
-        onChange={(event) => {
-          setReferenceDisplayName(event.target.value)
-        }}
-        value={referenceDisplayName}
-        className={styles.textfield}
-      />
 
       <div className={styles.buttongrid}>
-        <UpsertButton onClick={upsertClick} />
+        <UpsertButton name='reference insert' onClick={referenceInsertClick} />
+        <UpsertButton name='topic upsert' onClick={upsertClick} />
       </div>
-      {referenceCardList}
 
     </Container>
   )
