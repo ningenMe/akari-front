@@ -64,7 +64,7 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
     <Container>
       <div className={styles.buttonGrid}>
         {isAuthorizedComproCategory ?
-          <CategoryButton href={''} name='category edit' /> : <></>}
+          <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category edit' /> : <></>}
       </div>
 
       <CategoryNormalCard
