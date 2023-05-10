@@ -54,7 +54,7 @@ export const ProblemLinkCard = ({
   return (
     <button className={styles.problemLinkCard}>
       <h6 className={styles.problemTitle}>{problemDisplayName}</h6>
-      <a href={href} className={styles.href} />
+      <a href={href} rel='noreferrer noopener' target='_blank' className={styles.href} />
     </button>
   )
 }

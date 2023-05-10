@@ -36,7 +36,7 @@ export const CategoryList = (): JSX.Element => {
   return (
     <Container>
       <PageTextCard>
-        <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴。日々改装中。UI色々直したい。</Typography>
+        <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴。</Typography>
         <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
       </PageTextCard>
 
