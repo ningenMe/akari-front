@@ -7,18 +7,20 @@ import { kiwaApiUsersClient } from 'repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 import { PathConst } from 'constants/Const'
 import { PageTextCard, ProblemLinkCard, ProblemNormalCard, TagLinkCard } from '../../atoms/compro-category/Card'
-import { ProblemButton } from '../../atoms/compro-category/Button'
+import { ProblemButton, UpsertButton } from 'components/atoms/compro-category/Button'
 
 export const ProblemList = ({ page }: { page: number }): JSX.Element => {
 
   const [problemList, setProblemList] = useState<Problem[]>([])
   const [isAuthorizedComproCategory, setIsAuthorizedComproCategory] = useState<boolean>(false)
+  const [isDesc, setIsDesc] = useState<boolean>(true)
   const LIMIT = 30
 
   const problemListGet = async () => {
     const problemListGetRequest = new ProblemListGetRequest({
-      offset: page * LIMIT,
       limit: LIMIT,
+      offset: page * LIMIT,
+      isDesc: isDesc,
     })
     const problemListGetResponse = await miikoApiMiikoServiceClient.problemListGet(problemListGetRequest) as ProblemListGetResponse
     kiwaApiUsersClient.usersGet({ method: 'GET', withCredentials: true })
@@ -32,7 +34,7 @@ export const ProblemList = ({ page }: { page: number }): JSX.Element => {
 
   useEffect(() => {
     problemListGet()
-  }, [])
+  }, [isDesc])
 
   const getTagCardList = (tagList: Tag[]) => {
     return tagList
@@ -67,6 +69,9 @@ export const ProblemList = ({ page }: { page: number }): JSX.Element => {
       <ProblemButton
         href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(page + 1)}
         name='→' />
+      <UpsertButton name={'sort is ' + (isDesc ? 'desc' : 'asc')} onClick={async () => {
+        setIsDesc((isDesc) => !isDesc)
+      }} />
 
       {cardList}
 
