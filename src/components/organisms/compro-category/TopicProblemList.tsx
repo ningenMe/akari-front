@@ -86,8 +86,12 @@ export const TopicProblemList = ({ topicId }: { topicId: string }): JSX.Element 
   return (
     <Container>
       <div className={styles.buttonGrid}>
+        <CategoryButton
+          href={PathConst.COMPRO_CATEGORY_CATEGORY_TOPIC_LIST(category?.categorySystemName ?? '')}
+          name='category topic'
+        />
         {isAuthorizedComproCategory ?
-          <CategoryButton href={''} name='category edit' /> : <></>}
+          <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category edit' /> : <></>}
         {isAuthorizedComproCategory ?
           <TopicButton
             href={PathConst.COMPRO_CATEGORY_TOPIC_EDIT(topicId)}
