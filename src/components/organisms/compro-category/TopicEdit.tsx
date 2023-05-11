@@ -1,9 +1,11 @@
-import { Container, FormControl, TextField } from '@mui/material'
+import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material'
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import {
   Category,
+  CategoryListGetRequest,
+  CategoryListGetResponse,
   Reference,
   Topic,
   TopicGetRequest,
@@ -26,8 +28,18 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
   const [url, setUrl] = useState<string>('')
   const [referenceDisplayName, setReferenceDisplayName] = useState<string>('')
 
-  const [category, setCategory] = useState<Category | undefined>()
+  const [categoryList, setCategoryList] = useState<Category[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<Category>()
   const router = useRouter()
+
+  const categoryGet = async () => {
+    const categoryListGetRequest = new CategoryListGetRequest({
+      isRequiredTopic: false,
+    })
+
+    const categoryListGetResponse = await miikoApiMiikoServiceClient.categoryListGet(categoryListGetRequest) as CategoryListGetResponse
+    setCategoryList(categoryListGetResponse.categoryList)
+  }
 
   const topicGet = async () => {
     const request = new TopicGetRequest({ topicId: props.topicId })
@@ -37,12 +49,18 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
     setTopicOrder(response.topic?.topicOrder ?? 0)
     setTopicText(response.topic?.topicText ?? '')
     setReferenceList(response.topic?.referenceList ?? [])
-    setCategory(response.category)
+    setSelectedCategory(response.category)
   }
 
   useEffect(() => {
+    categoryGet()
     topicGet()
   }, [])
+
+  const handleChangeSelectedCategory = (event: SelectChangeEvent) => {
+    const tmp = JSON.parse(event.target.value) as Category
+    setSelectedCategory(tmp)
+  }
 
   const upsertClick = async () => {
     const request = new TopicPostRequest()
@@ -55,7 +73,7 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
         topicText: topicText,
         referenceList: referenceList,
       })
-      request.categoryId = category?.categoryId ?? ''
+      request.categoryId = selectedCategory?.categoryId ?? ''
     }
     const response = await miikoApiMiikoServiceClient.topicPost(request) as TopicPostResponse
     await router.push(PathConst.COMPRO_CATEGORY_TOPIC_PROBLEM(response.topicId))
@@ -93,10 +111,21 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
       </PageTextCard>
 
       <FormControl fullWidth className={styles.wrapper}>
+        <Select
+          value={JSON.stringify(selectedCategory)}
+          onChange={handleChangeSelectedCategory}
+          className={styles.wrapper}
+        >
+          {categoryList.map((it) =>
+            <MenuItem key={it.categoryId} value={JSON.stringify(it)}>
+              {it.categoryDisplayName}
+            </MenuItem>,
+          )}
+        </Select>
         <TextField
           disabled={true}
           label='categoryDisplayName'
-          value={category?.categoryDisplayName ?? ''}
+          value={selectedCategory?.categoryDisplayName ?? ''}
           className={styles.idtextfield}
         />
         <TextField
