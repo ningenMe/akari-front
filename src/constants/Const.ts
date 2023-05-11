@@ -70,6 +70,7 @@ export class UrlConst {
 
 export class LinkConst {
   static readonly NINGENME_NET: Link = { href: UrlConst.NINGENME_NET, name: 'ningenMe.net' }
+  static readonly COMPRO_LIBRARY: Link = { href: UrlConst.COMPRO_LIBRARY, name: 'compro-library' }
   static readonly GITHUB: Link = { href: UrlConst.GITHUB, name: 'GitHub' }
   static readonly GITHUB_SPONSOR: Link = { href: UrlConst.GITHUB_SPONSOR, name: 'Become a sponsor' }
   static readonly GITHUB_AKARI_FRONT: Link = { href: UrlConst.GITHUB_AKARI_FRONT, name: 'frontend' }

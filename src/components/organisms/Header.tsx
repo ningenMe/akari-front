@@ -5,6 +5,7 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import ArticleIcon from '@mui/icons-material/Article'
 import ComputerIcon from '@mui/icons-material/Computer'
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 import PaidIcon from '@mui/icons-material/Paid'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
@@ -72,17 +73,15 @@ export const NingenmeNetHeader = (): JSX.Element => {
     setAnchorEl(null)
   }
 
-  //TODO 配列にする
   const getElementList = ({ className }: { className: string }) => {
-    return (
-      <>
-        <NormalElement link={LinkConst.GITHUB} className={className} icon={<GitHubIcon />} />
-        <NormalElement link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />
-        <DropdownElement title={'compro'} links={LinkConst.COMPROS} className={className} icon={<ComputerIcon />} />
-        <DropdownElement title={'blog'} links={LinkConst.BLOGS} className={className} icon={<ArticleIcon />} />
-        <NormalElement link={LinkConst.GITHUB_SPONSOR} className={className} icon={<PaidIcon />} />
-      </>
-    )
+    return [
+      <NormalElement key={1} link={LinkConst.GITHUB} className={className} icon={<GitHubIcon />} />,
+      <NormalElement key={2} link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />,
+      <DropdownElement key={3} title={'compro'} links={LinkConst.COMPROS} className={className}
+                       icon={<ComputerIcon />} />,
+      <DropdownElement key={4} title={'blog'} links={LinkConst.BLOGS} className={className} icon={<ArticleIcon />} />,
+      <NormalElement key={5} link={LinkConst.GITHUB_SPONSOR} className={className} icon={<PaidIcon />} />,
+    ]
   }
 
   return (
@@ -142,15 +141,15 @@ export const ComproCategoryHeader = (): JSX.Element => {
 
   //TODO 配列にする
   const getElementList = ({ className }: { className: string }) => {
-    return (
-      <>
-        <NormalElement link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />
-        <NormalElement link={LinkConst.GITHUB_AKARI_FRONT} className={className} icon={<GitHubIcon />} />
-        <NormalElement link={LinkConst.GITHUB_MIIKO_API} className={className} icon={<GitHubIcon />} />
-        <DropdownElement title={'compro'} links={LinkConst.COMPROS} className={className} icon={<ComputerIcon />} />
-        <NormalElement link={LinkConst.NINGENME_NET} className={className} icon={<></>} />
-      </>
-    )
+    return [
+      <NormalElement key={1} link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />,
+      <NormalElement key={2} link={LinkConst.COMPRO_LIBRARY} className={className} icon={<LibraryBooksIcon />} />,
+      <NormalElement key={3} link={LinkConst.GITHUB_AKARI_FRONT} className={className} icon={<GitHubIcon />} />,
+      <NormalElement key={4} link={LinkConst.GITHUB_MIIKO_API} className={className} icon={<GitHubIcon />} />,
+      <DropdownElement key={5} title={'compro'} links={LinkConst.COMPROS} className={className}
+                       icon={<ComputerIcon />} />,
+      <NormalElement key={6} link={LinkConst.NINGENME_NET} className={className} icon={<></>} />,
+    ]
   }
 
   return (
