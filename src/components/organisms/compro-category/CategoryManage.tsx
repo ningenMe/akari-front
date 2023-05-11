@@ -122,7 +122,7 @@ export const CategoryManage = (): JSX.Element => {
         />
       </FormControl>
       <div className={styles.buttongrid}>
-        <UpsertButton name='problem upsert' onClick={upsertClick} />
+        <UpsertButton name='category upsert' onClick={upsertClick} />
       </div>
     </Container>
   )
