@@ -84,7 +84,7 @@ export const CategoryManage = (): JSX.Element => {
         >
           {[DUMMY_CATEGORY].concat(categoryList).map((it) =>
             <MenuItem key={it.categoryId} value={JSON.stringify(it)}>
-              {it.categoryDisplayName}
+              {it.categoryOrder}: {it.categoryDisplayName}
             </MenuItem>,
           )}
         </Select>
