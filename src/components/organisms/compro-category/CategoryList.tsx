@@ -43,6 +43,12 @@ export const CategoryList = (): JSX.Element => {
       <div className={styles.grid}>
         {cardList}
       </div>
+
+      <PageTextCard>
+        <Typography variant='body2'>
+          自分用のまとめとして他の方の記事を引用させていただいています。このサイト自体に営利目的はないですが、もし気に障る場合はtwitter経由で連絡ください。
+        </Typography>
+      </PageTextCard>
     </Container>
   )
 }
