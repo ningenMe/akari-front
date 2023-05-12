@@ -12,7 +12,7 @@ export const CategoryList = (): JSX.Element => {
   const [categoryList, setCategoryList] = useState<Category[]>([])
 
   const categoryGet = async () => {
-    const request = new CategoryListGetRequest({ isRequiredTopic: false })
+    const request = new CategoryListGetRequest({ isRequiredTopic: true })
     const response = await miikoApiMiikoServiceClient.categoryListGet(request) as CategoryListGetResponse
     setCategoryList(response.categoryList)
   }
@@ -28,8 +28,7 @@ export const CategoryList = (): JSX.Element => {
       categoryDisplayName={category.categoryDisplayName}
     >
       {/*TODO 数字の見せ方は要検討*/}
-      <div>topic: {category.topicSize}</div>
-      <div>problem: {category.problemSize}</div>
+      <div>topic: {category.topicList.length}</div>
     </CategoryLinkCard>,
   )
 
