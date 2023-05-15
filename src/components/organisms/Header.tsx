@@ -18,7 +18,7 @@ const NormalElement = (
 ) => {
   return (
     <div>
-      <Button className={className} href={link.href}>
+      <Button className={className} href={link.href} rel='noreferrer noopener' target='_blank'>
         {icon}
         {link.name}
       </Button>

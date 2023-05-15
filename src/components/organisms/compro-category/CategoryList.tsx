@@ -4,12 +4,19 @@ import React, { useEffect, useState } from 'react'
 import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
-import { Category, CategoryListGetRequest, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import {
+  Category,
+  CategoryListGetRequest,
+  CategoryListGetResponse,
+  StatisticsGetRequest,
+  StatisticsGetResponse,
+} from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { CategoryLinkCard, PageTextCard } from '../../atoms/compro-category/Card'
 
 export const CategoryList = (): JSX.Element => {
 
   const [categoryList, setCategoryList] = useState<Category[]>([])
+  const [statistics, setStatistics] = useState<StatisticsGetResponse>()
 
   const categoryGet = async () => {
     const request = new CategoryListGetRequest({ isRequiredTopic: true })
@@ -17,8 +24,14 @@ export const CategoryList = (): JSX.Element => {
     setCategoryList(response.categoryList)
   }
 
+  const statisticsGet = async () => {
+    const response = await miikoApiMiikoServiceClient.statisticsGet(new StatisticsGetRequest()) as StatisticsGetResponse
+    setStatistics(response)
+  }
+
   useEffect(() => {
     categoryGet()
+    statisticsGet()
   }, [])
 
   const cardList = categoryList.map((category) =>
@@ -37,6 +50,23 @@ export const CategoryList = (): JSX.Element => {
       <PageTextCard>
         <Typography variant='body2'>ningenMeが解いた競技プログラミングの履歴。</Typography>
         <Typography variant='body2'>ジャンル分けの浅さはningenMeの競技プログラミングへの解像度の低さ...</Typography>
+        <Typography variant='body2'>
+          topic: {statistics?.topicSize}, problem: {statistics?.problemSize}, tag: {statistics?.tagSize},
+          reference: {statistics?.referenceSize}
+        </Typography>
+        <Typography variant='body2'> last
+          update: {
+            [
+              statistics?.lastUpdatedCategoryTimestamp,
+              statistics?.lastUpdatedTopicTimestamp,
+              statistics?.lastUpdatedProblemTimestamp,
+              statistics?.lastUpdatedTagTimestamp,
+              statistics?.lastUpdatedReferenceTimestamp,
+            ].map(it => it?.toDate())
+              .sort((l, r) => ((r?.getTime() ?? 0) - (l?.getTime() ?? 0)))
+              .find(() => true)
+              ?.toLocaleString()
+          } </Typography>
       </PageTextCard>
 
       <div className={styles.grid}>
