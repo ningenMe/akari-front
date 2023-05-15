@@ -21,13 +21,13 @@ export class PathConst {
   static readonly COMPRO_CATEGORY_PROBLEM_EDIT = (problemId: string): string => {
     return PathConst.COMPRO_CATEGORY_PROBLEM + '/' + problemId + '/edit'
   }
-  private static readonly COMPRO_CATEGORY_TOPIC: string = PathConst.COMPRO_CATEGORY + '/topic'
-  static readonly COMPRO_CATEGORY_TOPIC_CREATE: string = PathConst.COMPRO_CATEGORY_TOPIC + '/create'
+  static readonly COMPRO_CATEGORY_TOPIC_LIST: string = PathConst.COMPRO_CATEGORY + '/topic'
+  static readonly COMPRO_CATEGORY_TOPIC_CREATE: string = PathConst.COMPRO_CATEGORY_TOPIC_LIST + '/create'
   static readonly COMPRO_CATEGORY_TOPIC_PROBLEM = (topicId: string): string => {
-    return PathConst.COMPRO_CATEGORY_TOPIC + '/' + topicId + '/problem'
+    return PathConst.COMPRO_CATEGORY_TOPIC_LIST + '/' + topicId + '/problem'
   }
   static readonly COMPRO_CATEGORY_TOPIC_EDIT = (topicId: string): string => {
-    return PathConst.COMPRO_CATEGORY_TOPIC + '/' + topicId + '/edit'
+    return PathConst.COMPRO_CATEGORY_TOPIC_LIST + '/' + topicId + '/edit'
   }
   static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'

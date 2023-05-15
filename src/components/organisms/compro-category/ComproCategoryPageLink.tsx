@@ -22,6 +22,7 @@ export const ComproCategoryPageLink = (): JSX.Element => {
     <Container>
       <div className={styles.buttonGrid}>
         <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_LIST} name='category list' />
+        <TopicButton href={PathConst.COMPRO_CATEGORY_TOPIC_LIST} name='topic list' />
         <ProblemButton href={PathConst.COMPRO_CATEGORY_PROBLEM_LIST(0)} name='problem list' />
         {isAuthorizedComproCategory ?
           <CategoryButton href={PathConst.COMPRO_CATEGORY_CATEGORY_MANAGE} name='category manage' /> : <></>}
