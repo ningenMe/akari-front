@@ -1,11 +1,23 @@
 import { Container } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
-import { Category, Problem, Topic, TopicListGetRequest, TopicListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
+import {
+  Category,
+  Problem,
+  Topic,
+  TopicListGetRequest,
+  TopicListGetResponse,
+} from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { kiwaApiUsersClient } from '../../../repository/KiwaApiRepository'
 import { UsersMeGetResponse } from 'kiwa-api/typescript-axios-client/api'
 import { PathConst } from '../../../constants/Const'
-import { CategoryNormalCard, ProblemLinkCard, TopicLinkCard, TopicNormalCard } from '../../atoms/compro-category/Card'
+import {
+  CategoryNormalCard,
+  PageTextCard,
+  ProblemLinkCard,
+  TopicLinkCard,
+  TopicNormalCard,
+} from '../../atoms/compro-category/Card'
 import styles from './ComproCategoryPageLink.module.scss'
 import { CategoryButton, ProblemButton, TopicButton } from '../../atoms/compro-category/Button'
 
@@ -47,6 +59,17 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
       })
   }
 
+  const getReferenceCardList = (topicList: Topic[]) => {
+    return topicList
+      .map((it) => it.referenceList)
+      .flatMap(it => it)
+      .map((it) =>
+        <p key={it.referenceId}>
+          ・<a href={it.url} rel='noreferrer noopener' target='_blank'>{it.referenceDisplayName}</a>
+        </p>,
+      )
+  }
+
   const cardList = topicList
     .sort((l, r) => l.topicOrder - r.topicOrder)
     .map((it) =>
@@ -70,6 +93,10 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
       <CategoryNormalCard
         categoryDisplayName={category?.categoryDisplayName ?? ''}
       />
+      <PageTextCard>
+        <h6>{'Reference:'}</h6>
+        {getReferenceCardList(topicList)}
+      </PageTextCard>
       {cardList}
 
     </Container>
