@@ -53,7 +53,7 @@ export const ProblemLinkCard = ({
                                 }: { href: string, problemDisplayName: string }): JSX.Element => {
   return (
     <button className={styles.problemLinkCard}>
-      <h6 className={styles.problemTitle}>{problemDisplayName}</h6>
+      <h6 className={styles.problemTitle}>{problemDisplayName} <b>{getSite({ href })}</b></h6>
       <a href={href} rel='noreferrer noopener' target='_blank' className={styles.href} />
     </button>
   )
@@ -74,4 +74,23 @@ export const PageTextCard = ({ children }: { children: ReactNode }): JSX.Element
       {children}
     </div>
   )
+}
+const getSite = ({ href }: { href: string }): string => {
+  if (href.match('^https://atcoder.jp*')) {
+    return '( AtCoder )'
+  }
+  if (href.match('^https://judge.yosupo.jp*')) {
+    return '( Library Checker )'
+  }
+  if (href.match('^https://onlinejudge.u-aizu.ac.jp*')) {
+    return '( AOJ )'
+  }
+  if (href.match('^https://yukicoder.me*')) {
+    return '( yukicoder )'
+  }
+  if (href.match('^https://codeforces.com*')) {
+    return '( Code Forces )'
+  }
+
+  return ''
 }

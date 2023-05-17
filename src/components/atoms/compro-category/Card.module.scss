@@ -42,8 +42,8 @@
 
 .problemNormalCard {
   @extend .card;
-  padding: 1px 10px 1px 10px;
-  margin: 1px;
+  padding: 1px 10px 1px 10px !important;
+  margin: 1px !important;
   border: 3px double #7783b2;
 }
 
