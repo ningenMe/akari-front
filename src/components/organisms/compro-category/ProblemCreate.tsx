@@ -10,6 +10,8 @@ import {
   ProblemPostRequest,
   Tag,
   Topic,
+  UrlGetRequest,
+  UrlGetResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './ProblemManage.module.scss'
 import { PageTextCard, TagLinkCard } from '../../atoms/compro-category/Card'
@@ -37,10 +39,18 @@ export const ProblemCreate = (): JSX.Element => {
     setCategoryList(categoryListGetResponse.categoryList)
   }
 
+  const urlGet = async (tmpUrl: string) => {
+    const request = new UrlGetRequest({
+      url: tmpUrl,
+    })
+
+    const response = await miikoApiMiikoServiceClient.urlGet(request) as UrlGetResponse
+    setProblemDisplayName(response.title)
+  }
+
   useEffect(() => {
     categoryGet()
   }, [])
-
 
   const upsertClick = async () => {
     const request = new ProblemPostRequest()
@@ -99,8 +109,9 @@ export const ProblemCreate = (): JSX.Element => {
         />
         <TextField
           label='url'
-          onChange={(event) => {
+          onChange={async (event) => {
             setUrl(event.target.value)
+            urlGet(event.target.value)
           }}
           value={url}
           className={styles.textfield}
