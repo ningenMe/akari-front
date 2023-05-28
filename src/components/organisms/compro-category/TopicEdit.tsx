@@ -12,6 +12,8 @@ import {
   TopicGetResponse,
   TopicPostRequest,
   TopicPostResponse,
+  UrlGetRequest,
+  UrlGetResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
 import { DeleteButton, UpsertButton } from '../../atoms/compro-category/Button'
@@ -50,6 +52,15 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
     setTopicText(response.topic?.topicText ?? '')
     setReferenceList(response.topic?.referenceList ?? [])
     setSelectedCategory(response.category)
+  }
+
+  const urlGet = async (tmpUrl: string) => {
+    const request = new UrlGetRequest({
+      url: tmpUrl,
+    })
+
+    const response = await miikoApiMiikoServiceClient.urlGet(request) as UrlGetResponse
+    setReferenceDisplayName(response.title)
   }
 
   useEffect(() => {
@@ -163,8 +174,9 @@ export const TopicEdit = (props: { topicId: string }): JSX.Element => {
         {getReferenceCardList(referenceList)}
         <TextField
           label='referenceUrl (optional)'
-          onChange={(event) => {
+          onChange={async (event) => {
             setUrl(event.target.value)
+            urlGet(event.target.value)
           }}
           value={url}
           className={styles.textfield}

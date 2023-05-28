@@ -10,6 +10,8 @@ import {
   Topic,
   TopicPostRequest,
   TopicPostResponse,
+  UrlGetRequest,
+  UrlGetResponse,
 } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import styles from './TopicManage.module.scss'
 import { PageTextCard } from 'components/atoms/compro-category/Card'
@@ -37,6 +39,15 @@ export const TopicCreate = (): JSX.Element => {
 
     const categoryListGetResponse = await miikoApiMiikoServiceClient.categoryListGet(categoryListGetRequest) as CategoryListGetResponse
     setCategoryList(categoryListGetResponse.categoryList)
+  }
+
+  const urlGet = async (tmpUrl: string) => {
+    const request = new UrlGetRequest({
+      url: tmpUrl,
+    })
+
+    const response = await miikoApiMiikoServiceClient.urlGet(request) as UrlGetResponse
+    setReferenceDisplayName(response.title)
   }
 
   useEffect(() => {
@@ -140,8 +151,9 @@ export const TopicCreate = (): JSX.Element => {
         {getReferenceCardList(referenceList)}
         <TextField
           label='referenceUrl (optional)'
-          onChange={(event) => {
+          onChange={async (event) => {
             setUrl(event.target.value)
+            urlGet(event.target.value)
           }}
           value={url}
           className={styles.textfield}
