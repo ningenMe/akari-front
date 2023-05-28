@@ -61,11 +61,15 @@ export const CategoryTopicList = ({ categorySystemName }: { categorySystemName: 
 
   const getReferenceCardList = (topicList: Topic[]) => {
     return topicList
-      .map((it) => it.referenceList)
+      .map((topic) => topic.referenceList
+        .map((reference) => {
+          return { topicDisplayName: topic.topicDisplayName, reference: reference }
+        }))
       .flatMap(it => it)
       .map((it) =>
-        <p key={it.referenceId}>
-          ・<a href={it.url} rel='noreferrer noopener' target='_blank'>{it.referenceDisplayName}</a>
+        <p key={it.reference.referenceId}>
+          ・<a href={it.reference.url} rel='noreferrer noopener'
+              target='_blank'>{it.reference.referenceDisplayName}</a> ({it.topicDisplayName})
         </p>,
       )
   }
