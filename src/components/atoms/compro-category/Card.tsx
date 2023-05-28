@@ -91,6 +91,8 @@ const getSite = ({ href }: { href: string }): string => {
   if (href.match('^https://codeforces.com*')) {
     return '( Code Forces )'
   }
-
+  if (href.match('^https://www.hackerrank.com*')) {
+    return '( HackerRank )'
+  }
   return ''
 }
