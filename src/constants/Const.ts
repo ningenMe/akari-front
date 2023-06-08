@@ -66,6 +66,7 @@ export class UrlConst {
   static readonly LINE_KYOTO_MEETUP_20221027: string = 'https://logmi.jp/tech/articles/328130'
   static readonly LINE_INTERNSHIP_2022: string = 'https://engineering.linecorp.com/ja/blog/internship-2022-hackathon-report'
   static readonly LINE_KYOTO_MEETUP_20230316: string = 'https://line.connpass.com/event/275745/'
+  static readonly KYOTO_TECH_TALK_20230607: string = 'https://line.connpass.com/event/283505/'
 }
 
 export class LinkConst {

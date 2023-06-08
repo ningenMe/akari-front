@@ -4,6 +4,11 @@ import { UrlConst } from './Const'
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
     year: 2023,
+    body: 'Kyoto Tech Talk「Spring Securityを使ったinternalの認証認可」',
+    href: UrlConst.KYOTO_TECH_TALK_20230607,
+  },
+  {
+    year: 2023,
     body: 'LINE KYOTO Meetup「Spring Securityを使った認証認可」',
     href: UrlConst.LINE_KYOTO_MEETUP_20230316,
   },
