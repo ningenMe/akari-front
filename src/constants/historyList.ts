@@ -25,7 +25,8 @@ const OU_CONTENT_LIST: ReadonlyArray<HistoryContent> = [
 ] as const
 
 export const HISTORY_LIST: ReadonlyArray<History> = [
-  { yearFrom: '2021', yearTo: '20xx', body: 'LINE Software Engineer', contentList: LINE_CONTENT_LIST },
+  { yearFrom: '2023', yearTo: '20xx', body: 'LINEヤフー Software Engineer', contentList: LINE_CONTENT_LIST },
+  { yearFrom: '2021', yearTo: '2023', body: 'LINE Software Engineer', contentList: LINE_CONTENT_LIST },
   { yearFrom: '2019', yearTo: '2021', body: 'Yahoo! Japan Software Engineer', contentList: YAHOO_CONTENT_LIST },
   { yearFrom: '2017', yearTo: '2019', body: '大阪大学大学院　基礎工学研究科', contentList: OU_CONTENT_LIST },
   { yearFrom: '2013', yearTo: '2017', body: '大阪大学　基礎工学部', contentList: [] },

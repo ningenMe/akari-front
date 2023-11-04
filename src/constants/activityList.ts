@@ -4,6 +4,16 @@ import { UrlConst } from './Const'
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
     year: 2023,
+    body: 'モジュラモノリス徹底解剖vol.2〜実践者から学ぶLunch LT〜',
+    href: UrlConst.FINDY_MODULAR_MONOLITH_20230912,
+  },
+  {
+    year: 2023,
+    body: '2022 LINEインターンシップ メンター',
+    href: UrlConst.LINE_INTERNSHIP_2023,
+  },
+  {
+    year: 2023,
     body: 'Kyoto Tech Talk「Spring Securityを使ったinternalの認証認可」',
     href: UrlConst.KYOTO_TECH_TALK_20230607,
   },
