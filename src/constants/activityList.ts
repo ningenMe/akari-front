@@ -9,7 +9,7 @@ export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   },
   {
     year: 2023,
-    body: '2022 LINEインターンシップ メンター',
+    body: '2023 LINEインターンシップ メンター',
     href: UrlConst.LINE_INTERNSHIP_2023,
   },
   {
