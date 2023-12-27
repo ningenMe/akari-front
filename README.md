@@ -1,7 +1,4 @@
 # akari-front
-[![ci](https://github.com/ningenMe/akari-front/actions/workflows/ci.yml/badge.svg)](https://github.com/ningenMe/akari-front/actions/workflows/ci.yml)
-[![deploy](https://github.com/ningenMe/akari-front/actions/workflows/deploy.yml/badge.svg)](https://github.com/ningenMe/akari-front/actions/workflows/deploy.yml)
-
 趣味開発のフロントエンド。
 
 ## domain
