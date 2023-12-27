@@ -1,46 +1,30 @@
 import { useEffect, useState } from 'react'
-import { Blog } from '../../../interfaces/Blog'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
-import styles from './RecentBlog.module.scss'
-import ForwardIcon from '@mui/icons-material/Forward'
+import { suzuApiBlogServiceClient } from 'repository/SuzuApiRepository'
+import { Blog } from 'suzu-backend/api/proto/client/api/proto/suzu/v1/suzu_pb'
 
 export const RecentBlog = () => {
 
-  // const [blog, setBlog] = useState<Blog | undefined>()
-  // useEffect(
-  //   () => {
-  //     const stream = ninaApiBlogClient.get(new Empty(), undefined);
-  //     stream.on("data", response => {
-  //       const tmp = response.getBlog()
-  //       console.log(tmp)
-  //       setBlog({
-  //         url: tmp?.getUrl() ?? '',
-  //         type: tmp?.getType() ?? '',
-  //         date: tmp?.getDate() ?? '',
-  //         title: tmp?.getTitle() ?? '',
-  //         liked: 0
-  //       })
-  //     })
-  //   },
-  //   [ninaApiBlogClient])
+  const [blogList, setBlogList] = useState<Blog[]>([])
+
+  useEffect(
+    () => {
+      suzuApiBlogServiceClient.getBlog(new Empty(), null)
+      .then(res => {
+        setBlogList(res.getBlogListList())
+      })
+      .catch(err => console.log(err))
+    },
+    [suzuApiBlogServiceClient])
+  const blogCardList = blogList.map(it => (
+    <div key={it.getUrl()}> 
+      {it.getBlogTitle()}
+    </div>
+  ));
 
   return (
     <>
-      {/*{blog?*/}
-      {/*  <div className={styles.wrapper}>*/}
-      {/*    <span className={styles.recentBlogTitle}>*/}
-      {/*      {'Recent Article'}*/}
-      {/*      <ForwardIcon />*/}
-      {/*    </span>*/}
-      {/*    <span className={styles.recentBlogBody}>*/}
-      {/*      {blog?.date} : {blog?.title}*/}
-      {/*      <a href={blog?.url} className={styles.href} />*/}
-      {/*    </span>*/}
-      {/*  </div>*/}
-      {/*  :*/}
-      {/*  <>*/}
-      {/*  </>*/}
-      {/*}*/}
+      {blogCardList}
     </>
   )
 }

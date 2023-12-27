@@ -1,4 +1,4 @@
-import { UrlConst } from '../constants/Const'
+import { UrlConst } from 'constants/Const'
 import { createConnectTransport } from '@bufbuild/connect-web'
 import { createPromiseClient } from '@bufbuild/connect'
 import { NinaService } from 'nina-api/proto/gen_ts/v1/nina_connect'
