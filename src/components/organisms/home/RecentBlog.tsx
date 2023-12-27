@@ -6,6 +6,8 @@ import { Title } from 'components/atoms/Title'
 import { OptionalHref } from 'components/atoms/OptionalHref'
 import styles from './RecentBlog.module.scss'
 import fontStyles from 'styles/Font.module.scss'
+import { CustomNormalCard } from 'components/organisms/CustomCard'
+import { PathConst } from 'constants/Const'
 
 export const RecentBlog = () => {
 
@@ -32,7 +34,10 @@ export const RecentBlog = () => {
   return (
     <>
       <Title title='Blog' />
-      {blogCardList}
+      <CustomNormalCard>
+        {blogCardList}
+        {">"} <a href={PathConst.BLOG}> もっと見る </a>
+      </CustomNormalCard>
     </>
   )
 }

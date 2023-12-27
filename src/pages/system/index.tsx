@@ -1,7 +1,7 @@
 import { HtmlHead } from 'components/organisms/HtmlHead'
-import { NingenmeNetFooter } from '../../components/organisms/Footer'
-import { NingenmeNetHeader } from '../../components/organisms/Header'
-import { System } from '../../components/organisms/system/System'
+import { NingenmeNetFooter } from 'components/organisms/Footer'
+import { NingenmeNetHeader } from 'components/organisms/Header'
+import { System } from 'components/organisms/system/System'
 import { NextPage } from 'next'
 
 export const Index: NextPage = () => {

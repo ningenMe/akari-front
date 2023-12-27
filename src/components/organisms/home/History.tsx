@@ -1,9 +1,9 @@
 import React from 'react'
 import { OptionalHref } from 'components/atoms/OptionalHref'
-import { CustomNormalCard } from '../CustomCard'
+import { CustomNormalCard } from 'components/organisms/CustomCard'
 import { HistoryContent } from 'interfaces/HistoryContent'
 import { HISTORY_LIST } from 'constants/historyList'
-import { Title } from '../../atoms/Title'
+import { Title } from 'components/atoms/Title'
 import fontStyles from 'styles/Font.module.scss'
 import styles from './History.module.scss'
 
