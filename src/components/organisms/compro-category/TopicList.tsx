@@ -1,10 +1,9 @@
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { PathConst } from 'constants/Const'
 import { miikoApiMiikoServiceClient } from '../../../repository/MiikoApiRepository'
 import { Category, CategoryListGetRequest, CategoryListGetResponse } from 'miiko-api/proto/gen_ts/v1/miiko_pb'
 import { PageTextCard, TopicLinkCard } from '../../atoms/compro-category/Card'
-import { Typography } from '@material-ui/core'
 
 export const TopicList = (): JSX.Element => {
 

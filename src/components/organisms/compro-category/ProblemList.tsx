@@ -1,5 +1,4 @@
-import { Container } from '@mui/material'
-import { Typography } from '@material-ui/core'
+import { Container, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'
 import { Problem, ProblemListGetRequest, ProblemListGetResponse, Tag } from 'miiko-api/proto/gen_ts/v1/miiko_pb'

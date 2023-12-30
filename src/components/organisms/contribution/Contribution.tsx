@@ -1,19 +1,17 @@
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ninaApiNinaServiceClient } from '../../../repository/NinaApiRepository'
 import { Graph } from './Graph'
 import { DatePeriod, getEndDate, getFormatDate, getInitDatePeriod } from './DatePeriod'
-import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
-import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import dayjs from 'dayjs'
 import { SubTitle, Title } from '../../atoms/Title'
-import { Typography } from '@material-ui/core'
 import styles from './Contribution.module.scss'
 import {
   ContributionStatisticsGetRequest,
   ContributionStatisticsGetResponse,
   ContributionSum,
 } from 'nina-api/proto/gen_ts/v1/nina_pb'
+import { ArrowLeft, ArrowRight } from '@mui/icons-material'
 
 export const Contribution = (): JSX.Element => {
   const initDatePeriod = getInitDatePeriod()
@@ -108,13 +106,13 @@ const PageNation = ({centerText, datePeriod, setDatePeriod}
   return (
     <div className={styles.wrapper}>
       <span onClick={leftClick} className={styles.button}>
-        <ArrowLeftIcon fontSize='large' />
+        <ArrowLeft fontSize='large' />
       </span>
       <span className={styles.periodBox}>
         {centerText}
       </span>
       <span onClick={rightClick} className={styles.button}>
-        <ArrowRightIcon fontSize='large' />
+        <ArrowRight fontSize='large' />
       </span>
     </div>
   )

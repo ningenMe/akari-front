@@ -1,5 +1,4 @@
-import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material'
-import { Typography } from '@material-ui/core'
+import { Container, FormControl, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import styles from './CategoryManage.module.scss'
 import { miikoApiMiikoServiceClient } from 'repository/MiikoApiRepository'

@@ -1,5 +1,4 @@
-import { Container } from '@mui/material'
-import { Typography } from '@material-ui/core'
+import { Container, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import styles from './CategoryList.module.scss'
 import { PathConst } from 'constants/Const'

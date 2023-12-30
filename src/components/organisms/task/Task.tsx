@@ -1,11 +1,10 @@
-import { Container } from '@mui/material'
-import { Typography } from '@material-ui/core'
-import { Title } from '../../atoms/Title'
+import { Container, Typography } from '@mui/material'
+import { Title } from 'components/atoms/Title'
 import React from 'react'
-import { TASK_LIST } from '../../../constants/taskList'
+import { TASK_LIST } from 'constants/taskList'
 import { CustomLinkCard } from '../CustomCard'
 import styles from './Task.module.scss'
-import { onlineJudgeIconPath } from '../../atoms/task/onlineJudgeIconPath'
+import { onlineJudgeIconPath } from 'components/atoms/task/onlineJudgeIconPath'
 
 export const Task = (): JSX.Element => {
   const cardList = TASK_LIST.map((task) =>
