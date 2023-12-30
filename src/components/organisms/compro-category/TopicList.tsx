@@ -26,7 +26,7 @@ export const TopicList = (): JSX.Element => {
       })
     })
     .flatMap(it => it)
-    .map((it, topic) =>
+    .map((it) =>
       <>
         {/*<CategoryLinkCard*/}
         {/*  key={it.category.categoryId}*/}

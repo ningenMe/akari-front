@@ -19,8 +19,8 @@ export const BlogSearch = (): JSX.Element => {
     },
     [suzuApiBlogServiceClient])
 
-  const blogCardList = blogList.map((blog) => (
-    <BlogChip blog={blog} />
+  const blogCardList = blogList.map((blog, idx) => (
+    <BlogChip blog={blog} key={idx}/>
   ));
 
   return (

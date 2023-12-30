@@ -25,7 +25,7 @@ const getBlogNingenmeUrl = (blogType: string): string => {
     return PathConst.BLOG;
 }
 
-export const BlogNingenmeUrlChip = ({blogType}: {blogType: string}) => {
+export const BlogNingenmeUrlChip = ({blogType}: {blogType: string}): JSX.Element => {
     return (
         <Chip 
         icon={<Image src={"/" + getBlogIconPath(blogType)} alt="image" width="20" height="20" />}
@@ -40,7 +40,7 @@ export const BlogNingenmeUrlChip = ({blogType}: {blogType: string}) => {
     )   
 }
 
-export const BlogChip = ({blog}: {blog: Blog}) => {
+export const BlogChip = ({blog}: {blog: Blog}): JSX.Element => {
     return (<ListItem disablePadding className={fontStyles.body}>
         <Chip 
           label={blog.getDate()} 

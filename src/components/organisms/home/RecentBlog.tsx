@@ -22,8 +22,8 @@ export const RecentBlog = () => {
     [suzuApiBlogServiceClient]
   )
 
-  const blogCardList = blogList.map((blog) => (
-    <BlogChip blog={blog} />
+  const blogCardList = blogList.map((blog, idx) => (
+    <BlogChip blog={blog} key={idx}/>
   ));
 
   return (
