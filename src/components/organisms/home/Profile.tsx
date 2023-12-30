@@ -8,9 +8,8 @@ export const Profile = (): JSX.Element => {
         Furuta Taishi
       </h4>
       <p className={fontStyles.body}>
-        webのバックエンド開発やアーキテクトをしています。
-        競技プログラミングが好きです。
-        学生時代は物性物理と機械学習をしていました。
+        web開発をしています。
+        競技プログラミングとコードレビューが好きです。
       </p>
     </CustomNormalCard>
   )

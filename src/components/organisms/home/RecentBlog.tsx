@@ -5,7 +5,7 @@ import { Blog } from 'suzu-backend/api/proto/client/api/proto/suzu/v1/suzu_pb'
 import { SubTitle } from 'components/atoms/Title'
 import { PathConst } from 'constants/Const'
 import { List } from '@mui/material'
-import { getblogChip } from 'components/atoms/blog/BlogChip'
+import { BlogChip } from 'components/atoms/blog/BlogChip'
 
 export const RecentBlog = () => {
 
@@ -22,8 +22,8 @@ export const RecentBlog = () => {
     [suzuApiBlogServiceClient]
   )
 
-  const blogCardList = blogList.map((blog, idx) => (
-    getblogChip(blog, idx)
+  const blogCardList = blogList.map((blog) => (
+    <BlogChip blog={blog} />
   ));
 
   return (

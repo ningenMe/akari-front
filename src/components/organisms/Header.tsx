@@ -12,6 +12,7 @@ import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/materi
 import { Box } from '@mui/system'
 import MenuIcon from '@mui/icons-material/Menu'
 import { LinkConst } from '../../constants/Const'
+import { BlogNingenmeUrlChip } from 'components/atoms/blog/BlogChip'
 
 const NormalElement = (
   { link, className, icon }: { link: Link, className: string, icon: ReactNode },
@@ -63,6 +64,48 @@ const DropdownElement = ({
   )
 }
 
+const BlogDropdownElement = ({
+  className,
+}: { className: string }) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const onOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const onClose = () => {
+    setAnchorEl(null)
+  }
+  return (
+  <div>
+    <Button onClick={onOpen} className={className}>
+      {<ArticleIcon />}
+      {'blog'}
+      <KeyboardArrowDownIcon />
+    </Button>
+    <Menu
+      anchorEl={anchorEl}
+      open={Boolean(anchorEl)}
+      onClose={onClose}
+    >
+      <MenuItem>
+        <BlogNingenmeUrlChip blogType='HATENA' />
+      </MenuItem>
+      <MenuItem>
+        <BlogNingenmeUrlChip blogType='QIITA' />
+      </MenuItem>
+      <MenuItem>
+        <BlogNingenmeUrlChip blogType='ZENN' />
+      </MenuItem>
+      <MenuItem>
+        <BlogNingenmeUrlChip blogType='SIZU' />
+      </MenuItem>
+      <MenuItem>
+        <BlogNingenmeUrlChip blogType='AMEBA' />
+      </MenuItem>          
+    </Menu>
+  </div>
+)
+}
+
 export const NingenmeNetHeader = (): JSX.Element => {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -79,7 +122,7 @@ export const NingenmeNetHeader = (): JSX.Element => {
       <NormalElement key={2} link={LinkConst.TWITTER} className={className} icon={<TwitterIcon />} />,
       <DropdownElement key={3} title={'compro'} links={LinkConst.COMPROS} className={className}
                        icon={<ComputerIcon />} />,
-      <DropdownElement key={4} title={'blog'} links={LinkConst.BLOGS} className={className} icon={<ArticleIcon />} />,
+      <BlogDropdownElement key={4} className={className} />,
       <NormalElement key={5} link={LinkConst.GITHUB_SPONSOR} className={className} icon={<PaidIcon />} />,
     ]
   }

@@ -60,6 +60,7 @@ export class UrlConst {
   static readonly AMEBA: string = 'https://profile.ameba.jp/ameba/ningenme'
   static readonly QIITA: string = 'https://qiita.com/ningenMe'
   static readonly ZENN: string = 'https://zenn.dev/ningenme'
+  static readonly SIZU: string = 'https://sizu.me/ningenme'
   static readonly COMPRO_LIBRARY: string = 'https://ningenme.github.io/compro-library'
   static readonly WORK: string = 'https://indies.mangabox.me/amp/author/10633/'
   static readonly OUPC_2020: string = 'https://onlinejudge.u-aizu.ac.jp/beta/room.html#OUPC2020/info'
@@ -85,14 +86,13 @@ export class LinkConst {
   static readonly YUKICODER: Link = { href: UrlConst.YUKICODER, name: 'yukicoder' }
   static readonly TOKI: Link = { href: UrlConst.TOKI, name: 'toki' }
   static readonly CSACADEMY: Link = { href: UrlConst.CSACADEMY, name: 'CSAcademy' }
-  static readonly HATENA: Link = { href: UrlConst.HATENA, name: 'Hatena' }
-  static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'Ameba' }
-  static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'Qiita' }
-  static readonly ZENN: Link = { href: UrlConst.ZENN, name: 'Zenn' }
+  static readonly HATENA: Link = { href: UrlConst.HATENA, name: 'HATENA' }
+  static readonly AMEBA: Link = { href: UrlConst.AMEBA, name: 'AMEBA' }
+  static readonly QIITA: Link = { href: UrlConst.QIITA, name: 'QIITA' }
+  static readonly ZENN: Link = { href: UrlConst.ZENN, name: 'ZENN' }
+  static readonly SIZU: Link = { href: UrlConst.SIZU, name: 'SIZU' }
   static readonly COMPRO_CATEGORY: Link = { href: PathConst.COMPRO_CATEGORY, name: 'compro-category' }
-  static readonly DIARIES: Link = { href: PathConst.DIARIES, name: '今日のITドカタ' }
   static readonly COMPROS: ReadonlyArray<Link> = [LinkConst.ATCODER, LinkConst.CODEFORCES, LinkConst.YUKICODER, LinkConst.TOKI, LinkConst.CSACADEMY] as const
-  static readonly BLOGS: ReadonlyArray<Link> = [LinkConst.HATENA, LinkConst.AMEBA, LinkConst.QIITA, LinkConst.ZENN] as const
 }
 
 export class ImageConst {
