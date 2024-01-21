@@ -3,7 +3,7 @@ import { OptionalHref } from 'components/atoms/OptionalHref'
 import { CustomNormalCard } from 'components/organisms/CustomCard'
 import { HistoryContent } from 'interfaces/HistoryContent'
 import { HISTORY_LIST } from 'constants/historyList'
-import { Title } from 'components/atoms/Title'
+import { SubTitle } from 'components/atoms/Title'
 import fontStyles from 'styles/Font.module.scss'
 import styles from './History.module.scss'
 
@@ -29,7 +29,7 @@ export const History = (): JSX.Element => {
 
   return (
     <div>
-      <Title title='History' />
+      <SubTitle title='History' />
       <CustomNormalCard>
         {contents}
       </CustomNormalCard>

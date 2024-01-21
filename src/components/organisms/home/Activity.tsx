@@ -1,7 +1,7 @@
-import { ACTIVITY_LIST } from '../../../constants/activityList'
-import { OptionalHref } from '../../atoms/OptionalHref'
+import { ACTIVITY_LIST } from 'constants/activityList'
+import { OptionalHref } from 'components/atoms/OptionalHref'
 import React from 'react'
-import { Title } from '../../atoms/Title'
+import { SubTitle } from 'components/atoms/Title'
 import { CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
 import styles from './Activity.module.scss'
@@ -17,7 +17,7 @@ export const Activity = (): JSX.Element => {
 
   return (
     <div>
-      <Title title='Activitiy' />
+      <SubTitle title='Activitiy' />
       <CustomNormalCard>
         {contents}
       </CustomNormalCard>

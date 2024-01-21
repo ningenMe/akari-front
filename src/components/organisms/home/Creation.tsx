@@ -1,6 +1,6 @@
-import { CREATION_LIST } from '../../../constants/creationList'
+import { CREATION_LIST } from 'constants/creationList'
 import React from 'react'
-import { Title } from '../../atoms/Title'
+import { SubTitle } from 'components/atoms/Title'
 import styles from './Creation.module.scss'
 import { CustomLinkCard, CustomNormalCard } from '../CustomCard'
 import fontStyles from 'styles/Font.module.scss'
@@ -36,7 +36,7 @@ export const Creation = (): JSX.Element => {
 
   return (
     <>
-      <Title title='Creation' />
+      <SubTitle title='Creation' />
       <div className={styles.grid}>
         {cards}
       </div>
