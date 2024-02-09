@@ -1,4 +1,4 @@
-import { UrlConst } from '../constants/Const'
+import { UrlConst } from 'constants/Const'
 import { Configuration } from 'kiwa-api/typescript-axios-client/configuration'
 import { HealthcheckApi, LoginApi, UsersApi } from 'kiwa-api/typescript-axios-client/api'
 

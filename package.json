@@ -39,6 +39,7 @@
     "react-dom": "18.0.0",
     "react-markdown": "^6.0.2",
     "react-share": "^4.4.0",
+    "roman-api": "https://github.com/ningenMe/roman-api.git#097f2c6",
     "sass": "^1.51.0",
     "sharp": "^0.29.3",
     "suzu-backend": "https://github.com/ningenMe/suzu-backend.git#d70cc49"

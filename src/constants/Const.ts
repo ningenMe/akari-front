@@ -38,6 +38,7 @@ class HostConst {
   static readonly KIWA_API: string = 'kiwa-api.ningenme.net'
   static readonly MIIKO_API: string = 'miiko-api.ningenme.net'
   static readonly SUZU_API: string = 'suzu-api.ningenme.net'
+  static readonly ROMAN_API: string = 'roman-api.ningenme.net'
 }
 
 export class UrlConst {
@@ -46,6 +47,7 @@ export class UrlConst {
   static readonly KIWA_API: string = 'https://' + HostConst.KIWA_API
   static readonly MIIKO_API: string = 'https://' + HostConst.MIIKO_API
   static readonly SUZU_API: string = 'https://' + HostConst.SUZU_API
+  static readonly ROMAN_API: string = 'https://' + HostConst.ROMAN_API
   static readonly GITHUB: string = 'https://github.com/ningenMe'
   static readonly GITHUB_SPONSOR: string = 'https://github.com/sponsors/ningenMe'
   static readonly GITHUB_AKARI_FRONT: string = 'https://github.com/ningenMe/akari-front'
