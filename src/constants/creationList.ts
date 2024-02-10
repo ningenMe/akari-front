@@ -26,6 +26,12 @@ export const CREATION_LIST: ReadonlyArray<Creation> = [
     body: '日々のgithubのcontribution。',
     isDone: true,
   },
+  {
+    href: PathConst.BOOKMARK,
+    title: 'bookmark',
+    body: '開発してる時に参考にした記事たち',
+    isDone: true,
+  },
   // {
   //   href: PathConst.BLOG,
   //   title: 'blog',

@@ -28,6 +28,7 @@ export class PathConst {
   static readonly COMPRO_CATEGORY_TOPIC_EDIT = (topicId: string): string => {
     return PathConst.COMPRO_CATEGORY_TOPIC_LIST + '/' + topicId + '/edit'
   }
+  static readonly BOOKMARK: string = '/bookmark'
   static readonly USER_LOGIN: string = '/user/login'
   static readonly SYSTEM: string = '/system'
 }
