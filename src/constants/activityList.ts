@@ -3,6 +3,11 @@ import { UrlConst } from './Const'
 
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
+    year: 2024,
+    body: 'イベント駆動とドメインモデルの完全性を意識したアーキテクチャ設計',
+    href: UrlConst.LY_TECHBLOG_20240611,
+  },
+  {
     year: 2023,
     body: 'モジュラモノリス徹底解剖vol.2〜実践者から学ぶLunch LT〜',
     href: UrlConst.FINDY_MODULAR_MONOLITH_20230912,
