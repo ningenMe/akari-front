@@ -1,8 +1,17 @@
-.date {
+.basedate {
   font-weight: bold;
   margin-left: 10px;
   margin-right: 2px;
 }
+.date0 {
+  @extend .basedate;
+  background-color: aliceblue;
+}
+.date1 {
+  @extend .basedate;
+  background-color: rgb(233, 233, 233);
+}
+
 .type {
   font-weight: bold;
   margin-left: 2px;

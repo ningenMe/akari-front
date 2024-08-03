@@ -41,12 +41,13 @@ export const BlogNingenmeUrlChip = ({blogType, clickable}: {blogType: string, cl
 }
 
 export const BlogChip = ({blog}: {blog: Blog}): JSX.Element => {
+    const blogDate = new Date(blog.getDate()); 
     return (<ListItem disablePadding className={fontStyles.body}>
         <Chip 
           label={blog.getDate()} 
           variant="outlined" 
           size="small" 
-          className={styles.date} 
+          className={blogDate.getFullYear() % 2 === 0 ? styles.date0 : styles.date1}
         />
         <BlogNingenmeUrlChip blogType={blog.getBlogType()} clickable={true}/>    
         <ListItemText>
