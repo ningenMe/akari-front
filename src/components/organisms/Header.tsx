@@ -87,19 +87,19 @@ const BlogDropdownElement = ({
       onClose={onClose}
     >
       <MenuItem>
-        <BlogNingenmeUrlChip blogType='HATENA' />
+        <BlogNingenmeUrlChip blogType='HATENA' clickable={true} />
       </MenuItem>
       <MenuItem>
-        <BlogNingenmeUrlChip blogType='QIITA' />
+        <BlogNingenmeUrlChip blogType='QIITA' clickable={true} />
       </MenuItem>
       <MenuItem>
-        <BlogNingenmeUrlChip blogType='ZENN' />
+        <BlogNingenmeUrlChip blogType='ZENN' clickable={true} />
       </MenuItem>
       <MenuItem>
-        <BlogNingenmeUrlChip blogType='SIZU' />
+        <BlogNingenmeUrlChip blogType='SIZU' clickable={true} />
       </MenuItem>
       <MenuItem>
-        <BlogNingenmeUrlChip blogType='AMEBA' />
+        <BlogNingenmeUrlChip blogType='AMEBA' clickable={true} />
       </MenuItem>          
     </Menu>
   </div>
