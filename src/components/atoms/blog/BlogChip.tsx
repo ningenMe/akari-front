@@ -25,7 +25,7 @@ const getBlogNingenmeUrl = (blogType: string): string => {
     return PathConst.BLOG;
 }
 
-export const BlogNingenmeUrlChip = ({blogType}: {blogType: string}): JSX.Element => {
+export const BlogNingenmeUrlChip = ({blogType, clickable}: {blogType: string, clickable: boolean}): JSX.Element => {
     return (
         <Chip 
         icon={<Image src={"/" + getBlogIconPath(blogType)} alt="image" width="20" height="20" />}
@@ -33,9 +33,9 @@ export const BlogNingenmeUrlChip = ({blogType}: {blogType: string}): JSX.Element
         variant="outlined" 
         size="small" 
         className={styles.type} 
-        component="a"
-        href={getBlogNingenmeUrl(blogType)}
-        clickable
+        component={clickable? "a" : "span"}
+        href={clickable ? getBlogNingenmeUrl(blogType): undefined}
+        clickable={clickable}
       />       
     )   
 }
@@ -48,7 +48,7 @@ export const BlogChip = ({blog}: {blog: Blog}): JSX.Element => {
           size="small" 
           className={styles.date} 
         />
-        <BlogNingenmeUrlChip blogType={blog.getBlogType()} />    
+        <BlogNingenmeUrlChip blogType={blog.getBlogType()} clickable={true}/>    
         <ListItemText>
           <a href={blog.getUrl()} className={styles.title}>{blog.getBlogTitle()}</a>
         </ListItemText>
