@@ -3,6 +3,11 @@ import { UrlConst } from './Const'
 
 export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   {
+    year: 2025,
+    body: 'Open Hack U 2025 NAGOYA 審査員',
+    href: UrlConst.LY_OPEN_HACK_U_NAGOYA_2025,
+  },
+  {
     year: 2024,
     body: 'イベント駆動とドメインモデルの完全性を意識したアーキテクチャ設計',
     href: UrlConst.LY_TECHBLOG_20240611,
@@ -59,7 +64,7 @@ export const ACTIVITY_LIST: ReadonlyArray<Activity> = [
   },
   {
     year: 2019,
-    body: '第一回アルゴリズム実技検定　エキスパート取得',
+    body: '第一回アルゴリズム実技検定 エキスパート取得',
     href: null,
   },
   {
